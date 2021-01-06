@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package boxerservice_package;
+
+message Boxer {
+  int32 id = 1;
+  string fullName = 2;
+  int64 birthDate = 3;
+  int32 height = 4;
+  double weight = 5;
+}
+
+message GetBoxerRequest {
+  int32 id = 1;
+}
+
+message GetBoxerResponse {
+  int32 code = 1;
+  string message = 2;
+  Boxer boxer = 3;
+}
+
+service BoxerService {
+  rpc GetBoxer(GetBoxerRequest) returns (GetBoxerResponse) {};
+}
