@@ -1,0 +1,8 @@
+{
+  "name": "boxer-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/segment17/boxer-service.git",
+  "author": "Segment 17",
+  "license": "MIT"
+}
