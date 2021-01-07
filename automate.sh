@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 kubectl delete deployments --all
 kubectl delete svc --all
+eval $(minikube docker-env)
 docker build -t segment17/boxerservice .
 kubectl apply -f manifest.yaml
 latest_pod=$(kubectl get pods --sort-by=.metadata.creationTimestamp -o jsonpath="{.items[-1].metadata.name}")
