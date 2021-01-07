@@ -7,19 +7,40 @@ message Boxer {
   string fullName = 2;
   int64 birthDate = 3;
   int32 height = 4;
-  double weight = 5;
 }
 
-message GetBoxerRequest {
+message Match {
+  int32 id = 1;
+  Boxer homeBoxer = 2;
+  Boxer awayBoxer = 3;
+  int64 matchTime = 4;
+  bool isFinished = 5;
+  optional Boxer winnerBoxer = 6;
+}
+
+message Standing {
+  Boxer boxer = 1;
+  int32 winCount = 2;
+  int32 lossCount = 3;
+  double score = 4;
+}
+
+message StandingAndMatches {
+  Standing standing = 1;
+  repeated Match matches = 2;
+}
+
+message GetBoxerWithStandingAndMatchesRequest {
   int32 id = 1;
 }
 
-message GetBoxerResponse {
+message GetBoxerWithStandingAndMatchesResponse {
   int32 code = 1;
   string message = 2;
   Boxer boxer = 3;
+  StandingAndMatches standingAndMatches = 4;
 }
 
 service BoxerService {
-  rpc GetBoxer(GetBoxerRequest) returns (GetBoxerResponse) {};
+  rpc GetBoxerWithStandingAndMatches(GetBoxerWithStandingAndMatchesRequest) returns (GetBoxerWithStandingAndMatchesResponse) {};
 }
