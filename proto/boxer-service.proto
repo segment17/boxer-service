@@ -41,6 +41,10 @@ message GetBoxerWithStandingAndMatchesResponse {
   StandingAndMatches standingAndMatches = 4;
 }
 
+message GetBoxerWithStandingAndMatchesResponseX {
+  int32 id = 1;
+}
+
 service BoxerService {
-  rpc GetBoxerWithStandingAndMatches(GetBoxerWithStandingAndMatchesRequest) returns (GetBoxerWithStandingAndMatchesResponse) {};
+  rpc GetBoxerWithStandingAndMatches(GetBoxerWithStandingAndMatchesRequest) returns (GetBoxerWithStandingAndMatchesResponseX) {};
 }

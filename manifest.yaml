@@ -17,16 +17,17 @@ spec:
         imagePullPolicy: Never
         image: segment17/boxerservice
         ports:
-        - containerPort: 8080
+        - containerPort: 50051
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: boxer-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: boxer-service
   ports:
-    - port: 8765
-      targetPort: 8080
+    - name: grpc
+      port: 50051
+      targetPort: 50051

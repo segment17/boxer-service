@@ -11,8 +11,8 @@ function mockBoxersRepository() {
   boxersRepository = require('../repositories/boxersRepositoryMock.js');
 }
 
-function guardGetBoxerWithStandingAndMatches(request) {
-  return true;
+function guardGetBoxerWithStandingAndMatches(id) {
+  return {id: id}; //TODO Implement
 }
 
 module.exports = {

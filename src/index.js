@@ -1,6 +1,7 @@
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 const PROTO_PATH = __dirname + "/../proto/boxer-service.proto";
+const controller = require('../src/controllers/controller');
 const packageDefinition = protoLoader.loadSync(
   PROTO_PATH, {
   keepCase: true,
@@ -10,17 +11,18 @@ const packageDefinition = protoLoader.loadSync(
   oneofs: true
 });
 const boxerservice_package = grpc.loadPackageDefinition(packageDefinition).boxerservice_package;
+var server;
 
-function GetBoxer() {
-
+function GetBoxerWithStandingAndMatches(call, callback) {
+  callback(null, controller.guardGetBoxerWithStandingAndMatches(call.request.id));
 }
 
 function main() {
-  const server = new grpc.Server();
+  server = new grpc.Server();
   server.addService(boxerservice_package.BoxerService.service, {
-    GetBoxer: GetBoxer
+    getBoxerWithStandingAndMatches: GetBoxerWithStandingAndMatches
   });
-  server.bind(process.env.BOXERSERVICE_SERVICE_ADDR + ":" + process.env.BOXERSERVICE_SERVICE_PORT, grpc.ServerCredentials.createInsecure());
+  server.bind("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.ServerCredentials.createInsecure());
   server.start();
 }
 

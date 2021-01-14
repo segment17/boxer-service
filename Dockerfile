@@ -3,5 +3,5 @@ WORKDIR /usr/src/app
 COPY package*.json yarn.lock ./
 RUN yarn install
 COPY . .
-EXPOSE 8080
+EXPOSE 50051
 ENTRYPOINT [ "node", "src/index.js" ]
