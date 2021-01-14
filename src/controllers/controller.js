@@ -11,6 +11,10 @@ function mockBoxersRepository() {
   boxersRepository = require('../repositories/boxersRepositoryMock.js');
 }
 
+function guardGetBoxerWithStandingAndMatches(request) {
+  return true;
+}
+
 module.exports = {
-  mockBoxersRepository, mockStandingsServiceGateway
+  mockBoxersRepository, mockStandingsServiceGateway, guardGetBoxerWithStandingAndMatches
 }
