@@ -1,5 +1,11 @@
 function getBoxerWithId(id) {
-  return null;
+  return {
+    id: id,
+    fullName: "Mike Tyson",
+    birthDate: 127419968, // Timestamp
+    height: 178,
+    weight: 100
+  };
 }
 
 

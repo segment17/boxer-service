@@ -1,8 +1,8 @@
 
-function getStandingOfABoxer(id) {
+function getStandingAndMatchesOfABoxer(id) {
   return null;
 }
 
 module.exports = {
-  getStandingOfABoxer
+  getStandingAndMatchesOfABoxer
 }
