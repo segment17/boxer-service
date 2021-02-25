@@ -1,20 +1,27 @@
 
-let mediator = require('../services/mediator.js');
-let boxersRepository = require('../repositories/boxersRepository.js');
 
+var Controller = class Controller {
 
-function mockStandingsServiceGateway() {
-  mediator.setStandingServiceGateway(true);
+  constructor() {
+    console.log("Controller is created.");
+    this.mediator = require('../services/mediator.js');
+    this.boxersRepository = require('../repositories/boxersRepository.js');
+  }
+
+  mockStandingsServiceGateway() {
+    this.mediator.setStandingServiceGateway(true);
+  }
+
+  mockBoxersRepository() {
+    console.log("mocked");
+    this.boxersRepository = require('../repositories/boxersRepositoryMock.js');
+  }
+
+  guardGetBoxerWithStandingAndMatches(id) {
+    const boxer = this.boxersRepository.getBoxerWithId(id);
+    console.log("BOXER:" + boxer);
+    return boxer; //TODO Implement
+  }
 }
 
-function mockBoxersRepository() {
-  boxersRepository = require('../repositories/boxersRepositoryMock.js');
-}
-
-function guardGetBoxerWithStandingAndMatches(id) {
-  return {id: id}; //TODO Implement
-}
-
-module.exports = {
-  mockBoxersRepository, mockStandingsServiceGateway, guardGetBoxerWithStandingAndMatches
-}
+module.exports = Controller;
