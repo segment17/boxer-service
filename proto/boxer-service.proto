@@ -7,6 +7,7 @@ message Boxer {
   string fullName = 2;
   int64 birthDate = 3;
   int32 height = 4;
+  double weight = 5;
 }
 
 message Match {
