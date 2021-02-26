@@ -21,10 +21,10 @@ class Mediator {
     }
   }
 
-  getBoxerWithStandingAndMatches(id) {
+  async getBoxerWithStandingAndMatches(id) {
 
-    let boxer = this.boxerRepository.getBoxerWithId();
-    let standingAndMatches = this.standingsServiceGateway.getStandingAndMatchesOfABoxer(boxer.id);
+    let boxer = await this.boxerRepository.getBoxerWithId();
+    let standingAndMatches = await this.standingsServiceGateway.getStandingAndMatchesOfABoxer(boxer.id);
 
     return {
       boxer: boxer,

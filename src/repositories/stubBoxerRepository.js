@@ -4,7 +4,7 @@ class StubBoxerRepository extends BoxerRepository {
 
   async readBoxerFromDatabase(id) {
     return [{
-      id: "1",
+      id: 1,
       fullName: "Mike Tyson",
       birthDate: 127419968, // Timestamp
       height: 178,

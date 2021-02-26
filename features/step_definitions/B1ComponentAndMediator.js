@@ -1,8 +1,9 @@
 const assert = require('assert');
-const { Given, When, Then } = require('@cucumber/cucumber');
+const { Given, When, Then, Before } = require('@cucumber/cucumber');
 const { controller } = require('../../src/index.js');
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
+const Mediator = require('../../src/services/mediator.js');
 const PROTO_PATH = __dirname + "/../../proto/boxer-service.proto";
 const packageDefinition = protoLoader.loadSync(
   PROTO_PATH, {
@@ -20,20 +21,45 @@ if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
   var client = new boxerservice_package.BoxerService("0.0.0.0:50001", grpc.credentials.createInsecure());
 }
 var response = null;
+let currentlyRunningScenarioTags = [];
+
+var mediator = new Mediator();
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+Before(function (scenario) {
+  currentlyRunningScenarioTags = [];
+  extractTags(scenario);
+});
+
+function extractTags(scenario) {
+  const tagObjects = scenario.pickle.tags;
+  for (let index = 0; index < tagObjects.length; index++) {
+    const element = tagObjects[index];
+    currentlyRunningScenarioTags.push(element.name);
+  }
+}
+
 Given('the {string} service gateway is mocked', function (string) {
   if (string == "standings") {
-    controller.mockStandingsServiceGateway();
+    if (currentlyRunningScenarioTags.includes("@Mediator")) {
+      mediator.setStandingServiceGateway(true);
+    } else {
+      controller.mockStandingsServiceGateway();
+    }
+    
   }
 });
 
 Given('the {string} repository is mocked', function (string) {
   if (string == "boxers") {
-    controller.mockBoxersRepository();
+    if (currentlyRunningScenarioTags.includes("@Mediator")) {
+      mediator.setBoxerRepository(true);
+    } else {
+      controller.mockBoxersRepository();
+    }
   }
 });
 
@@ -47,11 +73,12 @@ Then('the boxer with the id {string} and his matches and standing are returned',
   while (response == null) {
     await sleep(100);
   }
-  console.log(response);
   assert(response != null);
-  assert(response.code == 200);
-  assert(response.message == "success");
-  assert(response.boxer.id == string);
+  if (currentlyRunningScenarioTags.includes("@Component")) {
+    assert(response.code == 200);
+    assert(response.message == "success");
+  }
+  assert(response.boxer.id === parseInt(string));
   assert(response.boxer.fullName == "Mike Tyson");
   assert(response.boxer.birthDate == 127419968);
   assert(response.boxer.height == 178);
@@ -69,7 +96,16 @@ Then('the boxer with the id {string} and his matches and standing are returned',
   assert(matches.length > 2);
   for (let index = 0; index < matches.length; index++) {
     const element = matches[index];
+    console.log("ESASBOXER", response.boxer);
+    console.log("HOMEBOXER", element.homeBoxer);
+    console.log("AWAYBOXER", element.awayBoxer);
     assert(JSON.stringify(element.homeBoxer) == JSON.stringify(response.boxer) 
     || JSON.stringify(element.awayBoxer) == JSON.stringify(response.boxer));
   }
+});
+
+When('the getBoxerWithStandingAndMatches function is called', function () {
+  mediator.getBoxerWithStandingAndMatches(1).then(r => {
+    response = r;
+  });
 });

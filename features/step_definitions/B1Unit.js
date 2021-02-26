@@ -41,7 +41,6 @@ Then('matches and standing of the boxer with the id {string} are returned', asyn
   while (returnedData == null) {
     await sleep(100);
   }
-  console.log(returnedData);
 
   assert(returnedData.code == undefined);
   assert(returnedData.message == undefined);
@@ -78,8 +77,7 @@ Then('the details of the boxer with the id {string} are returned', async functio
     await sleep(100);
   }
 
-  console.log(returnedData);
-  assert(returnedData.id == string);
+  assert(returnedData.id === parseInt(string));
   assert(returnedData.fullName == "Mike Tyson");
   assert(returnedData.birthDate == 127419968);
   assert(returnedData.height == 178);
