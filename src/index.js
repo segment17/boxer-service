@@ -16,8 +16,8 @@ let controller = new Controller();
 
 module.exports = { controller }
 
-function GetBoxerWithStandingAndMatches(call, callback) {
-  let r = controller.guardGetBoxerWithStandingAndMatches(call.request.id);
+async function GetBoxerWithStandingAndMatches(call, callback) {
+  let r = await controller.guardGetBoxerWithStandingAndMatches(call.request.id);
   callback(null, r);
 }
 

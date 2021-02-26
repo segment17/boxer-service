@@ -30,6 +30,7 @@ function sleep(ms) {
 }
 
 Before(function (scenario) {
+  response = null;
   currentlyRunningScenarioTags = [];
   extractTags(scenario);
 });
@@ -75,12 +76,14 @@ Then('the boxer with the id {string} and his matches and standing are returned',
   }
   assert(response != null);
   if (currentlyRunningScenarioTags.includes("@Component")) {
+    console.log(response);
     assert(response.code === 200);
     assert(response.message === "success");
   }
   assert(response.boxer.id === parseInt(string));
   assert(response.boxer.fullName === "Mike Tyson");
-  assert(response.boxer.birthDate === 127419968);
+  // Strict equal fails because JavaScript BigInt is at max 2^53-1 however int64 is bigger than that. So whilst converting to protobuf data, it is converted to string. And String != BigInt
+  assert.equal(response.boxer.birthDate, 127419968);
   assert(response.boxer.height === 178);
   assert(response.boxer.weight === 100);
   let standingAndMatches = response.standingAndMatches;

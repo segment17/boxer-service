@@ -16,10 +16,12 @@ var Controller = class Controller {
     this.mediator.setBoxerRepository(true);
   }
 
-  guardGetBoxerWithStandingAndMatches(id) {
+  async guardGetBoxerWithStandingAndMatches(id) {
     //Check that id is valid, boxer exists etc
 
-    let data = this.mediator.getBoxerWithStandingAndMatches(id);
+
+    let data = await this.mediator.getBoxerWithStandingAndMatches(id);
+
     if (data == null) {
       return {
         code: 404, //Analyze the error
