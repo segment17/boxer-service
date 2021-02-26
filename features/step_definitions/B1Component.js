@@ -38,7 +38,7 @@ Given('the {string} repository is mocked', function (string) {
 });
 
 When('the GetBoxerWithStandingAndMatches endpoint is called', function () {
-  client.getBoxerWithStandingAndMatches({ id: 1 }, async function (err, res) {
+  client.getBoxerWithStandingAndMatches({ id: 1 }, function (err, res) {
     response = res;
   });
 });
@@ -47,11 +47,29 @@ Then('the boxer with the id {string} and his matches and standing are returned',
   while (response == null) {
     await sleep(100);
   }
+  console.log(response);
   assert(response != null);
-  assert(response.id == string);
-  assert(response.fullName == "Mike Tyson");
-  assert(response.birthDate == 127419968);
-  assert(response.height == 178);
-  assert(response.weight == 100);
-  //Assert matches and standing as well
+  assert(response.code == 200);
+  assert(response.message == "success");
+  assert(response.boxer.id == string);
+  assert(response.boxer.fullName == "Mike Tyson");
+  assert(response.boxer.birthDate == 127419968);
+  assert(response.boxer.height == 178);
+  assert(response.boxer.weight == 100);
+  let standingAndMatches = response.standingAndMatches;
+  assert(standingAndMatches != undefined && standingAndMatches != null);
+  let standing = standingAndMatches.standing;
+  assert(standing != undefined && standing != null);
+  assert(JSON.stringify(standing.boxer) == JSON.stringify(response.boxer));
+  assert(standing.winCount == 1);
+  assert(standing.lossCount == 1);
+  assert(standing.score == 0.5);
+  let matches = standingAndMatches.matches;
+  assert(matches != undefined && matches != null);
+  assert(matches.length > 2);
+  for (let index = 0; index < matches.length; index++) {
+    const element = matches[index];
+    assert(JSON.stringify(element.homeBoxer) == JSON.stringify(response.boxer) 
+    || JSON.stringify(element.awayBoxer) == JSON.stringify(response.boxer));
+  }
 });

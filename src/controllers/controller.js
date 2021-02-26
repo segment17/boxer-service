@@ -1,11 +1,10 @@
-
+let Mediator = require('../services/mediator.js');
 
 var Controller = class Controller {
 
   constructor() {
-    console.log("Controller is created.");
-    this.mediator = require('../services/mediator.js');
-    this.boxersRepository = require('../repositories/boxersRepository.js');
+    this.mediator = new Mediator();
+    this.boxerRepository = require('../repositories/boxerRepository.js');
   }
 
   mockStandingsServiceGateway() {
@@ -13,14 +12,26 @@ var Controller = class Controller {
   }
 
   mockBoxersRepository() {
-    console.log("mocked");
-    this.boxersRepository = require('../repositories/boxersRepositoryMock.js');
+    this.boxerRepository = require('../repositories/stubBoxerRepository.js');
   }
 
   guardGetBoxerWithStandingAndMatches(id) {
-    const boxer = this.boxersRepository.getBoxerWithId(id);
-    console.log("BOXER:" + boxer);
-    return boxer; //TODO Implement
+    //Check that id is valid, boxer exists etc
+
+    let data = this.mediator.getBoxerWithStandingAndMatches(id);
+    if (data == null) {
+      return {
+        code: 404, //Analyze the error
+        message: "not_found" //Real error message
+      }
+    } else {
+      return {
+        code: 200,
+        message: 'success',
+        boxer: data.boxer,
+        standingAndMatches: data.standingAndMatches
+      }
+    }
   }
 }
 

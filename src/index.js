@@ -17,7 +17,8 @@ let controller = new Controller();
 module.exports = { controller }
 
 function GetBoxerWithStandingAndMatches(call, callback) {
-  callback(null, controller.guardGetBoxerWithStandingAndMatches(call.request.id));
+  let r = controller.guardGetBoxerWithStandingAndMatches(call.request.id);
+  callback(null, r);
 }
 
 function main() {
