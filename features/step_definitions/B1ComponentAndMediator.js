@@ -75,14 +75,14 @@ Then('the boxer with the id {string} and his matches and standing are returned',
   }
   assert(response != null);
   if (currentlyRunningScenarioTags.includes("@Component")) {
-    assert(response.code == 200);
-    assert(response.message == "success");
+    assert(response.code === 200);
+    assert(response.message === "success");
   }
   assert(response.boxer.id === parseInt(string));
-  assert(response.boxer.fullName == "Mike Tyson");
-  assert(response.boxer.birthDate == 127419968);
-  assert(response.boxer.height == 178);
-  assert(response.boxer.weight == 100);
+  assert(response.boxer.fullName === "Mike Tyson");
+  assert(response.boxer.birthDate === 127419968);
+  assert(response.boxer.height === 178);
+  assert(response.boxer.weight === 100);
   let standingAndMatches = response.standingAndMatches;
   assert(standingAndMatches != undefined && standingAndMatches != null);
   let standing = standingAndMatches.standing;
@@ -96,9 +96,6 @@ Then('the boxer with the id {string} and his matches and standing are returned',
   assert(matches.length > 2);
   for (let index = 0; index < matches.length; index++) {
     const element = matches[index];
-    console.log("ESASBOXER", response.boxer);
-    console.log("HOMEBOXER", element.homeBoxer);
-    console.log("AWAYBOXER", element.awayBoxer);
     assert(JSON.stringify(element.homeBoxer) == JSON.stringify(response.boxer) 
     || JSON.stringify(element.awayBoxer) == JSON.stringify(response.boxer));
   }

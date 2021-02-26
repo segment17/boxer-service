@@ -42,15 +42,15 @@ Then('matches and standing of the boxer with the id {string} are returned', asyn
     await sleep(100);
   }
 
-  assert(returnedData.code == undefined);
-  assert(returnedData.message == undefined);
+  assert(returnedData.code === undefined);
+  assert(returnedData.message === undefined);
 
   let standing = returnedData.standing;
-  assert(standing != undefined && standing != null);
-  assert(standing.boxer.id == 1);
-  assert(standing.winCount == 1);
-  assert(standing.lossCount == 1);
-  assert(standing.score == 0.5);
+  assert(standing !== undefined && standing !== null);
+  assert(standing.boxer.id === 1);
+  assert(standing.winCount === 1);
+  assert(standing.lossCount === 1);
+  assert(standing.score === 0.5);
 
   let matches = returnedData.matches;
   assert(matches != undefined && matches != null);
@@ -73,13 +73,13 @@ When('getBoxerWithId function of repository is called', function () {
 });
 
 Then('the details of the boxer with the id {string} are returned', async function (string) {
-  while (returnedData == null) {
+  while (returnedData === null) {
     await sleep(100);
   }
 
   assert(returnedData.id === parseInt(string));
-  assert(returnedData.fullName == "Mike Tyson");
-  assert(returnedData.birthDate == 127419968);
-  assert(returnedData.height == 178);
-  assert(returnedData.weight == 100);
+  assert(returnedData.fullName === "Mike Tyson");
+  assert(returnedData.birthDate === 127419968);
+  assert(returnedData.height === 178);
+  assert(returnedData.weight === 100);
 });
