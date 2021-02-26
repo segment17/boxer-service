@@ -1,3 +1,4 @@
+const StubBoxerRepository = require('../repositories/stubBoxerRepository.js');
 let Mediator = require('../services/mediator.js');
 
 var Controller = class Controller {
@@ -12,7 +13,7 @@ var Controller = class Controller {
   }
 
   mockBoxersRepository() {
-    this.boxerRepository = require('../repositories/stubBoxerRepository.js');
+    this.mediator.setBoxerRepository(true);
   }
 
   guardGetBoxerWithStandingAndMatches(id) {
