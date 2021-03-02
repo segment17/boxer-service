@@ -42,6 +42,20 @@ message GetBoxerWithStandingAndMatchesResponse {
   StandingAndMatches standingAndMatches = 4;
 }
 
+message AddBoxerRequest {
+  string fullName = 1;
+  int64 birthDate = 2;
+  int32 height = 3;
+  double weight = 4;
+}
+
+message AddBoxerResponse {
+  int32 code = 1;
+  string message = 2;
+  Boxer boxer = 3;
+}
+
 service BoxerService {
   rpc GetBoxerWithStandingAndMatches(GetBoxerWithStandingAndMatchesRequest) returns (GetBoxerWithStandingAndMatchesResponse) {};
+  rpc AddBoxer(AddBoxerRequest) returns (AddBoxerResponse) {};
 }
