@@ -11,6 +11,15 @@ Feature: See details of boxer
     When the GetBoxerWithStandingAndMatches endpoint is called
     Then the boxer with the id "1" and his matches and standing are returned
     
+  @B2
+  Scenario: Successfully edit the details of a boxer
+    Given the "boxer" service is running
+    And the "auth" service is running
+    And there is a boxer with the id "1"
+    And the boxer with the id "1" has weight "100"
+    #Change test data with file
+    When the EditBoxer endpoint is called with the test data
+    Then the edited boxer with the id "1" is returned
 
   @B3
   Scenario: Successfully add a new boxer
