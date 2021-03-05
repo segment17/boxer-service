@@ -2,6 +2,7 @@ const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 const PROTO_PATH = __dirname + "/../proto/boxer-service.proto";
 const Controller = require('../src/controllers/controller');
+const Mediator = require('./services/mediator');
 const packageDefinition = protoLoader.loadSync(
   PROTO_PATH, {
   keepCase: true,
@@ -13,8 +14,9 @@ const packageDefinition = protoLoader.loadSync(
 const boxerservice_package = grpc.loadPackageDefinition(packageDefinition).boxerservice_package;
 var server;
 let controller = new Controller();
+let mediator = new Mediator();
 
-module.exports = { controller }
+module.exports = { controller, mediator }
 
 async function GetBoxerWithStandingAndMatches(call, callback) {
   let r = await controller.guardGetBoxerWithStandingAndMatches(call.request.id);

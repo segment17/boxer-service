@@ -10,7 +10,6 @@ Feature: See details of boxer
     And the boxer with the id "1" has matches
     When the GetBoxerWithStandingAndMatches endpoint is called
     Then the boxer with the id "1" and his matches and standing are returned
-    
 
   @B3
   Scenario: Successfully add a new boxer

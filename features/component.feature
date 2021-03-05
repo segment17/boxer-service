@@ -11,7 +11,7 @@ Feature: B1 - Successfully see the details of a boxer
   @B3
   Scenario: Successfully add a new boxer
     Given the "boxers" repository is mocked
-    And the "auth" service is mocked
+    And the "auth" service gateway is mocked
     And the latest boxer in the BoxerService database has id "2"
     #Change test data with file
     When the AddBoxer endpoint is called with the test data
