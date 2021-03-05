@@ -15,8 +15,8 @@ const boxerservice_package = grpc.loadPackageDefinition(packageDefinition).boxer
 const standingsservice_package = grpc.loadPackageDefinition(packageDefinition).standingsservice_package;
 const matchservice_package = grpc.loadPackageDefinition(packageDefinition).matchservice_package;
 const authservice_package = grpc.loadPackageDefinition(packageDefinition).authservice_package;
+
 Given('the {string} service is running', function (string) {
-  // Write code here that turns the phrase above into concrete actions
   try {
     if (string == "boxer") {
       var boxerserviceClient = new boxerservice_package.BoxerService("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
@@ -34,4 +34,32 @@ Given('the {string} service is running', function (string) {
     assert(false);
   }
   return true;
+});
+
+When('the GetBoxerWithStandingAndMatches endpoint is called', function () {
+
+});
+
+When('the EditBoxer endpoint is called with the test data', function () {
+
+});
+
+When('the AddBoxer endpoint is called with the test data', function () {
+
+});
+
+Then('the boxer with the id {id} and his matches and standing are returned', function (id) {
+
+});
+
+Then('the edited boxer with the id {id} is returned', function (id) {
+
+});
+
+Then('the details of the created boxer are returned', function () {
+
+});
+
+Then('the id of the returned boxer is {id}', function (id) {
+
 });

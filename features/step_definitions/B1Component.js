@@ -1,9 +1,8 @@
 const assert = require('assert');
 const { Given, When, Then, Before } = require('@cucumber/cucumber');
-const { controller } = require('../../src/index.js');
+const { controller, mediator } = require('../../src/index.js');
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
-const Mediator = require('../../src/services/mediator.js');
 const PROTO_PATH = __dirname + "/../../proto/boxer-service.proto";
 const packageDefinition = protoLoader.loadSync(
   PROTO_PATH, {
@@ -22,8 +21,6 @@ if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
 }
 var response = null;
 let currentlyRunningScenarioTags = [];
-
-var mediator = new Mediator();
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
