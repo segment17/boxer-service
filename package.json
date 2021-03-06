@@ -1,0 +1,16 @@
+{
+  "name": "BDD_Microservice_gRPC_Template_JavaScript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Deniz Egemen Coşkun",
+  "license": "MIT",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.0.0",
+    "google-protobuf": "^3.13.0",
+    "@grpc/grpc-js": "^1.1.0",
+    "@grpc/proto-loader": "^0.5.5"
+  }
+}
