@@ -19,4 +19,8 @@ const Unit_Repository_Scenario1 = {
   }
 }
 
-module.exports = { Unit_Repository_Scenario1 }
+const B1_Scenario1_Variation1 = {
+  boxer: Unit_Repository_Scenario1.boxer
+}
+
+module.exports = { Unit_Repository_Scenario1, B1_Scenario1_Variation1 }

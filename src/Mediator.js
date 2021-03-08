@@ -6,15 +6,15 @@ const MockBoxerRepository = require('./Repository/Mock/MockBoxerRepository');
 class Mediator {
 
   constructor() {
-    this.StandingsServiceGateway = new StandingsServiceGateway();
-    this.BoxerRepository = new BoxerRepository();
+    this.standingsServiceGateway = new StandingsServiceGateway();
+    this.boxerRepository = new BoxerRepository();
   }
 
   // Endpoints
   async getBoxerAndOwnerName(id) {
     console.log("Mediator.getBoxer called with id: " + id);
-    let boxer = await this.BoxerRepository.getBoxerWithId(id);
-    let owner = await this.StandingsServiceGateway.getStandingWithId(boxer.owner);
+    let boxer = await this.boxerRepository.getBoxerWithId(id);
+    let owner = await this.standingsServiceGateway.getStandingWithId(boxer.owner);
     return {
       boxer: boxer,
       ownerName: owner.name
@@ -23,8 +23,8 @@ class Mediator {
 
   // Mock everything.
   mock() {
-    this.StandingsServiceGateway = new MockStandingsServiceGateway();
-    this.BoxerRepository = new MockBoxerRepository();
+    this.standingsServiceGateway = new MockStandingsServiceGateway();
+    this.boxerRepository = new MockBoxerRepository();
   }
 
 }
