@@ -56,3 +56,7 @@ When('{string} is invoked with {string}', function (unitFunctionName, invocation
 Then('returned data is as {string}', async function (expectedDataSource) {
   await globalObjects.scenarioTester.returnedDataIsAs(expectedDataSource);
 });
+
+Given('there is a standing with matches such as {string}', function (dataSource) {
+  globalObjects.scenarioTester.thereIsAStandingWithMatchesSuchAs(dataSource);
+});
