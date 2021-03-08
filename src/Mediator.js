@@ -1,30 +1,30 @@
-const UserServiceGateway = require('./Gateway/UserServiceGateway');
-const MockUserServiceGateway = require('./Gateway/Mock/MockUserServiceGateway');
-const GreetingRepository = require('./Repository/GreetingRepository');
-const MockGreetingRepository = require('./Repository/Mock/MockGreetingRepository');
+const StandingsServiceGateway = require('./Gateway/StandingsServiceGateway');
+const MockStandingsServiceGateway = require('./Gateway/Mock/MockStandingsServiceGateway');
+const BoxerRepository = require('./Repository/BoxerRepository');
+const MockBoxerRepository = require('./Repository/Mock/MockBoxerRepository');
 
 class Mediator {
 
   constructor() {
-    this.userServiceGateway = new UserServiceGateway();
-    this.greetingRepository = new GreetingRepository();
+    this.StandingsServiceGateway = new StandingsServiceGateway();
+    this.BoxerRepository = new BoxerRepository();
   }
 
   // Endpoints
-  async getGreetingAndOwnerName(id) {
-    console.log("Mediator.getGreeting called with id: " + id);
-    let greeting = await this.greetingRepository.getGreetingWithId(id);
-    let owner = await this.userServiceGateway.getUserWithId(greeting.owner);
+  async getBoxerAndOwnerName(id) {
+    console.log("Mediator.getBoxer called with id: " + id);
+    let boxer = await this.BoxerRepository.getBoxerWithId(id);
+    let owner = await this.StandingsServiceGateway.getStandingWithId(boxer.owner);
     return {
-      greeting: greeting,
+      boxer: boxer,
       ownerName: owner.name
     }
   }
 
   // Mock everything.
   mock() {
-    this.userServiceGateway = new MockUserServiceGateway();
-    this.greetingRepository = new MockGreetingRepository();
+    this.StandingsServiceGateway = new MockStandingsServiceGateway();
+    this.BoxerRepository = new MockBoxerRepository();
   }
 
 }

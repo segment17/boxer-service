@@ -1,19 +1,19 @@
 const globalObjects = require('../../..');
-const ScenarioTester = require('../ScenarioTester');
+const DefaultScenarioTester = require('../DefaultScenarioTester');
 const TestFunctions = require('../../TestFunctions');
 
-class MediatorScenarioTester extends ScenarioTester {
+class MediatorScenarioTester extends DefaultScenarioTester {
 
-  thereIsAnActiveUserSpecifiedAsData(dataSource) {
-    console.log("mediator.userServiceGateway is getting mock data.")
-    const specifiedUser = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.mediator.userServiceGateway.setupAddUser(specifiedUser);
+  thereIsAnActiveStandingSpecifiedAsData(dataSource) {
+    console.log("mediator.StandingsServiceGateway is getting mock data.")
+    const specifiedStanding = TestFunctions.extractSpecifiedObjectData(dataSource);
+    globalObjects.mediator.StandingsServiceGateway.setupAddStanding(specifiedStanding);
   }
 
-  thereIsAGreetingSpecifiedAsData(dataSource) {
-    console.log("mediator.greetingRepository is getting mock data.")
-    const specifiedGreeting = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.mediator.greetingRepository.setupAddGreeeting(specifiedGreeting);
+  thereIsABoxerSpecifiedAsData(dataSource) {
+    console.log("mediator.BoxerRepository is getting mock data.")
+    const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
+    globalObjects.mediator.BoxerRepository.setupAddGreeeting(specifiedBoxer);
   }
   
 
