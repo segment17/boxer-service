@@ -8,38 +8,53 @@ Before(function (scenario) {
   globalObjects.scenarioTester.before();
 });
 
-// E2E
+
 Given('{string} is running', function (serviceName) {
-  //TODO Write code here that turns the phrase above into concrete actions
-  // return 'pending';
+  globalObjects.scenarioTester.serviceIsRunning(serviceName);
 });
 
-// Used by all levels of testing.
-Given('there is an active user specified as {string}', function (dataSource) {
-  globalObjects.scenarioTester.thereIsAnActiveUserSpecifiedAsData(dataSource);
+Given('there is a boxer such as {string}', function (boxerDataSource) {
+  globalObjects.scenarioTester.thereIsABoxerSuchAs(boxerDataSource);
 });
 
-// Used by all levels of testing.
-Given('there is a greeting specified as {string}', function (dataSource) {
-  globalObjects.scenarioTester.thereIsAGreetingSpecifiedAsData(dataSource);
+Given('there is a token such as {string}', function (tokenDataSource) {
+  globalObjects.scenarioTester.thereIsATokenSuchAs(tokenDataSource);
 });
 
-// Used by E2E and Component
 When('{string} is called with {string}', function (endpoint, requestBodySource) {
   globalObjects.scenarioTester.endpointIsCalledWithRequestBody(endpoint, requestBodySource);
 });
 
-// Used by E2E and Component
-Then('response is as {string}', async function (expectedResponseSource) {
-  await globalObjects.scenarioTester.responseIsAsExpectedResponse(expectedResponseSource);
+Then('response is as {string}', function (expectedResponse) {
+  globalObjects.scenarioTester.responseIsAs(expectedResponse);
 });
 
-// Used by units.
-When('{string} is invoked with {string}', function (functionName, dataSource) {
-  globalObjects.scenarioTester.unitFunctionIsInvokedWithDataChunk(functionName, dataSource);
+Then('DB does not have boxer such as {string}', function (boxerDataSource) {
+  globalObjects.scenarioTester.dbDoesNotHaveBoxerSuchAs(boxerDataSource);
 });
 
-// Used by units.
-Then('returned data is as {string}', async function (expectedDataSource) {
-  await globalObjects.scenarioTester.returnedDataIsAsExpectedData(expectedDataSource);
+Then('DB has boxer such as {string}', function (boxerDataSource) {
+  globalObjects.scenarioTester.dbHasBoxerSuchAs(boxerDataSource);
+});
+
+Given('the latest boxer in DB is such as {string}', function (boxerDataSource) {
+  globalObjects.scenarioTester.theLatestBoxerInDBIsSuchAs(boxerDataSource);
+});
+
+Given('there are matches such as {string}', function (matchesDataSource) {
+  globalObjects.scenarioTester.thereAreMatchesSuchAs(matchesDataSource);
+});
+
+Given('there is a standing such as {string}', function (standingDataSource) {
+  globalObjects.scenarioTester.thereAreMatchesSuchAs(standingDataSource);
+});
+
+When('{string} is invoked with {string}', function (string, string2) {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
+});
+
+Then('returned data is as {string}', function (string) {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
 });

@@ -6,8 +6,6 @@ const TestFunctions = require('../TestFunctions');
 
 class ScenarioTesterFactory {
 
-
-
   static createScenarioTester(scenario) {
     if (TestFunctions.isScenarioUnit(scenario, "StandingsServiceGateway") || TestFunctions.isScenarioIntegration(scenario, "StandingsServiceGateway")) {
       return new StandingsServiceGatewayScenarioTester(scenario);

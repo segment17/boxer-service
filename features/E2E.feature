@@ -33,7 +33,7 @@ Feature: Boxer Service E2E Features
     When "<endpoint>" is called with "<request_body>"
     #Check
     Then response is as "<expected_response>"
-    And DB has "<edited_boxer>"
+    And DB has boxer such as "<edited_boxer>"
 
     Examples:
       | boxer                         | token                         | endpoint  | request_body                         | expected_response                         | edited_boxer                         |
@@ -49,7 +49,7 @@ Feature: Boxer Service E2E Features
     When "<endpoint>" is called with "<request_body>"
     #Check
     Then response is as "<expected_response>"
-    And DB has "<new_boxer>"
+    And DB has boxer such as "<new_boxer>"
 
     Examples:
       | boxer                         | token                         | endpoint | request_body                         | expected_response                         | new_boxer                         |
@@ -65,7 +65,7 @@ Feature: Boxer Service E2E Features
     When "<endpoint>" is called with "<request_body>"
     #Check
     Then response is as "<expected_response>"
-    And DB does not have "<boxer>"
+    And DB does not have boxer such as "<boxer>"
 
     Examples:
       | boxer                         | token                         | endpoint    | request_body                         | expected_response                         |

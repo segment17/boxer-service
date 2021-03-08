@@ -24,10 +24,10 @@ class ScenarioTester {
     globalObjects.controller.mediator.StandingsServiceGateway.setupAddStanding(specifiedStanding);
   }
 
-  thereIsABoxerSpecifiedAsData(dataSource) {
+  thereIsABoxerSuchAs(dataSource) {
     console.log("controller.mediator.BoxerRepository is getting mock data.");
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.controller.mediator.BoxerRepository.setupAddGreeeting(specifiedBoxer);
+    globalObjects.controller.mediator.BoxerRepository.setupAddBoxer(specifiedBoxer);
   }
 
   endpointIsCalledWithRequestBody(endpoint, requestBodySource) {

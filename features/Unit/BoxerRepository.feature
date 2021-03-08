@@ -1,4 +1,4 @@
-@Unit @Repository @BoxerServiceRepository
+@Unit @Repository @BoxerRepository
 Feature: Boxer Service Repository Unit Feature
 
   @Unit_Repository_Scenario1
