@@ -19,7 +19,6 @@ class MockBoxerRepository extends BoxerRepository {
   }
 
   async setupAddBoxer(boxer) {
-    console.log("Mock write to Boxer mock data with object: " + JSON.stringify(boxer));
     this.boxers.push(boxer);
     return null;
   }

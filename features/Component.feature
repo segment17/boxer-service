@@ -6,15 +6,15 @@ Feature: Boxer Service Component Features
     #Set up mock repository or real database
     Given there is a boxer such as "<boxer>"
     #Set up mock gateway or real service
-    And there is a standing with matches such as "<standing_with_matches>"
+    And there is a standing with matches such as "<standing_and_matches>"
     #Controller.endpoint()
     When "<endpoint>" is called with "<request_body>"
     #Check
     Then response is as "<expected_response>"
 
     Examples:
-      | boxer                         | standing_with_matches                         | endpoint                       | request_body                         | expected_response                         |
-      | B1_Scenario1_Variation1.boxer | B1_Scenario1_Variation1.standing_with_matches | GetBoxerWithStandingAndMatches | B1_Scenario1_Variation1.request_body | B1_Scenario1_Variation1.expected_response |
+      | boxer                         | standing_and_matches                         | endpoint                       | request_body                         | expected_response                         |
+      | B1_Scenario1_Variation1.boxer | B1_Scenario1_Variation1.standing_and_matches | GetBoxerWithStandingAndMatches | B1_Scenario1_Variation1.request_body | B1_Scenario1_Variation1.expected_response |
 
   @B2 @B2_Scenario1
   Scenario Outline: Edit the details of a boxer in DB

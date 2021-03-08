@@ -13,7 +13,6 @@ class BoxerRepository {
   }
 
   async setupAddGreeeting(boxer) {
-    console.log("Real write query to Boxer DB with object: " + JSON.stringify(boxer));
     return null;
   }
 

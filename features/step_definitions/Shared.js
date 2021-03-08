@@ -25,8 +25,8 @@ When('{string} is called with {string}', function (endpoint, requestBodySource) 
   globalObjects.scenarioTester.endpointIsCalledWithRequestBody(endpoint, requestBodySource);
 });
 
-Then('response is as {string}', function (expectedResponse) {
-  globalObjects.scenarioTester.responseIsAs(expectedResponse);
+Then('response is as {string}', async function (expectedResponse) {
+  await globalObjects.scenarioTester.responseIsAs(expectedResponse);
 });
 
 Then('DB does not have boxer such as {string}', function (boxerDataSource) {
@@ -58,5 +58,5 @@ Then('returned data is as {string}', async function (expectedDataSource) {
 });
 
 Given('there is a standing with matches such as {string}', function (dataSource) {
-  globalObjects.scenarioTester.thereIsAStandingWithMatchesSuchAs(dataSource);
+  globalObjects.scenarioTester.thereIsAStandingAndMatchesSuchAs(dataSource);
 });

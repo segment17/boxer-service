@@ -11,13 +11,16 @@ class Mediator {
   }
 
   // Endpoints
-  async getBoxerAndOwnerName(id) {
-    console.log("Mediator.getBoxer called with id: " + id);
+
+
+  async getBoxerWithStandingAndMatches(id) {
     let boxer = await this.boxerRepository.getBoxerWithId(id);
-    let owner = await this.standingsServiceGateway.getStandingWithId(boxer.owner);
+    // Do validation here
+    let standingAndMatches = await this.standingsServiceGateway.getStandingAndMatchesOfBoxer(id);
+    // Do validation here
     return {
       boxer: boxer,
-      ownerName: owner.name
+      standingAndMatches: standingAndMatches
     }
   }
 

@@ -3,9 +3,9 @@ class StandingsServiceGateway {
   // Template code
 
   // Gateway exposed function
-  async getStandingWithMatchesOfBoxer(param) {
+  async getStandingAndMatchesOfBoxer(param) {
     let response = await this.doCallForGetStandingWithId(param);
-    let standing = this.extractStandingWithMatchesFromResponse(response);
+    let standing = this.extractStandingAndMatchesFromResponse(response);
     return standing;
   }
 
@@ -15,14 +15,13 @@ class StandingsServiceGateway {
     return {}; //TODO
   }
 
-  async setupAddStandingWithMatches(obj) {
-    console.log("Real setup call to AnyService with obj: " + JSON.stringify(obj));
+  async setupAddStandingAndMatches(obj) {
     return null;
   }
 
-  extractStandingWithMatchesFromResponse(response) {
+  extractStandingAndMatchesFromResponse(response) {
     //TODO Parse response here...
-    return response.standingWithMatches;
+    return response.standingAndMatches;
   }
 
 }
