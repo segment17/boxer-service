@@ -3,7 +3,7 @@ const TestFunctions = require('../TestFunctions');
 const globalObjects = require('../../index');
 const assert = require('assert');
 
-class ScenarioTester {
+class DefaultScenarioTester {
 
   constructor(scenario) {
     this.scenario = scenario;
@@ -79,6 +79,11 @@ class ScenarioTester {
     globalObjects.controller.mediator.standingsServiceGateway.setupAddStandingAndMatches(specifiedStandingAndMatches);
   }
 
+  thereIsATokenSuchAs(tokenDataSource) {
+    const specifiedToken = TestFunctions.extractSpecifiedObjectData(tokenDataSource);
+    globalObjects.controller.mediator.authServiceGateway.setupToken(specifiedToken);
+  }
+
 }
 
-module.exports = ScenarioTester;
+module.exports = DefaultScenarioTester;

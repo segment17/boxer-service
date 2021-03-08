@@ -16,11 +16,17 @@ async function bindGetBoxerWithStandingAndMatches(call, callback) {
   callback(null, r);
 }
 
+async function bindEditBoxer(call, callback) {
+  let r = await globalObjects.controller.guardEditBoxer(call.request);
+  callback(null, r);
+}
+
 function main() {
   console.log("Server running...");
   server = new grpc.Server();
   server.addService(boxerservice_package.BoxerService.service, {
-    GetBoxerWithStandingAndMatches: bindGetBoxerWithStandingAndMatches
+    GetBoxerWithStandingAndMatches: bindGetBoxerWithStandingAndMatches,
+    EditBoxer: bindEditBoxer
   });
 
   if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {

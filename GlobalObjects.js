@@ -4,6 +4,8 @@ const BoxerRepository = require('./src/Repository/BoxerRepository');
 const MockBoxerRepository = require('./src/Repository/Mock/MockBoxerRepository');
 const StandingsServiceGateway = require('./src/Gateway/StandingsServiceGateway');
 const MockStandingsServiceGateway = require('./src/Gateway/Mock/MockStandingsServiceGateway');
+const AuthServiceGateway = require('./src/Gateway/AuthServiceGateway');
+const MockAuthServiceGateway = require('./src/Gateway/Mock/MockAuthServiceGateway');
 
 // GRPC SETUP
 const grpc = require('grpc');
@@ -21,6 +23,7 @@ class GlobalObjects {
     this.mediator = new Mediator();
     this.boxerRepository = new BoxerRepository();
     this.standingsServiceGateway = new StandingsServiceGateway();
+    this.authServiceGateway = new AuthServiceGateway();
 
     // Connect to Kubernetes if possible
     if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
@@ -36,6 +39,7 @@ class GlobalObjects {
     this.mediator.mock();
     this.boxerRepository = new MockBoxerRepository();
     this.standingsServiceGateway = new MockStandingsServiceGateway();
+    this.authServiceGateway = new MockAuthServiceGateway();
   }
 
   resetResult() {
