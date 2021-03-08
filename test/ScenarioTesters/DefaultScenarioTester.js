@@ -27,7 +27,7 @@ class ScenarioTester {
   thereIsABoxerSuchAs(dataSource) {
     console.log("controller.mediator.BoxerRepository is getting mock data.");
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.controller.mediator.BoxerRepository.setupAddBoxer(specifiedBoxer);
+    globalObjects.controller.mediator.boxerRepository.setupAddBoxer(specifiedBoxer);
   }
 
   endpointIsCalledWithRequestBody(endpoint, requestBodySource) {

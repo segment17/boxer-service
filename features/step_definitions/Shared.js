@@ -49,12 +49,10 @@ Given('there is a standing such as {string}', function (standingDataSource) {
   globalObjects.scenarioTester.thereAreMatchesSuchAs(standingDataSource);
 });
 
-When('{string} is invoked with {string}', function (string, string2) {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+When('{string} is invoked with {string}', function (unitFunctionName, invocationDataSource) {
+  globalObjects.scenarioTester.unitFunctionIsInvokedWithData(unitFunctionName, invocationDataSource);
 });
 
-Then('returned data is as {string}', function (string) {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+Then('returned data is as {string}', async function (expectedDataSource) {
+  await globalObjects.scenarioTester.returnedDataIsAs(expectedDataSource);
 });
