@@ -11,5 +11,5 @@ Feature: Standings Service Gateway Unit Feature
     Then returned data is as "<expected_data>"
 
     Examples:
-      | standing_and_matches                                         | gateway_function              | boxer_id                                         | expected_data                                         |
-      | Unit_StandingsServiceGatewayy_Scenario1.standing_and_matches | getStandingAndMatchesOfABoxer | Unit_StandingsServiceGatewayy_Scenario1.boxer_id | Unit_StandingsServiceGatewayy_Scenario1.expected_data |
+      | standing_with_matches                                        | gateway_function               | boxer_id                                        | expected_data                                        |
+      | Unit_StandingsServiceGateway_Scenario1.standing_with_matches | getStandingWithMatchesOfBoxer | Unit_StandingsServiceGateway_Scenario1.boxer_id | Unit_StandingsServiceGateway_Scenario1.expected_data |
