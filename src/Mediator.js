@@ -31,6 +31,11 @@ class Mediator {
     return null;
   }
 
+  async addBoxer(fullName, birthDate, height, weight) {
+    let addedBoxer = await this.boxerRepository.addBoxerWithGivenData(fullName, birthDate, height, weight);
+    return addedBoxer;
+  }
+
   // Mock everything.
   mock() {
     this.standingsServiceGateway = new MockStandingsServiceGateway();
