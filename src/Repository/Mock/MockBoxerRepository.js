@@ -22,6 +22,11 @@ class MockBoxerRepository extends BoxerRepository {
     this.boxers.push(boxer);
     return null;
   }
+
+  async setupAddLatest(boxer) {
+    this.setupAddBoxer(boxer);
+    return null;
+  }
 }
 
 module.exports = MockBoxerRepository;

@@ -153,12 +153,27 @@ const B2_Scenario1_Variation1 = {
   }
 }
 
+ // AddBoxer
 const B3_Scenario1_Variation1 = {
-  
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  }
 }
 
 const B4_Scenario1_Variation1 = {
-  
+
 }
 
-module.exports = { Unit_Repository_Scenario1, B1_Scenario1_Variation1, B2_Scenario1_Variation1, Unit_StandingsServiceGateway_Scenario1, Unit_AuthServiceGateway_Scenario1 }
+module.exports = {
+  Unit_Repository_Scenario1,
+  B1_Scenario1_Variation1,
+  B2_Scenario1_Variation1,
+  Unit_StandingsServiceGateway_Scenario1,
+  Unit_AuthServiceGateway_Scenario1,
+  B3_Scenario1_Variation1,
+}

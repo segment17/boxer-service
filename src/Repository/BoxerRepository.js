@@ -16,6 +16,11 @@ class BoxerRepository {
     return null;
   }
 
+  async setupAddLatest(boxer) {
+    console.log("Real write query for mock data to Boxer DB with id: " + id);
+    return;
+  }
+
   extractBoxerFromQueryResult(queryResult) {
     //TODO Parse response here safely...
     return queryResult[0];

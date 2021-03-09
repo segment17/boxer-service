@@ -33,10 +33,18 @@ class DefaultScenarioTester {
 
   endpointIsCalledWithRequestBody(endpoint, requestBodySource) {
     const requestBody = TestFunctions.extractSpecifiedObjectData(requestBodySource);
+    assert(requestBody != undefined);
     if (endpoint == "GetBoxerWithStandingAndMatches") {
       globalObjects.client.GetBoxerWithStandingAndMatches(requestBody, function (err, res) {
         globalObjects.result = res;
       });
+    } else if (endpoint == "AddBoxer") {
+      globalObjects.client.AddBoxer(requestBody, function (err, res) {
+        globalObjects.result = res;
+      });
+    } else {
+      console.log("Endpoint not found!");
+      assert(false);
     }
   }
 
@@ -81,7 +89,13 @@ class DefaultScenarioTester {
 
   thereIsATokenSuchAs(tokenDataSource) {
     const specifiedToken = TestFunctions.extractSpecifiedObjectData(tokenDataSource);
+    assert(specifiedToken != undefined);
     globalObjects.controller.mediator.authServiceGateway.setupToken(specifiedToken);
+  }
+
+  theLatestBoxerInDBIsSuchAs(dataSource) {
+    const boxer = TestFunctions.extractSpecifiedObjectData(dataSource);
+    globalObjects.controller.mediator.boxerRepository.setupAddLatest(boxer);
   }
 
 }
