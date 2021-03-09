@@ -57,5 +57,5 @@ message AddBoxerResponse {
 
 service BoxerService {
   rpc GetBoxerWithStandingAndMatches(GetBoxerWithStandingAndMatchesRequest) returns (GetBoxerWithStandingAndMatchesResponse) {};
-  // rpc AddBoxer(AddBoxerRequest) returns (AddBoxerResponse) {};
+  rpc AddBoxer(AddBoxerRequest) returns (AddBoxerResponse) {};
 }

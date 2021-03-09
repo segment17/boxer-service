@@ -20,6 +20,19 @@ class Controller {
     }
   }
 
+  async guardAddBoxer(request) {
+    // Do validation here
+
+    let data = await this.mediator.addBoxer(request.fullName, request.birthDate, request.height, request.weight);
+    // Do validation here
+
+    return {
+      code: 201,
+      message: 'created',
+      boxer: data.boxer
+    }
+  }
+
   // Mock
   mock() {
     // Assign to mediator to mock everything it has.

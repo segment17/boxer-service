@@ -21,12 +21,18 @@ async function bindEditBoxer(call, callback) {
   callback(null, r);
 }
 
+async function bindAddBoxer(call, callback) {
+  let r = await globalObjects.controller.guardAddBoxer(call.request);
+  callback(null, r);
+}
+
 function main() {
   console.log("Server running...");
   server = new grpc.Server();
   server.addService(boxerservice_package.BoxerService.service, {
     GetBoxerWithStandingAndMatches: bindGetBoxerWithStandingAndMatches,
-    EditBoxer: bindEditBoxer
+    EditBoxer: bindEditBoxer,
+    AddBoxer: bindAddBoxer
   });
 
   if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
