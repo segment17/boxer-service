@@ -11,7 +11,7 @@ Feature: Boxer Service Repository Unit Feature
     Then returned data is as "<expected_data>"
 
     Examples:
-      | boxer                           | repository_function | boxer_id                         | expected_data                           |
+      | boxer                           | repository_function | boxer_id                           | expected_data                           |
       | Unit_Repository_Scenario1.boxer | getBoxerWithId      | Unit_Repository_Scenario1.boxer_id | Unit_Repository_Scenario1.expected_data |
 
   @Unit_Repository_Scenario2
@@ -26,3 +26,19 @@ Feature: Boxer Service Repository Unit Feature
     Examples:
       | boxer                           | repository_function | data_chunk                           | expected_data                           |
       | Unit_Repository_Scenario2.boxer | editBoxerWithId     | Unit_Repository_Scenario2.data_chunk | Unit_Repository_Scenario2.expected_data |
+
+
+  @Unit_Repository_Scenario3
+  Scenario Outline: Add a new boxer to DB
+    #Set up mock repository or real database
+    Given the latest boxer in DB is such as "<existing_boxer>"
+    #Repository.repository_function()
+    When "<repository_function>" is invoked with "<data_chunk>"
+    #Check
+    Then returned data is as "<new_boxer>"
+    And DB has boxer such as "<new_boxer>"
+
+    Examples:
+      | existing_boxer                           | repository_function   | data_chunk                           | new_boxer                           |
+      | Unit_Repository_Scenario3.existing_boxer | addBoxerWithGivenData | Unit_Repository_Scenario3.data_chunk | Unit_Repository_Scenario3.new_boxer |
+

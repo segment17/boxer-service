@@ -98,6 +98,20 @@ class DefaultScenarioTester {
     globalObjects.controller.mediator.boxerRepository.setupAddLatest(boxer);
   }
 
+  async dbHasBoxerSuchAs(dataSource) {
+    const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
+    let boxerInDB = await globalObjects.controller.mediator.boxerRepository.getBoxerWithId(expected.id);
+    this.assertionsForDBHasBoxerSuchAs(expected, boxerInDB);
+  }
+
+  assertionsForDBHasBoxerSuchAs(expected, actual) {
+    assert(actual != null);
+    assert(expected.id == actual.id);
+    assert(expected.birthDate == actual.birthDate);
+    assert(expected.height == actual.height);
+    assert(expected.weight == actual.weight);
+  }
+
 }
 
 module.exports = DefaultScenarioTester;

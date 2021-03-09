@@ -169,6 +169,23 @@ const B4_Scenario1_Variation1 = {
 
 }
 
+const Unit_Repository_Scenario3 = {
+  existing_boxer: Unit_Repository_Scenario1.boxer,
+  data_chunk: {
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  },
+  new_boxer: {
+    id: Unit_Repository_Scenario1.boxer.id + 1,
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  }
+}
+
 module.exports = {
   Unit_Repository_Scenario1,
   B1_Scenario1_Variation1,
@@ -176,4 +193,5 @@ module.exports = {
   Unit_StandingsServiceGateway_Scenario1,
   Unit_AuthServiceGateway_Scenario1,
   B3_Scenario1_Variation1,
+  Unit_Repository_Scenario3
 }
