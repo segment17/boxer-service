@@ -1,5 +1,7 @@
 const StandingsServiceGateway = require('./Gateway/StandingsServiceGateway');
+const AuthServiceGateway = require('./Gateway/AuthServiceGateway');
 const MockStandingsServiceGateway = require('./Gateway/Mock/MockStandingsServiceGateway');
+const MockAuthServiceGateway = require('./Gateway/Mock/MockAuthServiceGateway');
 const BoxerRepository = require('./Repository/BoxerRepository');
 const MockBoxerRepository = require('./Repository/Mock/MockBoxerRepository');
 
@@ -7,6 +9,7 @@ class Mediator {
 
   constructor() {
     this.standingsServiceGateway = new StandingsServiceGateway();
+    this.authServiceGateway = new AuthServiceGateway();
     this.boxerRepository = new BoxerRepository();
   }
 
@@ -24,9 +27,14 @@ class Mediator {
     }
   }
 
+  async getValidation(token) {
+    return null;
+  }
+
   // Mock everything.
   mock() {
     this.standingsServiceGateway = new MockStandingsServiceGateway();
+    this.authServiceGateway = new MockAuthServiceGateway();
     this.boxerRepository = new MockBoxerRepository();
   }
 

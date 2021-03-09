@@ -1,6 +1,3 @@
-
-
-
 const Unit_Repository_Scenario1 = {
   boxer: {
     id: 1,
@@ -18,8 +15,6 @@ const Unit_Repository_Scenario1 = {
     weight: 100
   }
 }
-
-
 
 var Unit_StandingsServiceGateway_Scenario1 = {
   boxer_id: 1,
@@ -112,7 +107,19 @@ var Unit_StandingsServiceGateway_Scenario1 = {
   }
 }
 
+var Unit_AuthServiceGateway_Scenario1 = {
+  token: "emanresu_ymmud_dummy_password",
+  data_chunk: {
+    token: "emanresu_ymmud_dummy_password"
+  },
+  expected_data: {
+    code: 200,
+    message: "success"
+  }
+}
+
 Unit_StandingsServiceGateway_Scenario1.expected_data = Unit_StandingsServiceGateway_Scenario1.standing_and_matches;
+Unit_AuthServiceGateway_Scenario1.expected_data = Unit_AuthServiceGateway_Scenario1.expected_data;
 
 const B1_Scenario1_Variation1 = {
   request_body: { id: 1 },
@@ -126,4 +133,32 @@ const B1_Scenario1_Variation1 = {
   }
 }
 
-module.exports = { Unit_Repository_Scenario1, B1_Scenario1_Variation1, Unit_StandingsServiceGateway_Scenario1 }
+const B2_Scenario1_Variation1 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    id: 1,
+    weight: 110
+  },
+  expected_response: {
+    code: 200,
+    message: 'success'
+  },
+  edited_boxer: {
+    id: 1,
+    fullName: "Mike Tyson",
+    birthDate: 127419968, // Timestamp
+    height: 178,
+    weight: 110
+  }
+}
+
+const B3_Scenario1_Variation1 = {
+  
+}
+
+const B4_Scenario1_Variation1 = {
+  
+}
+
+module.exports = { Unit_Repository_Scenario1, B1_Scenario1_Variation1, B2_Scenario1_Variation1, Unit_StandingsServiceGateway_Scenario1, Unit_AuthServiceGateway_Scenario1 }

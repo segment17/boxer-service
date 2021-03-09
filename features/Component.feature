@@ -30,7 +30,7 @@ Feature: Boxer Service Component Features
 
     Examples:
       | boxer                         | token                         | endpoint  | request_body                         | expected_response                         | edited_boxer                         |
-      | B2_Scenario1_Variation1.boxer | B2_Scenario1_Variation1.token | EditBoxer | B2_Scenario1_Variation1.request_body | B2_Scenario1_Variation1.expected_response | B3_Scenario1_Variation1.edited_boxer |
+      | B2_Scenario1_Variation1.boxer | B2_Scenario1_Variation1.token | EditBoxer | B2_Scenario1_Variation1.request_body | B2_Scenario1_Variation1.expected_response | B2_Scenario1_Variation1.edited_boxer |
 
   @B3 @B3_Scenario1
   Scenario Outline: Add a new boxer to DB
