@@ -153,7 +153,7 @@ const B2_Scenario1_Variation1 = {
   }
 }
 
- // AddBoxer
+// AddBoxer
 const B3_Scenario1_Variation1 = {
   boxer: Unit_Repository_Scenario1.boxer,
   token: "emanresu_ymmud_dummy_password",
@@ -162,6 +162,24 @@ const B3_Scenario1_Variation1 = {
     birthDate: -772804800,
     height: 178,
     weight: 87
+  },
+  new_boxer: {
+    id: Unit_Repository_Scenario1.boxer.id + 1,
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  },
+  expected_response: {
+    code: 201,
+    message: 'created',
+    boxer: {
+      id: Unit_Repository_Scenario1.boxer.id + 1,
+      fullName: "Rocky Balboa",
+      birthDate: -772804800,
+      height: 178,
+      weight: 87
+    }
   }
 }
 

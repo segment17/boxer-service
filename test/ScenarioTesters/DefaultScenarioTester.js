@@ -51,10 +51,11 @@ class DefaultScenarioTester {
   async responseIsAs(expectedResponseSource) {
     const expectedResponse = TestFunctions.extractSpecifiedObjectData(expectedResponseSource);
     await TestFunctions.waitUntilResult();
+
     const response = globalObjects.result;
     assert(response != null);
     assert(response.code === expectedResponse.code);
-    assert(response.message === expectedResponse.message);
+    assert.strictEqual(response.message, expectedResponse.message);
     assert(response.boxer.id === expectedResponse.boxer.id);
     assert(response.boxer.fullName === expectedResponse.boxer.fullName);
     // Strict equal fails because JavaScript BigInt is at max 2^53-1 however int64 is bigger than that. So whilst converting to protobuf data, it is converted to string. And String != BigInt
@@ -62,24 +63,27 @@ class DefaultScenarioTester {
     assert(response.boxer.height === expectedResponse.boxer.height);
     assert(response.boxer.weight === expectedResponse.boxer.weight);
 
-    let standingAndMatches = response.standingAndMatches;
-    assert(standingAndMatches != undefined && standingAndMatches != null);
+    if (expectedResponse.standingAndMatches != undefined) {
+      let standingAndMatches = response.standingAndMatches;
+      assert(standingAndMatches != undefined && standingAndMatches != null);
 
-    let standing = standingAndMatches.standing;
-    assert(standing != undefined && standing != null);
-    assert.strictEqual(standing.boxer.id, expectedResponse.boxer.id);
-    assert(standing.winCount == expectedResponse.standingAndMatches.standing.winCount);
-    assert(standing.lossCount == expectedResponse.standingAndMatches.standing.lossCount);
-    assert(standing.score == expectedResponse.standingAndMatches.standing.score);
+      let standing = standingAndMatches.standing;
+      assert(standing != undefined && standing != null);
+      assert.strictEqual(standing.boxer.id, expectedResponse.boxer.id);
+      assert(standing.winCount == expectedResponse.standingAndMatches.standing.winCount);
+      assert(standing.lossCount == expectedResponse.standingAndMatches.standing.lossCount);
+      assert(standing.score == expectedResponse.standingAndMatches.standing.score);
 
-    let matches = standingAndMatches.matches;
-    assert(matches != undefined && matches != null);
-    assert(matches.length > 2);
-    for (let index = 0; index < matches.length; index++) {
-      const element = matches[index];
-      assert(element.homeBoxer.id == expectedResponse.boxer.id
-        || element.awayBoxer.id  == expectedResponse.boxer.id);
+      let matches = standingAndMatches.matches;
+      assert(matches != undefined && matches != null);
+      assert(matches.length > 2);
+      for (let index = 0; index < matches.length; index++) {
+        const element = matches[index];
+        assert(element.homeBoxer.id == expectedResponse.boxer.id
+          || element.awayBoxer.id == expectedResponse.boxer.id);
+      }
     }
+
   }
 
   thereIsAStandingAndMatchesSuchAs(dataSource) {
