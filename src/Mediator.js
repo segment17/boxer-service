@@ -15,6 +15,9 @@ class Mediator {
 
   // Endpoints
 
+  async getValidation(token) {
+    return null;
+  }
 
   async getBoxerWithStandingAndMatches(id) {
     let boxer = await this.boxerRepository.getBoxerWithId(id);
@@ -27,13 +30,19 @@ class Mediator {
     }
   }
 
-  async getValidation(token) {
-    return null;
-  }
-
   async addBoxer(fullName, birthDate, height, weight) {
     let addedBoxer = await this.boxerRepository.addBoxerWithGivenData(fullName, birthDate, height, weight);
     return addedBoxer;
+  }
+
+  async editBoxer(id, fullName, birthDate, height, weight) {
+    let editedBoxer = await this.boxerRepository.editBoxerWithGivenData(id, fullName, birthDate, height, weight);
+    return editedBoxer;
+  }
+
+  async removeBoxer(id) {
+    let removedBoxer = await this.boxerRepository.removeBoxerWithId(id);
+    return removedBoxer;
   }
 
   // Mock everything.

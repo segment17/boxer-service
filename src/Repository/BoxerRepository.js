@@ -6,6 +6,12 @@ class BoxerRepository {
     return boxer;
   }
 
+  // runQueryFor[function name]
+  async runQueryForGetBoxerWithId(id) {
+    console.log("Real read query to Boxer DB with id: " + id);
+    return {};
+  }
+
   async addBoxerWithGivenData(fullName, birthDate, height, weight) {
     // Mysql insert returns the lastest id
     let queryResult = await this.runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight);
@@ -18,9 +24,26 @@ class BoxerRepository {
     return {};
   }
 
-  // runQueryFor[function name]
-  async runQueryForGetBoxerWithId(id) {
-    console.log("Real read query to Boxer DB with id: " + id);
+  async editBoxerWithGivenData(id, fullName, birthDate, height, weight) {
+    // Mysql insert returns the lastest id
+    let queryResult = await this.runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight);
+    let boxer = await this.getBoxerWithId(queryResult);
+    return boxer;
+  }
+
+  async runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight) {
+    console.log("Real write query to Boxer DB with: " + id + fullName + birthDate + height + weight);
+    return {};
+  }
+
+  async removeBoxerWithId(id) {
+    // Mysql insert returns the lastest id
+    let queryResult = await this.runQueryForRemoveBoxerWithId(id);
+    return queryResult;
+  }
+
+  async runQueryForRemoveBoxerWithId(id) {
+    console.log("Real remove query to Boxer DB with id: " + id);
     return {};
   }
 

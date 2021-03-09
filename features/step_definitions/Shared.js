@@ -29,12 +29,12 @@ Then('response is as {string}', async function (expectedResponse) {
   await globalObjects.scenarioTester.responseIsAs(expectedResponse);
 });
 
-Then('DB does not have boxer such as {string}', function (boxerDataSource) {
-  globalObjects.scenarioTester.dbDoesNotHaveBoxerSuchAs(boxerDataSource);
-});
-
 Then('DB has boxer such as {string}', async function (boxerDataSource) {
   await globalObjects.scenarioTester.dbHasBoxerSuchAs(boxerDataSource);
+});
+
+Then('DB does not have boxer such as {string}', async function (boxerDataSource) {
+  await globalObjects.scenarioTester.dbHasNoBoxerSuchAs(boxerDataSource);
 });
 
 Given('the latest boxer in DB is such as {string}', function (boxerDataSource) {
@@ -50,7 +50,6 @@ Given('there is a standing such as {string}', function (standingDataSource) {
 });
 
 When('{string} is invoked with {string}', function (unitFunctionName, invocationDataSource) {
-
   globalObjects.scenarioTester.unitFunctionIsInvokedWithData(unitFunctionName, invocationDataSource);
 });
 

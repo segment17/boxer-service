@@ -42,6 +42,14 @@ class DefaultScenarioTester {
       globalObjects.client.AddBoxer(requestBody, function (err, res) {
         globalObjects.result = res;
       });
+    } else if (endpoint == "EditBoxer") {
+      globalObjects.client.EditBoxer(requestBody, function (err, res) {
+        globalObjects.result = res;
+      });
+    } else if (endpoint == "RemoveBoxer") {
+      globalObjects.client.RemoveBoxer(requestBody, function (err, res) {
+        globalObjects.result = res;
+      });
     } else {
       console.log("Endpoint not found!");
       assert(false);
@@ -108,12 +116,22 @@ class DefaultScenarioTester {
     this.assertionsForDBHasBoxerSuchAs(expected, boxerInDB);
   }
 
+  async dbHasNoBoxerSuchAs(dataSource) {
+    const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
+    let boxerInDB = await globalObjects.controller.mediator.boxerRepository.getBoxerWithId(expected.id);
+    this.assertionsForDBHasNoBoxerSuchAs(expected, boxerInDB);
+  }
+
   assertionsForDBHasBoxerSuchAs(expected, actual) {
     assert(actual != null);
     assert(expected.id == actual.id);
     assert(expected.birthDate == actual.birthDate);
     assert(expected.height == actual.height);
     assert(expected.weight == actual.weight);
+  }
+
+  assertionsForDBHasNoBoxerSuchAs(expected, actual) {
+    assert(actual == null);
   }
 
 }

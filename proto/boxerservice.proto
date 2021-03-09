@@ -55,7 +55,33 @@ message AddBoxerResponse {
   Boxer boxer = 3;
 }
 
+message EditBoxerRequest {
+  int32 id = 1;
+  optional string fullName = 2;
+  optional int64 birthDate = 3;
+  optional int32 height = 4;
+  optional double weight = 5;
+}
+
+message EditBoxerResponse {
+  int32 code = 1;
+  string message = 2;
+  Boxer boxer = 3;
+}
+
+message RemoveBoxerRequest {
+  int32 id = 1;
+}
+
+message RemoveBoxerResponse {
+  int32 code = 1;
+  string message = 2;
+  Boxer boxer = 3;
+}
+
 service BoxerService {
   rpc GetBoxerWithStandingAndMatches(GetBoxerWithStandingAndMatchesRequest) returns (GetBoxerWithStandingAndMatchesResponse) {};
   rpc AddBoxer(AddBoxerRequest) returns (AddBoxerResponse) {};
+  rpc EditBoxer(EditBoxerRequest) returns (EditBoxerResponse) {};
+  rpc RemoveBoxer(RemoveBoxerRequest) returns (RemoveBoxerResponse) {};
 }

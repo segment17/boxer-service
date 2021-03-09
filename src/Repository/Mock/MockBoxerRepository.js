@@ -31,6 +31,37 @@ class MockBoxerRepository extends BoxerRepository {
     return newBoxer.id;
   }
 
+  async runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight) {
+    let editedBoxer = {}
+    let index = null
+    for (let i in this.boxers) {
+      if(this.boxers[i].id === id) {
+        editedBoxer = this.boxers[i];
+        index = i;
+      }
+    }
+    editedBoxer = {
+      id: id,
+      fullName: fullName ? fullName : editedBoxer.fullName,
+      birthDate: birthDate ? birthDate : editedBoxer.birthDate,
+      height: height ? height : editedBoxer.height,
+      weight: weight ? weight : editedBoxer.weight
+    }
+    this.boxers[index] = editedBoxer;
+    return editedBoxer.id;
+  }
+
+  async runQueryForRemoveBoxerWithId(id) {
+    let removedBoxer = {}
+    for (let index in this.boxers) {
+      if(this.boxers[index].id === id) {
+        removedBoxer = this.boxers[index];
+        this.boxers.splice(index, 1);
+      }
+    }
+    return removedBoxer;
+  }
+
   async setupAddBoxer(boxer) {
     this.boxers.push(boxer);
     return null;

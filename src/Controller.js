@@ -33,6 +33,32 @@ class Controller {
     }
   }
 
+  async guardEditBoxer(request) {
+    // Do validation here
+
+    let editedBoxer = await this.mediator.editBoxer(request.id, request.fullName, request.birthDate, request.height, request.weight);
+    // Do validation here
+
+    return {
+      code: 201,
+      message: 'edited',
+      boxer: editedBoxer
+    }
+  }
+
+  async guardRemoveBoxer(request) {
+    // Do validation here
+
+    let removedBoxer = await this.mediator.removeBoxer(request.id);
+    // Do validation here
+
+    return {
+      code: 201,
+      message: 'removed',
+      boxer: removedBoxer
+    }
+  }
+
   // Mock
   mock() {
     // Assign to mediator to mock everything it has.

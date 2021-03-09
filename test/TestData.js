@@ -16,6 +16,62 @@ const Unit_Repository_Scenario1 = {
   }
 }
 
+const Unit_Repository_Scenario2 = {
+  boxer: {
+    id: 1,
+    fullName: "Mike Tyson",
+    birthDate: 127419968, // Timestamp
+    height: 178,
+    weight: 100
+  },
+  edit_body: {
+    id: 1,
+    weight: 110
+  },
+  edited_boxer: {
+    id: 1,
+    fullName: "Mike Tyson",
+    birthDate: 127419968, // Timestamp
+    height: 178,
+    weight: 110
+  }
+}
+
+const Unit_Repository_Scenario3 = {
+  existing_boxer: Unit_Repository_Scenario1.boxer,
+  data_chunk: {
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  },
+  new_boxer: {
+    id: Unit_Repository_Scenario1.boxer.id + 1,
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  }
+}
+
+const Unit_Repository_Scenario4 = {
+  boxer: {
+    id: 1,
+    fullName: "Mike Tyson",
+    birthDate: 127419968, // Timestamp
+    height: 178,
+    weight: 100
+  },
+  boxer_id: 1,
+  expected_data: {
+    id: 1,
+    fullName: "Mike Tyson",
+    birthDate: 127419968, // Timestamp
+    height: 178,
+    weight: 100
+  }
+}
+
 var Unit_StandingsServiceGateway_Scenario1 = {
   boxer_id: 1,
   standing_and_matches: {
@@ -119,8 +175,8 @@ var Unit_AuthServiceGateway_Scenario1 = {
 }
 
 Unit_StandingsServiceGateway_Scenario1.expected_data = Unit_StandingsServiceGateway_Scenario1.standing_and_matches;
-Unit_AuthServiceGateway_Scenario1.expected_data = Unit_AuthServiceGateway_Scenario1.expected_data;
 
+// GetBoxer
 const B1_Scenario1_Variation1 = {
   request_body: { id: 1 },
   boxer: Unit_Repository_Scenario1.boxer,
@@ -133,6 +189,7 @@ const B1_Scenario1_Variation1 = {
   }
 }
 
+// EditBoxer
 const B2_Scenario1_Variation1 = {
   boxer: Unit_Repository_Scenario1.boxer,
   token: "emanresu_ymmud_dummy_password",
@@ -141,16 +198,11 @@ const B2_Scenario1_Variation1 = {
     weight: 110
   },
   expected_response: {
-    code: 200,
-    message: 'success'
+    code: 201,
+    message: 'edited',
+    boxer: Unit_Repository_Scenario2.edited_boxer
   },
-  edited_boxer: {
-    id: 1,
-    fullName: "Mike Tyson",
-    birthDate: 127419968, // Timestamp
-    height: 178,
-    weight: 110
-  }
+  edited_boxer: Unit_Repository_Scenario2.edited_boxer
 }
 
 // AddBoxer
@@ -183,33 +235,27 @@ const B3_Scenario1_Variation1 = {
   }
 }
 
+// RemoveBoxer
 const B4_Scenario1_Variation1 = {
-
-}
-
-const Unit_Repository_Scenario3 = {
-  existing_boxer: Unit_Repository_Scenario1.boxer,
-  data_chunk: {
-    fullName: "Rocky Balboa",
-    birthDate: -772804800,
-    height: 178,
-    weight: 87
-  },
-  new_boxer: {
-    id: Unit_Repository_Scenario1.boxer.id + 1,
-    fullName: "Rocky Balboa",
-    birthDate: -772804800,
-    height: 178,
-    weight: 87
+  boxer: Unit_Repository_Scenario4.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: { id: 1 },
+  expected_response: {
+    code: 201,
+    message: 'removed',
+    boxer: Unit_Repository_Scenario4.boxer
   }
 }
 
 module.exports = {
   Unit_Repository_Scenario1,
+  Unit_Repository_Scenario2,
+  Unit_Repository_Scenario3,
+  Unit_Repository_Scenario4,
   B1_Scenario1_Variation1,
   B2_Scenario1_Variation1,
+  B3_Scenario1_Variation1,
+  B4_Scenario1_Variation1,
   Unit_StandingsServiceGateway_Scenario1,
   Unit_AuthServiceGateway_Scenario1,
-  B3_Scenario1_Variation1,
-  Unit_Repository_Scenario3
 }
