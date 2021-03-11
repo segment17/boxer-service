@@ -6,7 +6,7 @@
   "author": "Segment 17",
   "license": "MIT",
   "scripts": {
-    "test": "cucumber-js"
+    "test": "cucumber-js --format json:./test/results.json"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^7.0.0",

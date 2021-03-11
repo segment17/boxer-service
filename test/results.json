@@ -1,0 +1,1749 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "boxer-service-component-features;get-the-details-of-a-boxer-from-db-(1)-(uid:125a7c1e-d47b-4833-a474-4ee5dd7411d1)",
+        "keyword": "Scenario Outline",
+        "line": 6,
+        "name": "Get the details of a boxer from DB (1) (uid:125a7c1e-d47b-4833-a474-4ee5dd7411d1)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "there is a boxer such as \"B1_Scenario1_Variation1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "there is a standing with matches such as \"B1_Scenario1_Variation1.standing_and_matches\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:60"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0,
+              "error_message": "TypeError: globalObjects.scenarioTester.thereIsAStandingAndMatchesSuchAs is not a function\n    at World.<anonymous> (/Users/deniz/Projects/Thesis/boxer-service/features/step_definitions/step_definitions.js:61:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "\"GetBoxerWithStandingAndMatches\" is called with \"B1_Scenario1_Variation1.request_body\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:24"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "response is as \"B1_Scenario1_Variation1.expected_response\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:28"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Component",
+            "line": 1
+          },
+          {
+            "name": "@B1",
+            "line": 5
+          },
+          {
+            "name": "@B1_Scenario1",
+            "line": 5
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "boxer-service-component-features;edit-the-details-of-a-boxer-in-db-(1)-(uid:a678e6fe-514b-4866-8026-b637ed47e299)",
+        "keyword": "Scenario Outline",
+        "line": 17,
+        "name": "Edit the details of a boxer in DB (1) (uid:a678e6fe-514b-4866-8026-b637ed47e299)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 18,
+            "name": "there is a boxer such as \"B2_Scenario1_Variation1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "there is a token such as \"B2_Scenario1_Variation1.token\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "\"EditBoxer\" is called with \"B2_Scenario1_Variation1.request_body\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "response is as \"B2_Scenario1_Variation1.expected_response\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:28"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 108000000,
+              "error_message": "AssertionError [ERR_ASSERTION]: '0' == 127419968\n    at DefaultScenarioTester.responseIsAs (/Users/deniz/Projects/Thesis/boxer-service/test/ScenarioTesters/DefaultScenarioTester.js:70:12)\n    at async World.<anonymous> (/Users/deniz/Projects/Thesis/boxer-service/features/step_definitions/step_definitions.js:29:3)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "DB has boxer such as \"B2_Scenario1_Variation1.edited_boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:32"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Component",
+            "line": 1
+          },
+          {
+            "name": "@B2",
+            "line": 16
+          },
+          {
+            "name": "@B2_Scenario1",
+            "line": 16
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "boxer-service-component-features;add-a-new-boxer-to-db-(1)-(uid:9e24e7d0-7535-48e5-93a6-bbbae040dcb6)",
+        "keyword": "Scenario Outline",
+        "line": 29,
+        "name": "Add a new boxer to DB (1) (uid:9e24e7d0-7535-48e5-93a6-bbbae040dcb6)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 30,
+            "name": "the latest boxer in DB is such as \"B3_Scenario1_Variation1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 31,
+            "name": "there is a token such as \"B3_Scenario1_Variation1.token\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 32,
+            "name": "\"AddBoxer\" is called with \"B3_Scenario1_Variation1.request_body\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "response is as \"B3_Scenario1_Variation1.expected_response\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 102000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "DB has boxer such as \"B3_Scenario1_Variation1.new_boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Component",
+            "line": 1
+          },
+          {
+            "name": "@B3",
+            "line": 28
+          },
+          {
+            "name": "@B3_Scenario1",
+            "line": 28
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "boxer-service-component-features;remove-a-boxer-from-db-(1)-(uid:eb31368c-bbd2-4f46-a7be-b4f1adab7cf2)",
+        "keyword": "Scenario Outline",
+        "line": 41,
+        "name": "Remove a boxer from DB (1) (uid:eb31368c-bbd2-4f46-a7be-b4f1adab7cf2)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 42,
+            "name": "there is a boxer such as \"B4_Scenario1_Variation1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "there is a token such as \"B4_Scenario1_Variation1.token\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 44,
+            "name": "\"RemoveBoxer\" is called with \"B4_Scenario1_Variation1.request_body\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 45,
+            "name": "response is as \"B4_Scenario1_Variation1.expected_response\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 104000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 46,
+            "name": "DB does not have boxer such as \"B4_Scenario1_Variation1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Component",
+            "line": 1
+          },
+          {
+            "name": "@B4",
+            "line": 40
+          },
+          {
+            "name": "@B4_Scenario1",
+            "line": 40
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "boxer-service-component-features",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Boxer Service Component Features",
+    "tags": [
+      {
+        "name": "@Component",
+        "line": 1
+      }
+    ],
+    "uri": "features/Boxer_Service_Component_Features.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "boxer-service-e2e-features;get-the-details-of-a-boxer-from-db-(uid:b5e1acc5-781a-4152-82d9-3cfddaf71b1d)",
+        "keyword": "Scenario Outline",
+        "line": 12,
+        "name": "Get the details of a boxer from DB (uid:b5e1acc5-781a-4152-82d9-3cfddaf71b1d)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "\"BoxerService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0,
+              "error_message": "TypeError: globalObjects.scenarioTester.serviceIsRunning is not a function\n    at World.<anonymous> (/Users/deniz/Projects/Thesis/boxer-service/features/step_definitions/step_definitions.js:13:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "\"AuthService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "\"MatchService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "\"StandingsService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "there is a boxer such as \"B1_Scenario1_Variation1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:16"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "there are matches such as \"B1_Scenario1_Variation1.matches\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:44"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "there is a standing such as \"B1_Scenario1_Variation1.standing\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:48"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "\"GetBoxerWithStandingAndMatches\" is called with \"B1_Scenario1_Variation1.request_body\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:24"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "response is as \"B1_Scenario1_Variation1.expected_response\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:28"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@E2E",
+            "line": 1
+          },
+          {
+            "name": "@B1",
+            "line": 11
+          },
+          {
+            "name": "@B1_Scenario1",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "boxer-service-e2e-features;edit-the-details-of-a-boxer-in-db-(uid:12fd1130-e47c-4468-aa86-adeaf94b2b82)",
+        "keyword": "Scenario Outline",
+        "line": 24,
+        "name": "Edit the details of a boxer in DB (uid:12fd1130-e47c-4468-aa86-adeaf94b2b82)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "\"BoxerService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0,
+              "error_message": "TypeError: globalObjects.scenarioTester.serviceIsRunning is not a function\n    at World.<anonymous> (/Users/deniz/Projects/Thesis/boxer-service/features/step_definitions/step_definitions.js:13:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "\"AuthService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "\"MatchService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "\"StandingsService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 25,
+            "name": "there is a boxer such as \"B2_Scenario1_Variation1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:16"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "there is a token such as \"B2_Scenario1_Variation1.token\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:20"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 27,
+            "name": "\"EditBoxer\" is called with \"B2_Scenario1_Variation1.request_body\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:24"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 28,
+            "name": "response is as \"B2_Scenario1_Variation1.expected_response\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:28"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 29,
+            "name": "DB has boxer such as \"B2_Scenario1_Variation1.edited_boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:32"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@E2E",
+            "line": 1
+          },
+          {
+            "name": "@B2",
+            "line": 23
+          },
+          {
+            "name": "@B2_Scenario1",
+            "line": 23
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "boxer-service-e2e-features;add-a-new-boxer-to-db-(uid:4fe8fab4-7659-4a3d-8613-66e8086ea595)",
+        "keyword": "Scenario Outline",
+        "line": 36,
+        "name": "Add a new boxer to DB (uid:4fe8fab4-7659-4a3d-8613-66e8086ea595)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "\"BoxerService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 1000000,
+              "error_message": "TypeError: globalObjects.scenarioTester.serviceIsRunning is not a function\n    at World.<anonymous> (/Users/deniz/Projects/Thesis/boxer-service/features/step_definitions/step_definitions.js:13:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "\"AuthService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "\"MatchService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "\"StandingsService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "the latest boxer in DB is such as \"B3_Scenario1_Variation1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:40"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "there is a token such as \"B3_Scenario1_Variation1.token\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:20"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "\"AddBoxer\" is called with \"B3_Scenario1_Variation1.request_body\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:24"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "response is as \"B3_Scenario1_Variation1.expected_response\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:28"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "DB has boxer such as \"B3_Scenario1_Variation1.new_boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:32"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@E2E",
+            "line": 1
+          },
+          {
+            "name": "@B3",
+            "line": 35
+          },
+          {
+            "name": "@B3_Scenario1",
+            "line": 35
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "boxer-service-e2e-features;remove-a-boxer-from-db-(uid:04584fef-4c50-4e4a-98f2-c351c6ad15c1)",
+        "keyword": "Scenario Outline",
+        "line": 48,
+        "name": "Remove a boxer from DB (uid:04584fef-4c50-4e4a-98f2-c351c6ad15c1)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "\"BoxerService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0,
+              "error_message": "TypeError: globalObjects.scenarioTester.serviceIsRunning is not a function\n    at World.<anonymous> (/Users/deniz/Projects/Thesis/boxer-service/features/step_definitions/step_definitions.js:13:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "\"AuthService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "\"MatchService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "\"StandingsService\" is running",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 49,
+            "name": "there is a boxer such as \"B4_Scenario1_Variation1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:16"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 50,
+            "name": "there is a token such as \"B4_Scenario1_Variation1.token\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:20"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 51,
+            "name": "\"RemoveBoxer\" is called with \"B4_Scenario1_Variation1.request_body\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:24"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 52,
+            "name": "response is as \"B4_Scenario1_Variation1.expected_response\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:28"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 53,
+            "name": "DB does not have boxer such as \"B4_Scenario1_Variation1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:36"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@E2E",
+            "line": 1
+          },
+          {
+            "name": "@B4",
+            "line": 47
+          },
+          {
+            "name": "@B4_Scenario1",
+            "line": 47
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "boxer-service-e2e-features",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Boxer Service E2E Features",
+    "tags": [
+      {
+        "name": "@E2E",
+        "line": 1
+      }
+    ],
+    "uri": "features/Boxer_Service_E2E_Features.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "auth-service-gateway-unit-feature;get-validation-from-auth-service-gateway-(uid:38e51969-7e4f-4c59-ab72-73ac52cbd105)",
+        "keyword": "Scenario Outline",
+        "line": 6,
+        "name": "Get validation from Auth Service Gateway (uid:38e51969-7e4f-4c59-ab72-73ac52cbd105)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "there is a token such as \"Unit_AuthServiceGateway_Scenario1.token\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "\"getValidation\" is invoked with \"Unit_AuthServiceGateway_Scenario1.data_chunk\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "returned data is as \"Unit_AuthServiceGateway_Scenario1.expected_data\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:56"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Unit",
+            "line": 1
+          },
+          {
+            "name": "@Gateway",
+            "line": 1
+          },
+          {
+            "name": "@AuthServiceGateway",
+            "line": 1
+          },
+          {
+            "name": "@Unit_AuthServiceGateway_Scenario1",
+            "line": 5
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "auth-service-gateway-unit-feature",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Auth Service Gateway Unit Feature",
+    "tags": [
+      {
+        "name": "@Unit",
+        "line": 1
+      },
+      {
+        "name": "@Gateway",
+        "line": 1
+      },
+      {
+        "name": "@AuthServiceGateway",
+        "line": 1
+      }
+    ],
+    "uri": "features/Unit/Auth_Service_Gateway_Unit_Feature.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "boxer-repository-unit-feature;get-boxer-details-from-boxer-repository-(uid:f06b38be-8d00-4cdb-bf2e-a19a13bf29de)",
+        "keyword": "Scenario Outline",
+        "line": 6,
+        "name": "Get boxer details from Boxer Repository (uid:f06b38be-8d00-4cdb-bf2e-a19a13bf29de)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "there is a boxer such as \"Unit_Repository_Scenario1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "\"getBoxerWithId\" is invoked with \"Unit_Repository_Scenario1.boxer_id\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "returned data is as \"Unit_Repository_Scenario1.expected_data\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:56"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Unit",
+            "line": 1
+          },
+          {
+            "name": "@Repository",
+            "line": 1
+          },
+          {
+            "name": "@BoxerRepository",
+            "line": 1
+          },
+          {
+            "name": "@Unit_Repository_Scenario1",
+            "line": 5
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "boxer-repository-unit-feature;edit-details-of-a-boxer-in-boxer-repository-(uid:4f5842e9-8eaa-48b5-9dc4-91f344494016)",
+        "keyword": "Scenario Outline",
+        "line": 16,
+        "name": "Edit details of a boxer in Boxer Repository (uid:4f5842e9-8eaa-48b5-9dc4-91f344494016)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "there is a boxer such as \"Unit_Repository_Scenario2.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "\"editBoxerWithGivenData\" is invoked with \"Unit_Repository_Scenario2.edit_body\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "returned data is as \"Unit_Repository_Scenario2.edited_boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:56"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "DB has boxer such as \"Unit_Repository_Scenario2.edited_boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Unit",
+            "line": 1
+          },
+          {
+            "name": "@Repository",
+            "line": 1
+          },
+          {
+            "name": "@BoxerRepository",
+            "line": 1
+          },
+          {
+            "name": "@Unit_Repository_Scenario2",
+            "line": 15
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "boxer-repository-unit-feature;add-a-new-boxer-to-db-(2)-(uid:c14987e0-167c-43b1-a135-8b173a07e4fa)",
+        "keyword": "Scenario Outline",
+        "line": 27,
+        "name": "Add a new boxer to DB (2) (uid:c14987e0-167c-43b1-a135-8b173a07e4fa)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 28,
+            "name": "the latest boxer in DB is such as \"Unit_Repository_Scenario3.existing_boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 29,
+            "name": "\"addBoxerWithGivenData\" is invoked with \"Unit_Repository_Scenario3.data_chunk\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 30,
+            "name": "returned data is as \"Unit_Repository_Scenario3.new_boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:56"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 31,
+            "name": "DB has boxer such as \"Unit_Repository_Scenario3.new_boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Unit",
+            "line": 1
+          },
+          {
+            "name": "@Repository",
+            "line": 1
+          },
+          {
+            "name": "@BoxerRepository",
+            "line": 1
+          },
+          {
+            "name": "@Unit_Repository_Scenario3",
+            "line": 26
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "boxer-repository-unit-feature;remove-a-boxer-from-boxer-repository-(uid:e8d04173-138f-4dda-9016-4e5f115adf12)",
+        "keyword": "Scenario Outline",
+        "line": 38,
+        "name": "Remove a boxer from Boxer Repository (uid:e8d04173-138f-4dda-9016-4e5f115adf12)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 39,
+            "name": "there is a boxer such as \"Unit_Repository_Scenario4.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "\"removeBoxerWithId\" is invoked with \"Unit_Repository_Scenario4.boxer_id\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "returned data is as \"Unit_Repository_Scenario4.expected_data\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:56"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 42,
+            "name": "DB does not have boxer such as \"Unit_Repository_Scenario4.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Unit",
+            "line": 1
+          },
+          {
+            "name": "@Repository",
+            "line": 1
+          },
+          {
+            "name": "@BoxerRepository",
+            "line": 1
+          },
+          {
+            "name": "@Unit_Repository_Scenario4",
+            "line": 37
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "boxer-repository-unit-feature",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Boxer Repository Unit Feature",
+    "tags": [
+      {
+        "name": "@Unit",
+        "line": 1
+      },
+      {
+        "name": "@Repository",
+        "line": 1
+      },
+      {
+        "name": "@BoxerRepository",
+        "line": 1
+      }
+    ],
+    "uri": "features/Unit/Boxer_Repository_Unit_Feature.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "mediator-unit-feature;get-standings-and-matches-of-a-boxer-(uid:b712573b-aa2e-4aa5-9748-29c9c5a532ad)",
+        "keyword": "Scenario Outline",
+        "line": 6,
+        "name": "Get standings and matches of a boxer (uid:b712573b-aa2e-4aa5-9748-29c9c5a532ad)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "there is a boxer such as \"Unit_Mediator_Scenario1.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:16"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0,
+              "error_message": "TypeError: Cannot read property 'boxer' of undefined\n    at Object.extractSpecifiedObjectData (/Users/deniz/Projects/Thesis/boxer-service/test/TestFunctions.js:6:29)\n    at MediatorScenarioTester.thereIsABoxerSuchAs (/Users/deniz/Projects/Thesis/boxer-service/test/ScenarioTesters/DefaultScenarioTester.js:30:42)\n    at World.<anonymous> (/Users/deniz/Projects/Thesis/boxer-service/features/step_definitions/step_definitions.js:17:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "\"getBoxerWithStandingAndMatches\" is invoked with \"Unit_Mediator_Scenario1.data_chunk\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:52"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "returned data is as \"Unit_Mediator_Scenario1.expected_data\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:56"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Unit",
+            "line": 1
+          },
+          {
+            "name": "@Mediator",
+            "line": 1
+          },
+          {
+            "name": "@BoxerServiceMediator",
+            "line": 1
+          },
+          {
+            "name": "@Unit_Mediator_Scenario1",
+            "line": 5
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "mediator-unit-feature;edit-details-of-a-boxer-(uid:2c3030b9-7a1b-4b09-9ccf-cc61a629a5fe)",
+        "keyword": "Scenario Outline",
+        "line": 16,
+        "name": "Edit details of a boxer (uid:2c3030b9-7a1b-4b09-9ccf-cc61a629a5fe)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "there is a boxer such as \"Unit_Mediator_Scenario2.boxer\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:16"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0,
+              "error_message": "TypeError: Cannot read property 'boxer' of undefined\n    at Object.extractSpecifiedObjectData (/Users/deniz/Projects/Thesis/boxer-service/test/TestFunctions.js:6:29)\n    at MediatorScenarioTester.thereIsABoxerSuchAs (/Users/deniz/Projects/Thesis/boxer-service/test/ScenarioTesters/DefaultScenarioTester.js:30:42)\n    at World.<anonymous> (/Users/deniz/Projects/Thesis/boxer-service/features/step_definitions/step_definitions.js:17:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "\"editBoxer\" is invoked with \"Unit_Mediator_Scenario2.data_chunk\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:52"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "returned data is as \"Unit_Mediator_Scenario2.expected_data\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:56"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Unit",
+            "line": 1
+          },
+          {
+            "name": "@Mediator",
+            "line": 1
+          },
+          {
+            "name": "@BoxerServiceMediator",
+            "line": 1
+          },
+          {
+            "name": "@Unit_Mediator_Scenario2",
+            "line": 15
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "mediator-unit-feature",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Mediator Unit Feature",
+    "tags": [
+      {
+        "name": "@Unit",
+        "line": 1
+      },
+      {
+        "name": "@Mediator",
+        "line": 1
+      },
+      {
+        "name": "@BoxerServiceMediator",
+        "line": 1
+      }
+    ],
+    "uri": "features/Unit/Mediator_Unit_Feature.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "standings-service-gateway-unit-feature;get-standings-and-matches-from-standings-service-gateway-(uid:6ef67edf-75e1-4d1f-b4df-5d5d3cc6cebd)",
+        "keyword": "Scenario Outline",
+        "line": 6,
+        "name": "Get standings and matches from Standings Service Gateway (uid:6ef67edf-75e1-4d1f-b4df-5d5d3cc6cebd)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "there is a standing with matches such as \"Unit_StandingsServiceGateway_Scenario1.standing_and_matches\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:60"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0,
+              "error_message": "TypeError: globalObjects.scenarioTester.thereIsAStandingAndMatchesSuchAs is not a function\n    at World.<anonymous> (/Users/deniz/Projects/Thesis/boxer-service/features/step_definitions/step_definitions.js:61:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "\"getStandingAndMatchesOfBoxer\" is invoked with \"Unit_StandingsServiceGateway_Scenario1.boxer_id\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:52"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "returned data is as \"Unit_StandingsServiceGateway_Scenario1.expected_data\"",
+            "match": {
+              "location": "features/step_definitions/step_definitions.js:56"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Unit",
+            "line": 1
+          },
+          {
+            "name": "@Gateway",
+            "line": 1
+          },
+          {
+            "name": "@StandingsServiceGateway",
+            "line": 1
+          },
+          {
+            "name": "@Unit_StandingsServiceGateway_Scenario1",
+            "line": 5
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "standings-service-gateway-unit-feature",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Standings Service Gateway Unit Feature",
+    "tags": [
+      {
+        "name": "@Unit",
+        "line": 1
+      },
+      {
+        "name": "@Gateway",
+        "line": 1
+      },
+      {
+        "name": "@StandingsServiceGateway",
+        "line": 1
+      }
+    ],
+    "uri": "features/Unit/Standings_Service_Gateway_Unit_Feature.feature"
+  }
+]

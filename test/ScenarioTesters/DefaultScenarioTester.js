@@ -94,7 +94,7 @@ class DefaultScenarioTester {
 
   }
 
-  thereIsAStandingAndMatchesSuchAs(dataSource) {
+  thereIsAStandingWithMatchesSuchAs(dataSource) {
     const specifiedStandingAndMatches = TestFunctions.extractSpecifiedObjectData(dataSource);
     globalObjects.controller.mediator.standingsServiceGateway.setupAddStandingAndMatches(specifiedStandingAndMatches);
   }

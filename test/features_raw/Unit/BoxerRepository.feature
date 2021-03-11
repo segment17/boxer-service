@@ -1,5 +1,5 @@
 @Unit @Repository @BoxerRepository
-Feature: Boxer Service Repository Unit Feature
+Feature: Boxer Repository Unit Feature
 
   @Unit_Repository_Scenario1
   Scenario Outline: Get boxer details from Boxer Repository

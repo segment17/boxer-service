@@ -1,5 +1,5 @@
 @Unit @Mediator @BoxerServiceMediator
-Feature: Boxer Service Mediator Unit Feature
+Feature: Mediator Unit Feature
 
   @Unit_Mediator_Scenario1
   Scenario Outline: Get standings and matches of a boxer

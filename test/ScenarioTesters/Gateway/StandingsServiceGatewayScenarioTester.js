@@ -6,7 +6,7 @@ const assert = require('assert');
 
 class StandingsServiceGatewayScenarioTester extends DefaultScenarioTester {
 
-  thereIsAStandingAndMatchesSuchAs(dataSource) {
+  thereIsAStandingWithMatchesSuchAs(dataSource) {
     const specifiedStandingAndMatches = TestFunctions.extractSpecifiedObjectData(dataSource);
     globalObjects.standingsServiceGateway.setupAddStandingAndMatches(specifiedStandingAndMatches);
   }
