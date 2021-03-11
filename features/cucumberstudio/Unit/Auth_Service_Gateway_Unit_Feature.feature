@@ -10,4 +10,4 @@ Feature: Auth Service Gateway Unit Feature
 
     Examples:
       | token | gateway_function | data_chunk | expected_data | hiptest-uid |
-      | Unit_AuthServiceGateway_Scenario1.token | getValidation | Unit_AuthServiceGateway_Scenario1.data_chunk | Unit_AuthServiceGateway_Scenario1.expected_data | uid:38e51969-7e4f-4c59-ab72-73ac52cbd105 |
+      | Unit_AuthServiceGateway_Scenario1.token | getValidation | Unit_AuthServiceGateway_Scenario1.data_chunk | Unit_AuthServiceGateway_Scenario1.expected_data | uid:7cd22082-4a3c-45c8-8cbd-6aa8e1e52a67 |

@@ -36,6 +36,8 @@ class Mediator {
   }
 
   async editBoxer(id, fullName, birthDate, height, weight) {
+
+
     let editedBoxer = await this.boxerRepository.editBoxerWithGivenData(id, fullName, birthDate, height, weight);
     return editedBoxer;
   }

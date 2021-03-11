@@ -10,4 +10,4 @@ Feature: Standings Service Gateway Unit Feature
 
     Examples:
       | standing_and_matches | gateway_function | boxer_id | expected_data | hiptest-uid |
-      | Unit_StandingsServiceGateway_Scenario1.standing_and_matches | getStandingAndMatchesOfBoxer | Unit_StandingsServiceGateway_Scenario1.boxer_id | Unit_StandingsServiceGateway_Scenario1.expected_data | uid:6ef67edf-75e1-4d1f-b4df-5d5d3cc6cebd |
+      | Unit_StandingsServiceGateway_Scenario1.standing_and_matches | getStandingAndMatchesOfBoxer | Unit_StandingsServiceGateway_Scenario1.boxer_id | Unit_StandingsServiceGateway_Scenario1.expected_data | uid:21faf9ff-6dbf-446d-b998-a19439b1c290 |

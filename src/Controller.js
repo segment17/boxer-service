@@ -35,8 +35,11 @@ class Controller {
 
   async guardEditBoxer(request) {
     // Do validation here
-
-    let editedBoxer = await this.mediator.editBoxer(request.id, request.fullName, request.birthDate, request.height, request.weight);
+    let fullName = request.fullName != '' ? request.fullName : null;
+    let birthDate = request.birthDate != '0' ? request.birthDate : null;
+    let height = request.height != 0 ? request.height : null;
+    let weight = request.weight != 0 ? request.weight : null;
+    let editedBoxer = await this.mediator.editBoxer(request.id, fullName, birthDate, height, weight);
     // Do validation here
 
     return {
