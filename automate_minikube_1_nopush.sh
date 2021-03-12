@@ -15,3 +15,4 @@ kubectl cp $latest_pod:test/results.json test/results.json
 # DON'T PUSH TO CUCUMBER STUDIO
 end=$(date +%s)
 echo $(($end-$start))
+kubectl exec -ti $latest_pod bash
