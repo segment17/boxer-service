@@ -1,3 +1,5 @@
+// UNIT REPOSITORY SUCCESS SCENARIOS
+
 const Unit_Repository_Scenario1 = {
   boxer: {
     id: 1,
@@ -71,6 +73,92 @@ const Unit_Repository_Scenario4 = {
     weight: 100
   }
 }
+
+// UNIT REPOSITORY FAIL SCENARIOS
+
+const Unit_Repository_Scenario5_Fail1 = {
+  boxer: {
+    id: 1,
+    fullName: "Mike Tyson",
+    birthDate: 127419968, // Timestamp
+    height: 178,
+    weight: 100
+  },
+  boxer_id: 2,
+  expected_data: null
+}
+
+const Unit_Repository_Scenario6_Fail1 = {
+  boxer: {
+    id: 1,
+    fullName: "Mike Tyson",
+    birthDate: 127419968, // Timestamp
+    height: 178,
+    weight: 100
+  },
+  edit_body: {
+    id: 2,
+    weight: 110
+  },
+  edited_boxer: null
+}
+
+const Unit_Repository_Scenario6_Fail2 = {
+  boxer: {
+    id: 1,
+    fullName: "Mike Tyson",
+    birthDate: 127419968, // Timestamp
+    height: 178,
+    weight: 100
+  },
+  edit_body: {
+    id: 1,
+    weight: -20
+  },
+  edited_boxer: {
+    id: 1,
+    fullName: "Mike Tyson",
+    birthDate: 127419968, // Timestamp
+    height: 178,
+    weight: 100
+  }
+}
+
+const Unit_Repository_Scenario7_Fail1 = {
+  existing_boxer: Unit_Repository_Scenario1.boxer,
+  data_chunk: {
+    fullName: "",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  },
+  new_boxer: null
+}
+
+const Unit_Repository_Scenario7_Fail2 = {
+  existing_boxer: Unit_Repository_Scenario1.boxer,
+  data_chunk: {
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: -87
+  },
+  new_boxer: null
+}
+
+const Unit_Repository_Scenario8_Fail1 = {
+  boxer: {
+    id: 1,
+    fullName: "Mike Tyson",
+    birthDate: 127419968, // Timestamp
+    height: 178,
+    weight: 100
+  },
+  boxer_id: 2,
+  expected_data: null
+}
+
+// UNIT STANDINGS SERVICE GATEWAY SUCCESS SCENARIOS
 
 var Unit_StandingsServiceGateway_Scenario1 = {
   boxer_id: 1,
@@ -163,6 +251,105 @@ var Unit_StandingsServiceGateway_Scenario1 = {
   }
 }
 
+// UNIT STANDINGS SERVICE GATEWAY FAIL SCENARIOS
+
+var Unit_StandingsServiceGateway_Scenario2_Fail1 = {
+  boxer_id: 2,
+  standing_and_matches: {
+    standing: {
+      boxer: {
+        id: 1,
+        fullName: "Mike Tyson",
+        birthDate: 127419968, // Timestamp
+        height: 178,
+        weight: 100
+      },
+      winCount: 1,
+      lossCount: 1,
+      score: 0.5,
+    },
+    matches: [
+      {
+        id: 1,
+        homeBoxer: {
+          id: 1,
+          fullName: "Mike Tyson",
+          birthDate: 127419968, // Timestamp
+          height: 178,
+          weight: 100
+        },
+        awayBoxer: {
+          id: 4,
+          fullName: "Connor McGregor",
+          birthDate: 127419968, // Timestamp
+          height: 175,
+          weight: 80
+        },
+        matchTime: 127419968,
+        isFinished: true,
+        winnerBoxer: {
+          id: 4,
+          fullName: "Connor McGregor",
+          birthDate: 127419968, // Timestamp
+          height: 175,
+          weight: 80
+        }
+      },
+      {
+        id: 1,
+        awayBoxer: {
+          id: 1,
+          fullName: "Mike Tyson",
+          birthDate: 127419968, // Timestamp
+          height: 178,
+          weight: 100
+        },
+        homeBoxer: {
+          id: 6,
+          fullName: "Logan Paul",
+          birthDate: 127419968, // Timestamp
+          height: 195,
+          weight: 120
+        },
+        matchTime: 127419968,
+        isFinished: true,
+        winnerBoxer: {
+          id: 1,
+          fullName: "Mike Tyson",
+          birthDate: 127419968, // Timestamp
+          height: 178,
+          weight: 100
+        }
+      },
+      {
+        id: 1,
+        awayBoxer: {
+          id: 1,
+          fullName: "Mike Tyson",
+          birthDate: 127419968, // Timestamp
+          height: 178,
+          weight: 100
+        },
+        homeBoxer: {
+          id: 8,
+          fullName: "Dwayne \"The Rock\" Johnson",
+          birthDate: 127419968, // Timestamp
+          height: 196,
+          weight: 118
+        },
+        matchTime: 129419968,
+        isFinished: false
+      }
+    ]
+  },
+  expected_data: {
+    standing: {},
+    matches: []
+  }
+}
+
+// UNIT AUTH SERVICE GATEWAY SUCCESS SCENARIOS
+
 var Unit_AuthServiceGateway_Scenario1 = {
   token: "emanresu_ymmud_dummy_password",
   data_chunk: {
@@ -174,7 +361,22 @@ var Unit_AuthServiceGateway_Scenario1 = {
   }
 }
 
+// UNIT AUTH SERVICE GATEWAY FAIL SCENARIOS
+
+var Unit_AuthServiceGateway_Scenario2_Fail1 = {
+  token: "emanresu_ymmud_dummy_password",
+  data_chunk: {
+    token: "lorem_ipsum"
+  },
+  expected_data: {
+    code: 403,
+    message: "unauthorized"
+  }
+}
+
 Unit_StandingsServiceGateway_Scenario1.expected_data = Unit_StandingsServiceGateway_Scenario1.standing_and_matches;
+
+// B1 SUCCESS SCENARIOS
 
 // GetBoxer
 const B1_Scenario1_Variation1 = {
@@ -252,10 +454,18 @@ module.exports = {
   Unit_Repository_Scenario2,
   Unit_Repository_Scenario3,
   Unit_Repository_Scenario4,
+  Unit_Repository_Scenario5_Fail1,
+  Unit_Repository_Scenario6_Fail1,
+  Unit_Repository_Scenario6_Fail2,
+  Unit_Repository_Scenario7_Fail1,
+  Unit_Repository_Scenario7_Fail2,
+  Unit_Repository_Scenario8_Fail1,
   B1_Scenario1_Variation1,
   B2_Scenario1_Variation1,
   B3_Scenario1_Variation1,
   B4_Scenario1_Variation1,
   Unit_StandingsServiceGateway_Scenario1,
+  Unit_StandingsServiceGateway_Scenario2_Fail1,
   Unit_AuthServiceGateway_Scenario1,
+  Unit_AuthServiceGateway_Scenario2_Fail1
 }

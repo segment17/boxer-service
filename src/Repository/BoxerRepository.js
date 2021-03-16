@@ -59,7 +59,7 @@ class BoxerRepository {
 
   extractBoxerFromQueryResult(queryResult) {
     //TODO Parse response here safely...
-    return queryResult[0];
+    return queryResult ? queryResult[0] : null;
   }
 
 }

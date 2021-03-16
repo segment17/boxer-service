@@ -15,7 +15,7 @@ class MockBoxerRepository extends BoxerRepository {
         return [element];
       }
     }
-    return [];
+    return null;
   }
 
   async runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight) {
