@@ -7,6 +7,26 @@ class MockBoxerRepository extends BoxerRepository {
     this.boxers = [];
   }
 
+  checkAttributes(fullName, birthDate, height, weight) {
+    if(fullName === "") {
+      return false;
+    }
+
+    if(birthDate === "") {
+      return false;
+    }
+
+    if(height && height <= 0) {
+      return false;
+    }
+
+    if(weight && weight <= 0) {
+      return false;
+    }
+
+    return true;
+  }
+
   async runQueryForGetBoxerWithId(id) {
     console.log("Mock read from Boxer mock data with id: " + id);
     for (let i = 0; i < this.boxers.length; i++) {
@@ -15,7 +35,7 @@ class MockBoxerRepository extends BoxerRepository {
         return [element];
       }
     }
-    return null;
+    return [];
   }
 
   async runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight) {
@@ -27,26 +47,34 @@ class MockBoxerRepository extends BoxerRepository {
       height: height,
       weight: weight
     }
+    if(!this.checkAttributes(fullName, birthDate, height, weight)) {
+      newBoxer = {};
+    }
     this.boxers.push(newBoxer);
     return newBoxer.id;
   }
 
   async runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight) {
     let editedBoxer = {}
-    let index = null
+    let index = null;
     for (let i in this.boxers) {
       if(this.boxers[i].id === id) {
         editedBoxer = this.boxers[i];
         index = i;
       }
     }
-    editedBoxer = {
-      id: id,
-      fullName: fullName ? fullName : editedBoxer.fullName,
-      birthDate: birthDate ? birthDate : editedBoxer.birthDate,
-      height: height ? height : editedBoxer.height,
-      weight: weight ? weight : editedBoxer.weight
+    if(index) {
+      if(this.checkAttributes(fullName, birthDate, height, weight)) {
+        editedBoxer = {
+          id: id,
+          fullName: fullName ? fullName : editedBoxer.fullName,
+          birthDate: birthDate ? birthDate : editedBoxer.birthDate,
+          height: height ? height : editedBoxer.height,
+          weight: weight ? weight : editedBoxer.weight
+        }
+      }
     }
+
     this.boxers[index] = editedBoxer;
     return editedBoxer.id;
   }

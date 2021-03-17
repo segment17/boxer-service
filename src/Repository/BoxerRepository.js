@@ -3,7 +3,7 @@ class BoxerRepository {
   async getBoxerWithId(id) {
     let queryResult = await this.runQueryForGetBoxerWithId(id);
     let boxer = this.extractBoxerFromQueryResult(queryResult);
-    return boxer;
+    return boxer !== undefined ? boxer : {};
   }
 
   // runQueryFor[function name]
@@ -56,10 +56,9 @@ class BoxerRepository {
     return;
   }
 
-
   extractBoxerFromQueryResult(queryResult) {
     //TODO Parse response here safely...
-    return queryResult ? queryResult[0] : null;
+    return queryResult.length !== 0 ? queryResult[0] : {};
   }
 
 }

@@ -110,7 +110,7 @@ Feature: Boxer Repository Unit Feature
     When "<repository_function>" is invoked with "<boxer_id>"
     #Check
     Then returned data is as "<expected_data>"
-    And DB does not have boxer such as "<boxer>"
+    And DB has boxer such as "<boxer>"
 
     Examples:
       | boxer                                 | repository_function | boxer_id                                 | expected_data                                 |

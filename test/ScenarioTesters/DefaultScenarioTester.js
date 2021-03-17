@@ -131,9 +131,8 @@ class DefaultScenarioTester {
   }
 
   assertionsForDBHasNoBoxerSuchAs(expected, actual) {
-    assert(actual == null);
+    assert(Object.entries(actual).length === 0);
   }
-
 }
 
 module.exports = DefaultScenarioTester;

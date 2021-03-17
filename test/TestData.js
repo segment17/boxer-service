@@ -85,7 +85,7 @@ const Unit_Repository_Scenario5_Fail1 = {
     weight: 100
   },
   boxer_id: 2,
-  expected_data: null
+  expected_data: {}
 }
 
 const Unit_Repository_Scenario6_Fail1 = {
@@ -100,7 +100,7 @@ const Unit_Repository_Scenario6_Fail1 = {
     id: 2,
     weight: 110
   },
-  edited_boxer: null
+  edited_boxer: {}
 }
 
 const Unit_Repository_Scenario6_Fail2 = {
@@ -132,7 +132,7 @@ const Unit_Repository_Scenario7_Fail1 = {
     height: 178,
     weight: 87
   },
-  new_boxer: null
+  new_boxer: {}
 }
 
 const Unit_Repository_Scenario7_Fail2 = {
@@ -143,7 +143,7 @@ const Unit_Repository_Scenario7_Fail2 = {
     height: 178,
     weight: -87
   },
-  new_boxer: null
+  new_boxer: {}
 }
 
 const Unit_Repository_Scenario8_Fail1 = {
@@ -155,7 +155,7 @@ const Unit_Repository_Scenario8_Fail1 = {
     weight: 100
   },
   boxer_id: 2,
-  expected_data: null
+  expected_data: {}
 }
 
 // UNIT STANDINGS SERVICE GATEWAY SUCCESS SCENARIOS
