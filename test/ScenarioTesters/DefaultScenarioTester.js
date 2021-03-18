@@ -138,7 +138,7 @@ class DefaultScenarioTester {
       globalObjects.result = res;
     });
     await TestFunctions.waitUntilResult();
-    assert(globalObjects.result.boxer == null);
+    assert(globalObjects.result.code == 404);
   }
 
   assertionsForDBHasBoxerSuchAs(expected, actual) {
