@@ -18,7 +18,7 @@ class MockAuthServiceGateway extends AuthServiceGateway {
     }
     return {
       code: 403,
-      message: "unauthorized"
+      message: "forbidden"
     }
   }
 

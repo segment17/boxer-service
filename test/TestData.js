@@ -370,13 +370,13 @@ var Unit_AuthServiceGateway_Scenario2_Fail1 = {
   },
   expected_data: {
     code: 403,
-    message: "unauthorized"
+    message: "forbidden"
   }
 }
 
 Unit_StandingsServiceGateway_Scenario1.expected_data = Unit_StandingsServiceGateway_Scenario1.standing_and_matches;
 
-// B1 SUCCESS SCENARIOS
+// COMPONENT SUCCESS SCENARIOS
 
 // GetBoxer
 const B1_Scenario1_Variation1 = {
@@ -449,6 +449,162 @@ const B4_Scenario1_Variation1 = {
   }
 }
 
+// COMPONENT FAIL SCENARIOS
+
+// GetBoxer
+const B1_Scenario2_Fail1 = {
+  request_body: { id: 2 },
+  boxer: Unit_Repository_Scenario1.boxer,
+  standing_and_matches: {
+    standing: {},
+    matches: []
+  },
+  expected_response: {
+    code: 404,
+    message: 'not_found',
+    boxer: {},
+    standingAndMatches: {
+      standing: {},
+      matches: []
+    }
+  }
+}
+
+// EditBoxer
+const B2_Scenario2_Fail1 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    id: 2,
+    weight: 110
+  },
+  expected_response: {
+    code: 404,
+    message: 'not_found',
+    boxer: {}
+  }
+}
+
+const B2_Scenario2_Fail2 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    id: 1,
+    weight: -110
+  },
+  expected_response: {
+    code: 400,
+    message: 'bad_request',
+    boxer: Unit_Repository_Scenario1.boxer
+  }
+}
+
+const B2_Scenario2_Fail3 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "lorem_ipsum",
+  request_body: {
+    id: 1,
+    weight: 110
+  },
+  expected_response: {
+    code: 403,
+    message: 'forbidden',
+    boxer: Unit_Repository_Scenario1.boxer
+  }
+}
+
+// AddBoxer
+const B3_Scenario2_Fail1 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  },
+  new_boxer: {
+    id: Unit_Repository_Scenario1.boxer.id + 1,
+    fullName: "",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  },
+  expected_response: {
+    code: 400,
+    message: 'bad_request',
+    boxer: {}
+  }
+}
+
+const B3_Scenario2_Fail2 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: -87
+  },
+  new_boxer: {
+    id: Unit_Repository_Scenario1.boxer.id + 1,
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: -87
+  },
+  expected_response: {
+    code: 400,
+    message: 'bad_request',
+    boxer: {}
+  }
+}
+
+const B3_Scenario2_Fail3 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "lorem_ipsum",
+  request_body: {
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  },
+  new_boxer: {
+    id: Unit_Repository_Scenario1.boxer.id + 1,
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  },
+  expected_response: {
+    code: 403,
+    message: 'forbidden',
+    boxer: {}
+  }
+}
+
+// RemoveBoxer
+const B4_Scenario2_Fail1 = {
+  boxer: Unit_Repository_Scenario4.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: { id: 2 },
+  expected_response: {
+    code: 404,
+    message: 'not_found',
+    boxer: {}
+  }
+}
+
+const B4_Scenario2_Fail2 = {
+  boxer: Unit_Repository_Scenario4.boxer,
+  token: "lorem_ipsum",
+  request_body: { id: 1 },
+  expected_response: {
+    code: 403,
+    message: 'forbidden',
+    boxer: {}
+  }
+}
+
 module.exports = {
   Unit_Repository_Scenario1,
   Unit_Repository_Scenario2,
@@ -464,6 +620,15 @@ module.exports = {
   B2_Scenario1_Variation1,
   B3_Scenario1_Variation1,
   B4_Scenario1_Variation1,
+  B1_Scenario2_Fail1,
+  B2_Scenario2_Fail1,
+  B2_Scenario2_Fail2,
+  B2_Scenario2_Fail3,
+  B3_Scenario2_Fail1,
+  B3_Scenario2_Fail2,
+  B3_Scenario2_Fail3,
+  B4_Scenario2_Fail1,
+  B4_Scenario2_Fail2,
   Unit_StandingsServiceGateway_Scenario1,
   Unit_StandingsServiceGateway_Scenario2_Fail1,
   Unit_AuthServiceGateway_Scenario1,

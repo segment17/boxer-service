@@ -58,7 +58,7 @@ Feature: Boxer Repository Unit Feature
       | boxer                           | repository_function | boxer_id                           | expected_data                           |
       | Unit_Repository_Scenario4.boxer | removeBoxerWithId   | Unit_Repository_Scenario4.boxer_id | Unit_Repository_Scenario4.expected_data |
 
-  #FAILURE SCENARIOS
+  #FAIL SCENARIOS
 
   @Unit_Repository_Scenario5
   Scenario Outline: Get boxer details from Boxer Repository failure
