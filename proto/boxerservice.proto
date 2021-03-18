@@ -79,9 +79,41 @@ message RemoveBoxerResponse {
   Boxer boxer = 3;
 }
 
+message SetupAddBoxerRequest {
+  Boxer boxer = 1;
+}
+
+message SetupAddBoxerResponse {
+  int32 code = 1;
+}
+
+message SetupAddStandingAndMatchesRequest {
+  StandingAndMatches standingAndMatches = 1;
+}
+
+message SetupAddStandingAndMatchesResponse {
+  int32 code = 1;
+}
+
+message SetupAddTokenRequest {
+  string token = 1;
+}
+
+message SetupAddTokenResponse {
+  int32 code = 1;
+}
+
+message Null {};
+
 service BoxerService {
   rpc GetBoxerWithStandingAndMatches(GetBoxerWithStandingAndMatchesRequest) returns (GetBoxerWithStandingAndMatchesResponse) {};
   rpc AddBoxer(AddBoxerRequest) returns (AddBoxerResponse) {};
   rpc EditBoxer(EditBoxerRequest) returns (EditBoxerResponse) {};
   rpc RemoveBoxer(RemoveBoxerRequest) returns (RemoveBoxerResponse) {};
+
+  // Mock endpoints:
+  rpc Mock(Null) returns (Null) {};
+  rpc SetupAddBoxer(SetupAddBoxerRequest) returns (SetupAddBoxerResponse) {};
+  rpc SetupAddStandingAndMatches(SetupAddStandingAndMatchesRequest) returns (SetupAddBoxerResponse) {};
+  rpc SetupAddToken(SetupAddTokenRequest) returns (SetupAddTokenResponse) {};
 }

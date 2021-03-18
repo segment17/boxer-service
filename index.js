@@ -31,6 +31,26 @@ async function bindRemoveBoxer(call, callback) {
   callback(null, r);
 }
 
+async function bindMock(call, callback) {
+  await globalObjects.controller.mock();
+  callback(null, null);
+}
+
+async function bindSetupAddBoxer(call, callback) {
+  globalObjects.controller.mediator.boxerRepository.setupAddBoxer(call.request.boxer);
+  callback(null, {code: 200})
+}
+
+async function bindSetupAddStandingAndMatches(call, callback) {
+  globalObjects.controller.mediator.standingsServiceGateway.setupAddStandingAndMatches(call.request.standingAndMatches);
+  callback(null, {code: 200})
+}
+
+async function bindSetupAddToken(call, callback) {
+  globalObjects.controller.mediator.authServiceGateway.setupToken(call.request.token);
+  callback(null, {code: 200})
+}
+
 function main() {
   console.log("Server running...");
   server = new grpc.Server();
@@ -38,7 +58,11 @@ function main() {
     GetBoxerWithStandingAndMatches: bindGetBoxerWithStandingAndMatches,
     EditBoxer: bindEditBoxer,
     AddBoxer: bindAddBoxer,
-    RemoveBoxer: bindRemoveBoxer
+    RemoveBoxer: bindRemoveBoxer,
+    Mock: bindMock,
+    SetupAddBoxer: bindSetupAddBoxer,
+    SetupAddStandingAndMatches: bindSetupAddStandingAndMatches,
+    SetupAddToken: bindSetupAddToken
   });
 
   if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {

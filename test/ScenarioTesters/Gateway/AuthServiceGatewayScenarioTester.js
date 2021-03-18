@@ -6,9 +6,10 @@ const assert = require('assert');
 
 class AuthServiceGatewayScenarioTester extends DefaultScenarioTester {
 
-  thereIsATokenSuchAs(tokenDataSource) {
+  async thereIsATokenSuchAs(tokenDataSource) {
     const specifiedToken = TestFunctions.extractSpecifiedObjectData(tokenDataSource);
-    globalObjects.authServiceGateway.setupToken(specifiedToken);
+    await globalObjects.authServiceGateway.setupToken(specifiedToken);
+    globalObjects.done = true;
   }
 
   unitFunctionIsInvokedWithData(functionName, dataSource) {
