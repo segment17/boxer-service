@@ -18,12 +18,14 @@ const boxerservice_package = grpc.loadPackageDefinition(packageDefinition).boxer
 class GlobalObjects {
 
   constructor() {
+    this.done = false;
     this.result = null; // Result object that will be filled during tests.
     this.controller = new Controller();
     this.mediator = new Mediator();
     this.boxerRepository = new BoxerRepository();
     this.standingsServiceGateway = new StandingsServiceGateway();
     this.authServiceGateway = new AuthServiceGateway();
+
 
     // Connect to Kubernetes if possible
     if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
@@ -35,7 +37,6 @@ class GlobalObjects {
 
   // Mock everything...
   mock() {
-    this.controller.mock();
     this.mediator.mock();
     this.boxerRepository = new MockBoxerRepository();
     this.standingsServiceGateway = new MockStandingsServiceGateway();

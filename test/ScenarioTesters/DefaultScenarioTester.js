@@ -16,19 +16,21 @@ class DefaultScenarioTester {
     if (!TestFunctions.isScenarioE2E(this.scenario) && !TestFunctions.isScenarioIntegration(this.scenario)) {
       // If it's not E2E or Integration, it means everything is mocked.
       globalObjects.mock();
+      globalObjects.client.Mock({}, (err, res) => {
+        globalObjects.done = true;
+      });
+    } else {
+      globalObjects.done = true;
     }
   }
 
-  thereIsAnActiveStandingSpecifiedAsData(dataSource) {
-    console.log("controller.mediator.StandingsServiceGateway is getting mock data.");
-    const specifiedStanding = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.controller.mediator.StandingsServiceGateway.setupAddStanding(specifiedStanding);
-  }
-
-  thereIsABoxerSuchAs(dataSource) {
+  async thereIsABoxerSuchAs(dataSource) {
     console.log("controller.mediator.BoxerRepository is getting mock data.");
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.controller.mediator.boxerRepository.setupAddBoxer(specifiedBoxer);
+    // globalObjects.controller.mediator.boxerRepository.setupAddBoxer(specifiedBoxer);
+    await globalObjects.client.SetupAddBoxer({boxer: specifiedBoxer}, function (err, res) {
+      globalObjects.done = true;
+    });
   }
 
   endpointIsCalledWithRequestBody(endpoint, requestBodySource) {
@@ -94,15 +96,23 @@ class DefaultScenarioTester {
 
   }
 
-  thereIsAStandingAndMatchesSuchAs(dataSource) {
+  async thereIsAStandingAndMatchesSuchAs(dataSource) {
     const specifiedStandingAndMatches = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.controller.mediator.standingsServiceGateway.setupAddStandingAndMatches(specifiedStandingAndMatches);
+    // globalObjects.controller.mediator.standingsServiceGateway.setupAddStandingAndMatches(specifiedStandingAndMatches);
+
+    await globalObjects.client.SetupAddStandingAndMatches({standingAndMatches: specifiedStandingAndMatches}, function (err, res) {
+      globalObjects.done = true;
+    });
   }
 
-  thereIsATokenSuchAs(tokenDataSource) {
+
+  async thereIsATokenSuchAs(tokenDataSource) {
     const specifiedToken = TestFunctions.extractSpecifiedObjectData(tokenDataSource);
     assert(specifiedToken != undefined);
-    globalObjects.controller.mediator.authServiceGateway.setupToken(specifiedToken);
+    // globalObjects.controller.mediator.authServiceGateway.setupToken(specifiedToken);
+    await globalObjects.client.SetupAddToken({token: specifiedToken}, function (err, res) {
+      globalObjects.done = true;
+    });
   }
 
   theLatestBoxerInDBIsSuchAs(dataSource) {
@@ -112,14 +122,23 @@ class DefaultScenarioTester {
 
   async dbHasBoxerSuchAs(dataSource) {
     const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
-    let boxerInDB = await globalObjects.controller.mediator.boxerRepository.getBoxerWithId(expected.id);
-    this.assertionsForDBHasBoxerSuchAs(expected, boxerInDB);
+    globalObjects.result = null;
+    globalObjects.client.GetBoxerWithStandingAndMatches({id: expected.id}, (err, res) => {
+      globalObjects.result = res;
+    });
+    await TestFunctions.waitUntilResult();
+    assert(globalObjects.result.code == 200);
+    this.assertionsForDBHasBoxerSuchAs(expected, globalObjects.result.boxer);
   }
 
   async dbHasNoBoxerSuchAs(dataSource) {
     const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
-    let boxerInDB = await globalObjects.controller.mediator.boxerRepository.getBoxerWithId(expected.id);
-    this.assertionsForDBHasNoBoxerSuchAs(expected, boxerInDB);
+    globalObjects.result = null;
+    globalObjects.client.GetBoxerWithStandingAndMatches({id: expected.id}, (err, res) => {
+      globalObjects.result = res;
+    });
+    await TestFunctions.waitUntilResult();
+    assert(globalObjects.result.boxer == null);
   }
 
   assertionsForDBHasBoxerSuchAs(expected, actual) {

@@ -64,6 +64,7 @@ class Controller {
 
   // Mock
   mock() {
+    console.log("CALLED");
     // Assign to mediator to mock everything it has.
     this.mediator.mock();
   }

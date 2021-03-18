@@ -9,6 +9,7 @@ class BoxerRepositoryScenarioTester extends DefaultScenarioTester {
     console.log("controller.mediator.BoxerRepository is getting mock data.");
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
     globalObjects.boxerRepository.setupAddBoxer(specifiedBoxer);
+    globalObjects.done = true;
   }
 
   unitFunctionIsInvokedWithData(unitFunctionName, invocationDataSource) {

@@ -3,22 +3,33 @@ const TestFunctions = require('../../test/TestFunctions');
 const ScenarioTesterFactory = require('../../test/ScenarioTesters/ScenarioTesterFactory');
 const globalObjects = require('../../index');
 
-Before(function (scenario) {
+Before(async function (scenario) {
+  globalObjects.done = false;
   globalObjects.setScenarioTester(ScenarioTesterFactory.createScenarioTester(scenario));
   globalObjects.scenarioTester.before();
+  while (!globalObjects.done) {
+    await TestFunctions.sleep(100);
+  }
 });
-
 
 Given('{string} is running', function (serviceName) {
   globalObjects.scenarioTester.serviceIsRunning(serviceName);
 });
 
-Given('there is a boxer such as {string}', function (boxerDataSource) {
-  globalObjects.scenarioTester.thereIsABoxerSuchAs(boxerDataSource);
+Given('there is a boxer such as {string}', async function (boxerDataSource) {
+  globalObjects.done = false;
+  await globalObjects.scenarioTester.thereIsABoxerSuchAs(boxerDataSource);
+  while (!globalObjects.done) {
+    await TestFunctions.sleep(100);
+  }
 });
 
-Given('there is a token such as {string}', function (tokenDataSource) {
-  globalObjects.scenarioTester.thereIsATokenSuchAs(tokenDataSource);
+Given('there is a token such as {string}', async function (tokenDataSource) {
+  globalObjects.done = false;
+  await globalObjects.scenarioTester.thereIsATokenSuchAs(tokenDataSource);
+  while (!globalObjects.done) {
+    await TestFunctions.sleep(100);
+  }
 });
 
 When('{string} is called with {string}', function (endpoint, requestBodySource) {
@@ -37,8 +48,8 @@ Then('DB does not have boxer such as {string}', async function (boxerDataSource)
   await globalObjects.scenarioTester.dbHasNoBoxerSuchAs(boxerDataSource);
 });
 
-Given('the latest boxer in DB is such as {string}', function (boxerDataSource) {
-  globalObjects.scenarioTester.theLatestBoxerInDBIsSuchAs(boxerDataSource);
+Given('the latest boxer in DB is such as {string}', async function (boxerDataSource) {
+  await globalObjects.scenarioTester.thereIsABoxerSuchAs(boxerDataSource);
 });
 
 Given('there are matches such as {string}', function (matchesDataSource) {
@@ -57,6 +68,10 @@ Then('returned data is as {string}', async function (expectedDataSource) {
   await globalObjects.scenarioTester.returnedDataIsAs(expectedDataSource);
 });
 
-Given('there is a standing with matches such as {string}', function (dataSource) {
-  globalObjects.scenarioTester.thereIsAStandingAndMatchesSuchAs(dataSource);
+Given('there is a standing with matches such as {string}', async function (dataSource) {
+  globalObjects.done = false;
+  await globalObjects.scenarioTester.thereIsAStandingAndMatchesSuchAs(dataSource);
+  while (!globalObjects.done) {
+    await TestFunctions.sleep(100);
+  }
 });

@@ -6,9 +6,10 @@ const assert = require('assert');
 
 class StandingsServiceGatewayScenarioTester extends DefaultScenarioTester {
 
-  thereIsAStandingAndMatchesSuchAs(dataSource) {
+  async thereIsAStandingAndMatchesSuchAs(dataSource) {
     const specifiedStandingAndMatches = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.standingsServiceGateway.setupAddStandingAndMatches(specifiedStandingAndMatches);
+    await globalObjects.standingsServiceGateway.setupAddStandingAndMatches(specifiedStandingAndMatches);
+    globalObjects.done = true;
   }
 
   unitFunctionIsInvokedWithData(functionName, dataSource) {
