@@ -16,35 +16,60 @@ class Mediator {
   // Endpoints
 
   async getValidation(token) {
-    return null;
+    const response = await this.authServiceGateway.getValidation(token);
+    return response;
   }
 
   async getBoxerWithStandingAndMatches(id) {
-    let boxer = await this.boxerRepository.getBoxerWithId(id);
+    let getBoxerResponse = await this.boxerRepository.getBoxerWithId(id);
     // Do validation here
     let standingAndMatches = await this.standingsServiceGateway.getStandingAndMatchesOfBoxer(id);
     // Do validation here
     return {
-      boxer: boxer,
+      code: getBoxerResponse.code,
+      message: getBoxerResponse.message,
+      boxer: getBoxerResponse.boxer,
       standingAndMatches: standingAndMatches
     }
   }
 
-  async addBoxer(fullName, birthDate, height, weight) {
-    let addedBoxer = await this.boxerRepository.addBoxerWithGivenData(fullName, birthDate, height, weight);
-    return addedBoxer;
+  async addBoxer(token, fullName, birthDate, height, weight) {
+    const validation = await this.getValidation(token);
+    let response = {};
+    if(validation.code !== 200) {
+      response.code = validation.code;
+      response.message = validation.message;
+      response.boxer = { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 };
+    } else {
+      response = await this.boxerRepository.addBoxerWithGivenData(fullName, birthDate, height, weight);
+    }
+    return response;
   }
 
-  async editBoxer(id, fullName, birthDate, height, weight) {
-
-
-    let editedBoxer = await this.boxerRepository.editBoxerWithGivenData(id, fullName, birthDate, height, weight);
-    return editedBoxer;
+  async editBoxer(token, id, fullName, birthDate, height, weight) {
+    const validation = await this.getValidation(token);
+    let response = {};
+    if(validation.code !== 200) {
+      response.code = validation.code;
+      response.message = validation.message;
+      response.boxer = { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 };
+    } else {
+      response = await this.boxerRepository.editBoxerWithGivenData(id, fullName, birthDate, height, weight);
+    }
+    return response;
   }
 
-  async removeBoxer(id) {
-    let removedBoxer = await this.boxerRepository.removeBoxerWithId(id);
-    return removedBoxer;
+  async removeBoxer(token, id) {
+    const validation = await this.getValidation(token);
+    let response = {};
+    if(validation.code !== 200) {
+      response.code = validation.code;
+      response.message = validation.message;
+      response.boxer = { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 };
+    } else {
+      response = await this.boxerRepository.removeBoxerWithId(id);
+    }
+    return response;
   }
 
   // Mock everything.

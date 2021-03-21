@@ -41,34 +41,36 @@ class BoxerRepositoryScenarioTester extends DefaultScenarioTester {
 
   async dbHasBoxerSuchAs(dataSource) {
     const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
-    let boxerInDB = await globalObjects.boxerRepository.getBoxerWithId(expected.id);
-    this.assertionsForDBHasBoxerSuchAs(expected, boxerInDB);
+    let response = await globalObjects.boxerRepository.getBoxerWithId(expected.id);
+    this.assertionsForDBHasBoxerSuchAs(expected, response.boxer);
   }
 
   async dbHasNoBoxerSuchAs(dataSource) {
     const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
-    let boxerInDB = await globalObjects.boxerRepository.getBoxerWithId(expected.id);
-    this.assertionsForDBHasNoBoxerSuchAs(expected, boxerInDB);
+    let response = await globalObjects.boxerRepository.getBoxerWithId(expected.id);
+    this.assertionsForDBHasNoBoxerSuchAs(response);
   }
 
   async returnedDataIsAs(dataSource) {
     const expectedData = TestFunctions.extractSpecifiedObjectData(dataSource);
     await TestFunctions.waitUntilResult();
     // Or separate checks
-    if(Object.entries(expectedData).length === 0) {
-      assert(Object.entries(globalObjects.result).length === 0);
-    } else {
-      assert(globalObjects.result.id != null);
-      assert(globalObjects.result.fullName != null);
-      assert(globalObjects.result.birthDate != null);
-      assert(globalObjects.result.height != null);
-      assert(globalObjects.result.weight != null);
-      assert.strictEqual(globalObjects.result.id, expectedData.id);
-      assert.strictEqual(globalObjects.result.fullName, expectedData.fullName);
-      assert.strictEqual(globalObjects.result.birthDate, expectedData.birthDate);
-      assert.strictEqual(globalObjects.result.height, expectedData.height);
-      assert.strictEqual(globalObjects.result.weight, expectedData.weight);
-    }
+    
+    assert(globalObjects.result.code != null);
+    assert(globalObjects.result.message != null);
+    assert(globalObjects.result.boxer.id != null);
+    assert(globalObjects.result.boxer.fullName != null);
+    assert(globalObjects.result.boxer.birthDate != null);
+    assert(globalObjects.result.boxer.height != null);
+    assert(globalObjects.result.boxer.weight != null);
+
+    assert(globalObjects.result.code, expectedData.code);
+    assert.strictEqual(globalObjects.result.message, expectedData.message);
+    assert.strictEqual(globalObjects.result.boxer.id, expectedData.boxer.id);
+    assert.strictEqual(globalObjects.result.boxer.fullName, expectedData.boxer.fullName);
+    assert.strictEqual(globalObjects.result.boxer.birthDate, expectedData.boxer.birthDate);
+    assert.strictEqual(globalObjects.result.boxer.height, expectedData.boxer.height);
+    assert.strictEqual(globalObjects.result.boxer.weight, expectedData.boxer.weight);
   }
 
   theLatestBoxerInDBIsSuchAs(dataSource) {

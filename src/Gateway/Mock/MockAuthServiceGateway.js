@@ -8,7 +8,7 @@ class MockAuthServiceGateway extends AuthServiceGateway {
   }
 
   async doCallForGetValidation(obj) {
-    const token = obj.token;
+    const token = obj;
     console.log("Mock get call to AuthServiceGateway with token: " + token);
     if(this.token === token) {
       return {

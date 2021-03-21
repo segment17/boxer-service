@@ -32,10 +32,18 @@ class MockBoxerRepository extends BoxerRepository {
     for (let i = 0; i < this.boxers.length; i++) {
       const element = this.boxers[i];
       if (element.id == id) {
-        return [element];
+        return {
+          code: 200,
+          message: "success",
+          boxer: element
+        };
       }
     }
-    return [];
+    return {
+      code: 404,
+      message: "not_found",
+      boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+    };
   }
 
   async runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight) {
@@ -48,14 +56,23 @@ class MockBoxerRepository extends BoxerRepository {
       weight: weight
     }
     if(!this.checkAttributes(fullName, birthDate, height, weight)) {
-      newBoxer = {};
+      newBoxer = { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 };
+      return {
+        code: 400,
+        message: "bad_request",
+        boxer: newBoxer
+      };
     }
     this.boxers.push(newBoxer);
-    return newBoxer.id;
+    return {
+      code: 201,
+      message: "created",
+      boxer: newBoxer
+    };
   }
 
   async runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight) {
-    let editedBoxer = {}
+    let editedBoxer = { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
     let index = null;
     for (let i in this.boxers) {
       if(this.boxers[i].id === id) {
@@ -72,22 +89,48 @@ class MockBoxerRepository extends BoxerRepository {
           height: height ? height : editedBoxer.height,
           weight: weight ? weight : editedBoxer.weight
         }
+        this.boxers[index] = editedBoxer;
+        return {
+          code: 201,
+          message: "edited",
+          boxer: editedBoxer
+        };
       }
+      this.boxers[index] = editedBoxer;
+      return {
+        code: 400,
+        message: "bad_request",
+        boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+      };
     }
-
     this.boxers[index] = editedBoxer;
-    return editedBoxer.id;
+    return {
+      code: 404,
+      message: "not_found",
+      boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+    };
   }
 
   async runQueryForRemoveBoxerWithId(id) {
-    let removedBoxer = {}
+    let removedBoxer = { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
     for (let index in this.boxers) {
       if(this.boxers[index].id === id) {
         removedBoxer = this.boxers[index];
         this.boxers.splice(index, 1);
       }
     }
-    return removedBoxer;
+    if(removedBoxer.id === 0) {
+      return {
+        code: 404,
+        message: "not_found",
+        boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+      };
+    }
+    return {
+      code: 201,
+      message: "removed",
+      boxer: removedBoxer
+    };
   }
 
   async setupAddBoxer(boxer) {

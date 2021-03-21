@@ -30,14 +30,14 @@ class StandingsServiceGatewayScenarioTester extends DefaultScenarioTester {
     assert(globalObjects.result.message === undefined);
     let standing = globalObjects.result.standing;
     assert(standing !== undefined && standing !== null);
-    if(Object.entries(expectedData.standing).length === 0) {
-      assert(Object.entries(standing).length === 0)
+    if(expectedData.standing.boxer === null) {
+      assert(standing.boxer === null);
     } else {
       assert.strictEqual(standing.boxer.id, expectedData.standing.boxer.id);
-      assert.strictEqual(standing.winCount, expectedData.standing.winCount);
-      assert.strictEqual(standing.lossCount, expectedData.standing.lossCount);
-      assert.strictEqual(standing.score,  expectedData.standing.score);
     }
+    assert.strictEqual(standing.winCount, expectedData.standing.winCount);
+    assert.strictEqual(standing.lossCount, expectedData.standing.lossCount);
+    assert.strictEqual(standing.score,  expectedData.standing.score);
 
     let matches = globalObjects.result.matches;
     assert(matches != undefined && matches != null);
