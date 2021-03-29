@@ -16,7 +16,7 @@ Feature: Auth Service Gateway Unit Feature
       | token                                   | gateway_function | data_chunk                                   | expected_data                                   |
       | Unit_AuthServiceGateway_Scenario1.token | getValidation    | Unit_AuthServiceGateway_Scenario1.data_chunk | Unit_AuthServiceGateway_Scenario1.expected_data |
 
-  #FAILURE SCENARIOS
+  #FAIL SCENARIOS
 
   @Unit_AuthServiceGateway_Scenario2
   Scenario Outline: Get validation from Auth Service Gateway failure

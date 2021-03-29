@@ -23,12 +23,12 @@ Feature: Boxer Repository Unit Feature
     #Repository.repository_function()
     When "<repository_function>" is invoked with "<edit_body>"
     #Check
-    Then returned data is as "<edited_boxer>"
+    Then returned data is as "<expected_data>"
     And DB has boxer such as "<edited_boxer>"
 
     Examples:
-      | boxer                           | repository_function    | edit_body                           | edited_boxer                           |
-      | Unit_Repository_Scenario2.boxer | editBoxerWithGivenData | Unit_Repository_Scenario2.edit_body | Unit_Repository_Scenario2.edited_boxer |
+      | boxer                           | repository_function    | edit_body                           | expected_data                           | edited_boxer                                  |
+      | Unit_Repository_Scenario2.boxer | editBoxerWithGivenData | Unit_Repository_Scenario2.edit_body | Unit_Repository_Scenario2.expected_data | Unit_Repository_Scenario2.expected_data.boxer |
 
   @Unit_Repository_Scenario3
   Scenario Outline: Add a new boxer to DB
@@ -37,12 +37,12 @@ Feature: Boxer Repository Unit Feature
     #Repository.repository_function()
     When "<repository_function>" is invoked with "<data_chunk>"
     #Check
-    Then returned data is as "<new_boxer>"
+    Then returned data is as "<expected_data>"
     And DB has boxer such as "<new_boxer>"
 
     Examples:
-      | existing_boxer                           | repository_function   | data_chunk                           | new_boxer                           |
-      | Unit_Repository_Scenario3.existing_boxer | addBoxerWithGivenData | Unit_Repository_Scenario3.data_chunk | Unit_Repository_Scenario3.new_boxer |
+      | existing_boxer                           | repository_function   | data_chunk                           | expected_data                           | new_boxer                                     |
+      | Unit_Repository_Scenario3.existing_boxer | addBoxerWithGivenData | Unit_Repository_Scenario3.data_chunk | Unit_Repository_Scenario3.expected_data | Unit_Repository_Scenario3.expected_data.boxer |
 
   @Unit_Repository_Scenario4
   Scenario Outline: Remove a boxer from Boxer Repository
@@ -58,7 +58,7 @@ Feature: Boxer Repository Unit Feature
       | boxer                           | repository_function | boxer_id                           | expected_data                           |
       | Unit_Repository_Scenario4.boxer | removeBoxerWithId   | Unit_Repository_Scenario4.boxer_id | Unit_Repository_Scenario4.expected_data |
 
-  #FAILURE SCENARIOS
+  #FAIL SCENARIOS
 
   @Unit_Repository_Scenario5
   Scenario Outline: Get boxer details from Boxer Repository failure
@@ -80,13 +80,13 @@ Feature: Boxer Repository Unit Feature
     #Repository.repository_function()
     When "<repository_function>" is invoked with "<edit_body>"
     #Check
-    Then returned data is as "<edited_boxer>"
+    Then returned data is as "<expected_data>"
     And DB has boxer such as "<edited_boxer>"
 
     Examples:
-      | boxer                                 | repository_function    | edit_body                                 | edited_boxer                                 |
-      | Unit_Repository_Scenario6_Fail1.boxer | editBoxerWithGivenData | Unit_Repository_Scenario6_Fail1.edit_body | Unit_Repository_Scenario6_Fail1.edited_boxer |
-      | Unit_Repository_Scenario6_Fail2.boxer | editBoxerWithGivenData | Unit_Repository_Scenario6_Fail2.edit_body | Unit_Repository_Scenario6_Fail2.edited_boxer |
+      | boxer                                 | repository_function    | edit_body                                 | expected_data                                 | edited_boxer                                        |
+      | Unit_Repository_Scenario6_Fail1.boxer | editBoxerWithGivenData | Unit_Repository_Scenario6_Fail1.edit_body | Unit_Repository_Scenario6_Fail1.expected_data | Unit_Repository_Scenario6_Fail1.expected_data.boxer |
+      | Unit_Repository_Scenario6_Fail2.boxer | editBoxerWithGivenData | Unit_Repository_Scenario6_Fail2.edit_body | Unit_Repository_Scenario6_Fail2.expected_data | Unit_Repository_Scenario6_Fail1.expected_data.boxer |
 
   @Unit_Repository_Scenario7
   Scenario Outline: Add a new boxer to DB failure
@@ -95,12 +95,12 @@ Feature: Boxer Repository Unit Feature
     #Repository.repository_function()
     When "<repository_function>" is invoked with "<data_chunk>"
     #Check
-    Then returned data is as "<new_boxer>"
+    Then returned data is as "<expected_data>"
     And DB has boxer such as "<new_boxer>"
 
     Examples:
-      | existing_boxer                                 | repository_function   | data_chunk                                 | new_boxer                                 |
-      | Unit_Repository_Scenario7_Fail1.existing_boxer | addBoxerWithGivenData | Unit_Repository_Scenario7_Fail1.data_chunk | Unit_Repository_Scenario7_Fail1.new_boxer |
+      | existing_boxer                                 | repository_function   | data_chunk                                 | expected_data                                 | new_boxer                                           |
+      | Unit_Repository_Scenario7_Fail1.existing_boxer | addBoxerWithGivenData | Unit_Repository_Scenario7_Fail1.data_chunk | Unit_Repository_Scenario7_Fail1.expected_data | Unit_Repository_Scenario7_Fail1.expected_data.boxer |
 
   @Unit_Repository_Scenario8
   Scenario Outline: Remove a boxer from Boxer Repository failure

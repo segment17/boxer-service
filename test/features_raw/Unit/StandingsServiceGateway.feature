@@ -16,7 +16,7 @@ Feature: Standings Service Gateway Unit Feature
       | standing_and_matches                                        | gateway_function             | boxer_id                                        | expected_data                                        |
       | Unit_StandingsServiceGateway_Scenario1.standing_and_matches | getStandingAndMatchesOfBoxer | Unit_StandingsServiceGateway_Scenario1.boxer_id | Unit_StandingsServiceGateway_Scenario1.expected_data |
 
-  #FAILURE SCENARIOS
+  #FAIL SCENARIOS
 
   @Unit_StandingsServiceGateway_Scenario2
   Scenario Outline: Get standings and matches from Standings Service Gateway failure

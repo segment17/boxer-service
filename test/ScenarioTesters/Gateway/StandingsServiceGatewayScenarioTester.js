@@ -30,17 +30,22 @@ class StandingsServiceGatewayScenarioTester extends DefaultScenarioTester {
     assert(globalObjects.result.message === undefined);
     let standing = globalObjects.result.standing;
     assert(standing !== undefined && standing !== null);
-    assert.strictEqual(standing.boxer.id, expectedData.standing.boxer.id);
+    if(expectedData.standing.boxer === null) {
+      assert(standing.boxer === null);
+    } else {
+      assert.strictEqual(standing.boxer.id, expectedData.standing.boxer.id);
+    }
     assert.strictEqual(standing.winCount, expectedData.standing.winCount);
     assert.strictEqual(standing.lossCount, expectedData.standing.lossCount);
     assert.strictEqual(standing.score,  expectedData.standing.score);
 
     let matches = globalObjects.result.matches;
     assert(matches != undefined && matches != null);
-    assert(matches.length > 2);
-    for (let index = 0; index < matches.length; index++) {
-      const element = matches[index];
-      assert(element.homeBoxer.id == expectedData.standing.boxer.id || element.awayBoxer.id == expectedData.standing.boxer.id);
+    if(matches.length > 2) {
+      for (let index = 0; index < matches.length; index++) {
+        const element = matches[index];
+        assert(element.homeBoxer.id == expectedData.standing.boxer.id || element.awayBoxer.id == expectedData.standing.boxer.id);
+      }
     }
   }
 

@@ -10,11 +10,15 @@ const Unit_Repository_Scenario1 = {
   },
   boxer_id: 1,
   expected_data: {
-    id: 1,
-    fullName: "Mike Tyson",
-    birthDate: 127419968, // Timestamp
-    height: 178,
-    weight: 100
+    code: 200,
+    message: "success",
+    boxer: {
+      id: 1,
+      fullName: "Mike Tyson",
+      birthDate: 127419968, // Timestamp
+      height: 178,
+      weight: 100
+    }
   }
 }
 
@@ -30,12 +34,16 @@ const Unit_Repository_Scenario2 = {
     id: 1,
     weight: 110
   },
-  edited_boxer: {
-    id: 1,
-    fullName: "Mike Tyson",
-    birthDate: 127419968, // Timestamp
-    height: 178,
-    weight: 110
+  expected_data: {
+    code: "201",
+    message: "edited",
+    boxer: {
+      id: 1,
+      fullName: "Mike Tyson",
+      birthDate: 127419968, // Timestamp
+      height: 178,
+      weight: 110
+    }
   }
 }
 
@@ -47,12 +55,16 @@ const Unit_Repository_Scenario3 = {
     height: 178,
     weight: 87
   },
-  new_boxer: {
-    id: Unit_Repository_Scenario1.boxer.id + 1,
-    fullName: "Rocky Balboa",
-    birthDate: -772804800,
-    height: 178,
-    weight: 87
+  expected_data: {
+    code: "201",
+    message: "created",
+    boxer: {
+      id: Unit_Repository_Scenario1.boxer.id + 1,
+      fullName: "Rocky Balboa",
+      birthDate: -772804800,
+      height: 178,
+      weight: 87
+    }
   }
 }
 
@@ -66,11 +78,15 @@ const Unit_Repository_Scenario4 = {
   },
   boxer_id: 1,
   expected_data: {
-    id: 1,
-    fullName: "Mike Tyson",
-    birthDate: 127419968, // Timestamp
-    height: 178,
-    weight: 100
+    code: "201",
+    message: "removed",
+    boxer: {
+      id: 1,
+      fullName: "Mike Tyson",
+      birthDate: 127419968, // Timestamp
+      height: 178,
+      weight: 100
+    }
   }
 }
 
@@ -85,7 +101,11 @@ const Unit_Repository_Scenario5_Fail1 = {
     weight: 100
   },
   boxer_id: 2,
-  expected_data: {}
+  expected_data: {
+    code: "404",
+    message: "not_found",
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
 }
 
 const Unit_Repository_Scenario6_Fail1 = {
@@ -100,7 +120,11 @@ const Unit_Repository_Scenario6_Fail1 = {
     id: 2,
     weight: 110
   },
-  edited_boxer: {}
+  expected_data: {
+    code: "404",
+    message: "not_found",
+    boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
 }
 
 const Unit_Repository_Scenario6_Fail2 = {
@@ -115,12 +139,10 @@ const Unit_Repository_Scenario6_Fail2 = {
     id: 1,
     weight: -20
   },
-  edited_boxer: {
-    id: 1,
-    fullName: "Mike Tyson",
-    birthDate: 127419968, // Timestamp
-    height: 178,
-    weight: 100
+  expected_data: {
+    code: "400",
+    message: "bad_request",
+    boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
   }
 }
 
@@ -132,7 +154,11 @@ const Unit_Repository_Scenario7_Fail1 = {
     height: 178,
     weight: 87
   },
-  new_boxer: {}
+  expected_data: {
+    code: "400",
+    message: "bad_request",
+    boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
 }
 
 const Unit_Repository_Scenario7_Fail2 = {
@@ -143,7 +169,11 @@ const Unit_Repository_Scenario7_Fail2 = {
     height: 178,
     weight: -87
   },
-  new_boxer: {}
+  expected_data: {
+    code: "400",
+    message: "bad_request",
+    boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
 }
 
 const Unit_Repository_Scenario8_Fail1 = {
@@ -155,7 +185,11 @@ const Unit_Repository_Scenario8_Fail1 = {
     weight: 100
   },
   boxer_id: 2,
-  expected_data: {}
+  expected_data: {
+    code: "404",
+    message: "not_found",
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
 }
 
 // UNIT STANDINGS SERVICE GATEWAY SUCCESS SCENARIOS
@@ -343,7 +377,7 @@ var Unit_StandingsServiceGateway_Scenario2_Fail1 = {
     ]
   },
   expected_data: {
-    standing: {},
+    standing: { boxer: null, winCount: 0, lossCount: 0, score: 0 },
     matches: []
   }
 }
@@ -352,9 +386,7 @@ var Unit_StandingsServiceGateway_Scenario2_Fail1 = {
 
 var Unit_AuthServiceGateway_Scenario1 = {
   token: "emanresu_ymmud_dummy_password",
-  data_chunk: {
-    token: "emanresu_ymmud_dummy_password"
-  },
+  data_chunk: "emanresu_ymmud_dummy_password",
   expected_data: {
     code: 200,
     message: "success"
@@ -365,18 +397,16 @@ var Unit_AuthServiceGateway_Scenario1 = {
 
 var Unit_AuthServiceGateway_Scenario2_Fail1 = {
   token: "emanresu_ymmud_dummy_password",
-  data_chunk: {
-    token: "lorem_ipsum"
-  },
+  data_chunk: "lorem_ipsum",
   expected_data: {
     code: 403,
-    message: "unauthorized"
+    message: "forbidden"
   }
 }
 
 Unit_StandingsServiceGateway_Scenario1.expected_data = Unit_StandingsServiceGateway_Scenario1.standing_and_matches;
 
-// B1 SUCCESS SCENARIOS
+// COMPONENT SUCCESS SCENARIOS
 
 // GetBoxer
 const B1_Scenario1_Variation1 = {
@@ -397,14 +427,15 @@ const B2_Scenario1_Variation1 = {
   token: "emanresu_ymmud_dummy_password",
   request_body: {
     id: 1,
-    weight: 110
+    weight: 110,
+    token: "emanresu_ymmud_dummy_password",
   },
   expected_response: {
     code: 201,
     message: 'edited',
-    boxer: Unit_Repository_Scenario2.edited_boxer
+    boxer: Unit_Repository_Scenario2.expected_data.boxer
   },
-  edited_boxer: Unit_Repository_Scenario2.edited_boxer
+  edited_boxer: Unit_Repository_Scenario2.expected_data.boxer
 }
 
 // AddBoxer
@@ -415,7 +446,8 @@ const B3_Scenario1_Variation1 = {
     fullName: "Rocky Balboa",
     birthDate: -772804800,
     height: 178,
-    weight: 87
+    weight: 87,
+    token: "emanresu_ymmud_dummy_password",
   },
   new_boxer: {
     id: Unit_Repository_Scenario1.boxer.id + 1,
@@ -441,11 +473,182 @@ const B3_Scenario1_Variation1 = {
 const B4_Scenario1_Variation1 = {
   boxer: Unit_Repository_Scenario4.boxer,
   token: "emanresu_ymmud_dummy_password",
-  request_body: { id: 1 },
+  request_body: { 
+    id: 1, 
+    token: "emanresu_ymmud_dummy_password",
+  },
   expected_response: {
     code: 201,
     message: 'removed',
     boxer: Unit_Repository_Scenario4.boxer
+  }
+}
+
+// COMPONENT FAIL SCENARIOS
+
+// GetBoxer
+const B1_Scenario2_Fail1 = {
+  request_body: { id: 2 },
+  boxer: Unit_Repository_Scenario1.boxer,
+  standing_and_matches: {
+    standing: { boxer: null, winCount: 0, lossCount: 0, score: 0 },
+    matches: []
+  },
+  expected_response: {
+    code: 404,
+    message: 'not_found',
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 },
+    standingAndMatches: {
+      standing: { boxer: null, winCount: 0, lossCount: 0, score: 0 },
+      matches: []
+    }
+  }
+}
+
+// EditBoxer
+const B2_Scenario2_Fail1 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    id: 2,
+    weight: 110,
+    token: "emanresu_ymmud_dummy_password",
+  },
+  expected_response: {
+    code: 404,
+    message: 'not_found',
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
+}
+
+const B2_Scenario2_Fail2 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    id: 1,
+    weight: -110,
+    token: "emanresu_ymmud_dummy_password",
+  },
+  expected_response: {
+    code: 400,
+    message: 'bad_request',
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
+}
+
+const B2_Scenario2_Fail3 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    id: 1,
+    weight: 110,
+    token: "lorem_ipsum",
+  },
+  expected_response: {
+    code: 403,
+    message: 'forbidden',
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
+}
+
+// AddBoxer
+const B3_Scenario2_Fail1 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    birthDate: -772804800,
+    height: 178,
+    weight: 87,
+    token: "emanresu_ymmud_dummy_password",
+  },
+  new_boxer: {
+    id: Unit_Repository_Scenario1.boxer.id + 1,
+    fullName: "",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  },
+  expected_response: {
+    code: 400,
+    message: 'bad_request',
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
+}
+
+const B3_Scenario2_Fail2 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: -87,
+    token: "emanresu_ymmud_dummy_password",
+  },
+  new_boxer: {
+    id: Unit_Repository_Scenario1.boxer.id + 1,
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: -87
+  },
+  expected_response: {
+    code: 400,
+    message: 'bad_request',
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
+}
+
+const B3_Scenario2_Fail3 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: {
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87,
+    token: "lorem_ipsum",
+  },
+  new_boxer: {
+    id: Unit_Repository_Scenario1.boxer.id + 1,
+    fullName: "Rocky Balboa",
+    birthDate: -772804800,
+    height: 178,
+    weight: 87
+  },
+  expected_response: {
+    code: 403,
+    message: 'forbidden',
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
+}
+
+// RemoveBoxer
+const B4_Scenario2_Fail1 = {
+  boxer: Unit_Repository_Scenario4.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: { 
+    id: 2,
+    token: "emanresu_ymmud_dummy_password",
+  },
+  expected_response: {
+    code: 404,
+    message: 'not_found',
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+  }
+}
+
+const B4_Scenario2_Fail2 = {
+  boxer: Unit_Repository_Scenario4.boxer,
+  token: "emanresu_ymmud_dummy_password",
+  request_body: { 
+    id: 1,
+    token: "lorem_ipsum",
+  },
+  expected_response: {
+    code: 403,
+    message: 'forbidden',
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
   }
 }
 
@@ -464,6 +667,15 @@ module.exports = {
   B2_Scenario1_Variation1,
   B3_Scenario1_Variation1,
   B4_Scenario1_Variation1,
+  B1_Scenario2_Fail1,
+  B2_Scenario2_Fail1,
+  B2_Scenario2_Fail2,
+  B2_Scenario2_Fail3,
+  B3_Scenario2_Fail1,
+  B3_Scenario2_Fail2,
+  B3_Scenario2_Fail3,
+  B4_Scenario2_Fail1,
+  B4_Scenario2_Fail2,
   Unit_StandingsServiceGateway_Scenario1,
   Unit_StandingsServiceGateway_Scenario2_Fail1,
   Unit_AuthServiceGateway_Scenario1,

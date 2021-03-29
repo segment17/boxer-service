@@ -47,6 +47,7 @@ message AddBoxerRequest {
   int64 birthDate = 2;
   int32 height = 3;
   double weight = 4;
+  string token = 5;
 }
 
 message AddBoxerResponse {
@@ -61,6 +62,7 @@ message EditBoxerRequest {
   optional int64 birthDate = 3;
   optional int32 height = 4;
   optional double weight = 5;
+  string token = 6;
 }
 
 message EditBoxerResponse {
@@ -71,6 +73,7 @@ message EditBoxerResponse {
 
 message RemoveBoxerRequest {
   int32 id = 1;
+  string token = 2;
 }
 
 message RemoveBoxerResponse {

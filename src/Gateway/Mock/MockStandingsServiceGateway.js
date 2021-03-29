@@ -11,21 +11,24 @@ class MockStandingsServiceGateway extends StandingsServiceGateway {
     console.log("Mock get call to StandingsServiceGateway with id: " + id);
     for (let i = 0; i < this.standingsAndMatchesList.length; i++) {
       const element = this.standingsAndMatchesList[i];
-      console.log(element);
-      if (element.standing.boxer.id == id)
+      if (element.standing && element.standing.boxer && element.standing.boxer.id == id)
         return {
           code: 200,
+          message: "success",
           standingAndMatches: element
         }
     }
     return {
       code: 404,
-      standingAndMatches: null
+      message: "not_found",
+      standingAndMatches: {
+        standing: { boxer: null, winCount: 0, lossCount: 0, score: 0 },
+        matches: []
+      }
     }
   }
 
   async setupAddStandingAndMatches(obj) {
-    console.log(obj);
     this.standingsAndMatchesList.push(obj);
     return;
   }

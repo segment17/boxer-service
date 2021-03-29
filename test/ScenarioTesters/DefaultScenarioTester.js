@@ -2,6 +2,7 @@ const { Given, When, Then, Before } = require('@cucumber/cucumber');
 const TestFunctions = require('../TestFunctions');
 const globalObjects = require('../../index');
 const assert = require('assert');
+const { ifError } = require('assert');
 
 class DefaultScenarioTester {
 
@@ -66,34 +67,40 @@ class DefaultScenarioTester {
     assert(response != null);
     assert(response.code === expectedResponse.code);
     assert.strictEqual(response.message, expectedResponse.message);
-    assert(response.boxer.id === expectedResponse.boxer.id);
-    assert(response.boxer.fullName === expectedResponse.boxer.fullName);
-    // Strict equal fails because JavaScript BigInt is at max 2^53-1 however int64 is bigger than that. So whilst converting to protobuf data, it is converted to string. And String != BigInt
-    assert.equal(response.boxer.birthDate, expectedResponse.boxer.birthDate);
-    assert(response.boxer.height === expectedResponse.boxer.height);
-    assert(response.boxer.weight === expectedResponse.boxer.weight);
+    if(expectedResponse.boxer && expectedResponse.boxer.id === 0) {
+      assert(response.boxer.id === 0);
+    } else {
+      assert(response.boxer.id === expectedResponse.boxer.id);
+      assert(response.boxer.fullName === expectedResponse.boxer.fullName);
+      // Strict equal fails because JavaScript BigInt is at max 2^53-1 however int64 is bigger than that. So whilst converting to protobuf data, it is converted to string. And String != BigInt
+      assert.equal(response.boxer.birthDate, expectedResponse.boxer.birthDate);
+      assert(response.boxer.height === expectedResponse.boxer.height);
+      assert(response.boxer.weight === expectedResponse.boxer.weight);
 
-    if (expectedResponse.standingAndMatches != undefined) {
-      let standingAndMatches = response.standingAndMatches;
-      assert(standingAndMatches != undefined && standingAndMatches != null);
-
-      let standing = standingAndMatches.standing;
-      assert(standing != undefined && standing != null);
-      assert.strictEqual(standing.boxer.id, expectedResponse.boxer.id);
-      assert(standing.winCount == expectedResponse.standingAndMatches.standing.winCount);
-      assert(standing.lossCount == expectedResponse.standingAndMatches.standing.lossCount);
-      assert(standing.score == expectedResponse.standingAndMatches.standing.score);
-
-      let matches = standingAndMatches.matches;
-      assert(matches != undefined && matches != null);
-      assert(matches.length > 2);
-      for (let index = 0; index < matches.length; index++) {
-        const element = matches[index];
-        assert(element.homeBoxer.id == expectedResponse.boxer.id
-          || element.awayBoxer.id == expectedResponse.boxer.id);
+      if (expectedResponse.standingAndMatches != undefined) {
+        let standingAndMatches = response.standingAndMatches;
+        assert(standingAndMatches != undefined && standingAndMatches != null);
+  
+        let standing = standingAndMatches.standing;
+        assert(standing != undefined && standing != null);
+        if(standing.boxer) {
+          assert.strictEqual(standing.boxer.id, expectedResponse.boxer.id);
+        }
+        assert(standing.winCount == expectedResponse.standingAndMatches.standing.winCount);
+        assert(standing.lossCount == expectedResponse.standingAndMatches.standing.lossCount);
+        assert(standing.score == expectedResponse.standingAndMatches.standing.score);
+  
+        let matches = standingAndMatches.matches;
+        assert(matches != undefined && matches != null);
+        if(matches.length > 2) {
+          for (let index = 0; index < matches.length; index++) {
+            const element = matches[index];
+            assert(element.homeBoxer.id == expectedResponse.boxer.id
+              || element.awayBoxer.id == expectedResponse.boxer.id);
+          }
+        }
       }
-    }
-
+    }    
   }
 
   async thereIsAStandingAndMatchesSuchAs(dataSource) {
@@ -149,8 +156,8 @@ class DefaultScenarioTester {
     assert(expected.weight == actual.weight);
   }
 
-  assertionsForDBHasNoBoxerSuchAs(expected, actual) {
-    assert(Object.entries(actual).length === 0);
+  assertionsForDBHasNoBoxerSuchAs(actual) {
+    assert(actual.code === 404);
   }
 }
 

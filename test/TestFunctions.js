@@ -2,8 +2,8 @@ const TestData = require('./TestData');
 const globalObjects = require('../index');
 
 function extractSpecifiedObjectData(dataSource) {
-  const [variation, object] = dataSource.split(".");
-  return TestData[variation][object];
+  const [variation, object, second_object] = dataSource.split(".");
+  return second_object ? TestData[variation][object][second_object] : TestData[variation][object];
 }
 
 function extractTags(scenario) {
