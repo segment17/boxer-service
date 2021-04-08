@@ -7,43 +7,15 @@ class MockBoxerRepository extends BoxerRepository {
     this.boxers = [];
   }
 
-  checkAttributes(fullName, birthDate, height, weight) {
-    if(fullName === "") {
-      return false;
-    }
-
-    if(birthDate === "") {
-      return false;
-    }
-
-    if(height && height <= 0) {
-      return false;
-    }
-
-    if(weight && weight <= 0) {
-      return false;
-    }
-
-    return true;
-  }
-
   async runQueryForGetBoxerWithId(id) {
     console.log("Mock read from Boxer mock data with id: " + id);
     for (let i = 0; i < this.boxers.length; i++) {
       const element = this.boxers[i];
       if (element.id == id) {
-        return {
-          code: 200,
-          message: "success",
-          boxer: element
-        };
+        return [element];
       }
     }
-    return {
-      code: 404,
-      message: "not_found",
-      boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
-    };
+    return [];
   }
 
   async runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight) {
@@ -55,20 +27,8 @@ class MockBoxerRepository extends BoxerRepository {
       height: height,
       weight: weight
     }
-    if(!this.checkAttributes(fullName, birthDate, height, weight)) {
-      newBoxer = { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 };
-      return {
-        code: 400,
-        message: "bad_request",
-        boxer: newBoxer
-      };
-    }
     this.boxers.push(newBoxer);
-    return {
-      code: 201,
-      message: "created",
-      boxer: newBoxer
-    };
+    return [newBoxer];
   }
 
   async runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight) {
@@ -81,34 +41,18 @@ class MockBoxerRepository extends BoxerRepository {
       }
     }
     if(index) {
-      if(this.checkAttributes(fullName, birthDate, height, weight)) {
-        editedBoxer = {
-          id: id,
-          fullName: fullName ? fullName : editedBoxer.fullName,
-          birthDate: birthDate ? birthDate : editedBoxer.birthDate,
-          height: height ? height : editedBoxer.height,
-          weight: weight ? weight : editedBoxer.weight
-        }
-        this.boxers[index] = editedBoxer;
-        return {
-          code: 201,
-          message: "edited",
-          boxer: editedBoxer
-        };
+      editedBoxer = {
+        id: id,
+        fullName: fullName ? fullName : editedBoxer.fullName,
+        birthDate: birthDate ? birthDate : editedBoxer.birthDate,
+        height: height ? height : editedBoxer.height,
+        weight: weight ? weight : editedBoxer.weight
       }
       this.boxers[index] = editedBoxer;
-      return {
-        code: 400,
-        message: "bad_request",
-        boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
-      };
+      return [editedBoxer];
     }
     this.boxers[index] = editedBoxer;
-    return {
-      code: 404,
-      message: "not_found",
-      boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
-    };
+    return [];
   }
 
   async runQueryForRemoveBoxerWithId(id) {
@@ -120,17 +64,9 @@ class MockBoxerRepository extends BoxerRepository {
       }
     }
     if(removedBoxer.id === 0) {
-      return {
-        code: 404,
-        message: "not_found",
-        boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
-      };
+      return [];
     }
-    return {
-      code: 201,
-      message: "removed",
-      boxer: removedBoxer
-    };
+    return [removedBoxer];
   }
 
   async setupAddBoxer(boxer) {

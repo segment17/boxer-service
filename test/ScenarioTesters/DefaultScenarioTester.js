@@ -63,6 +63,11 @@ class DefaultScenarioTester {
     const expectedResponse = TestFunctions.extractSpecifiedObjectData(expectedResponseSource);
     await TestFunctions.waitUntilResult();
 
+    console.log("EXPECTED:");
+    console.log(expectedResponse);
+    console.log("ACTUAL:");
+    console.log(globalObjects.result);
+
     const response = globalObjects.result;
     assert(response != null);
     assert(response.code === expectedResponse.code);
@@ -129,19 +134,19 @@ class DefaultScenarioTester {
 
   async dbHasBoxerSuchAs(dataSource) {
     const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.result = null;
-    globalObjects.client.GetBoxerWithStandingAndMatches({id: expected.id}, (err, res) => {
+    globalObjects.result = globalObjects.unreturnableContentForResult;
+    await globalObjects.client.GetBoxerWithStandingAndMatches({id: expected.id}, (err, res) => {
       globalObjects.result = res;
     });
     await TestFunctions.waitUntilResult();
-    assert(globalObjects.result.code == 200);
+    assert(globalObjects.result.code == 201);
     this.assertionsForDBHasBoxerSuchAs(expected, globalObjects.result.boxer);
   }
 
   async dbHasNoBoxerSuchAs(dataSource) {
     const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.result = null;
-    globalObjects.client.GetBoxerWithStandingAndMatches({id: expected.id}, (err, res) => {
+    globalObjects.result = globalObjects.unreturnableContentForResult;
+    await globalObjects.client.GetBoxerWithStandingAndMatches({id: expected.id}, (err, res) => {
       globalObjects.result = res;
     });
     await TestFunctions.waitUntilResult();
@@ -154,10 +159,6 @@ class DefaultScenarioTester {
     assert(expected.birthDate == actual.birthDate);
     assert(expected.height == actual.height);
     assert(expected.weight == actual.weight);
-  }
-
-  assertionsForDBHasNoBoxerSuchAs(actual) {
-    assert(actual.code === 404);
   }
 }
 

@@ -86,21 +86,6 @@ Feature: Boxer Repository Unit Feature
     Examples:
       | boxer                                 | repository_function    | edit_body                                 | expected_data                                 | edited_boxer                                        |
       | Unit_Repository_Scenario6_Fail1.boxer | editBoxerWithGivenData | Unit_Repository_Scenario6_Fail1.edit_body | Unit_Repository_Scenario6_Fail1.expected_data | Unit_Repository_Scenario6_Fail1.expected_data.boxer |
-      | Unit_Repository_Scenario6_Fail2.boxer | editBoxerWithGivenData | Unit_Repository_Scenario6_Fail2.edit_body | Unit_Repository_Scenario6_Fail2.expected_data | Unit_Repository_Scenario6_Fail1.expected_data.boxer |
-
-  @Unit_Repository_Scenario7
-  Scenario Outline: Add a new boxer to DB failure
-    #Set up mock repository or real database
-    Given the latest boxer in DB is such as "<existing_boxer>"
-    #Repository.repository_function()
-    When "<repository_function>" is invoked with "<data_chunk>"
-    #Check
-    Then returned data is as "<expected_data>"
-    And DB has boxer such as "<new_boxer>"
-
-    Examples:
-      | existing_boxer                                 | repository_function   | data_chunk                                 | expected_data                                 | new_boxer                                           |
-      | Unit_Repository_Scenario7_Fail1.existing_boxer | addBoxerWithGivenData | Unit_Repository_Scenario7_Fail1.data_chunk | Unit_Repository_Scenario7_Fail1.expected_data | Unit_Repository_Scenario7_Fail1.expected_data.boxer |
 
   @Unit_Repository_Scenario8
   Scenario Outline: Remove a boxer from Boxer Repository failure

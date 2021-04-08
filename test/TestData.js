@@ -127,7 +127,7 @@ const Unit_Repository_Scenario6_Fail1 = {
   }
 }
 
-const Unit_Repository_Scenario6_Fail2 = {
+/* const Unit_Repository_Scenario6_Fail2 = {
   boxer: {
     id: 1,
     fullName: "Mike Tyson",
@@ -144,9 +144,9 @@ const Unit_Repository_Scenario6_Fail2 = {
     message: "bad_request",
     boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
   }
-}
+} */
 
-const Unit_Repository_Scenario7_Fail1 = {
+/* const Unit_Repository_Scenario7_Fail1 = {
   existing_boxer: Unit_Repository_Scenario1.boxer,
   data_chunk: {
     fullName: "",
@@ -159,9 +159,9 @@ const Unit_Repository_Scenario7_Fail1 = {
     message: "bad_request",
     boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
   }
-}
+} */
 
-const Unit_Repository_Scenario7_Fail2 = {
+/* const Unit_Repository_Scenario7_Fail2 = {
   existing_boxer: Unit_Repository_Scenario1.boxer,
   data_chunk: {
     fullName: "Rocky Balboa",
@@ -174,7 +174,7 @@ const Unit_Repository_Scenario7_Fail2 = {
     message: "bad_request",
     boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
   }
-}
+} */
 
 const Unit_Repository_Scenario8_Fail1 = {
   boxer: {
@@ -659,9 +659,9 @@ module.exports = {
   Unit_Repository_Scenario4,
   Unit_Repository_Scenario5_Fail1,
   Unit_Repository_Scenario6_Fail1,
-  Unit_Repository_Scenario6_Fail2,
-  Unit_Repository_Scenario7_Fail1,
-  Unit_Repository_Scenario7_Fail2,
+  //Unit_Repository_Scenario6_Fail2,
+  //Unit_Repository_Scenario7_Fail1,
+  //Unit_Repository_Scenario7_Fail2,
   Unit_Repository_Scenario8_Fail1,
   B1_Scenario1_Variation1,
   B2_Scenario1_Variation1,
