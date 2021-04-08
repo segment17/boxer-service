@@ -1,5 +1,13 @@
 class BoxerRepository {
 
+  constructor() {
+    this.tableName = 'boxers';
+  }
+
+  enterIntegratedTestingEnvironment() {
+    this.tableName = 'test_boxers';
+  }
+
   async getBoxerWithId(id) {
     let queryResult = await this.runQueryForGetBoxerWithId(id);
     return queryResult;
@@ -52,6 +60,19 @@ class BoxerRepository {
     console.log("Real write query for mock data to Boxer DB with id: " + id);
     return;
   }
+
+    //During testing only
+    async cleanUp() {
+      return new Promise((resolve, reject) => {
+        connection.query(`DELETE FROM test_boxers;`, (error, result) => {
+          if (error) {
+            console.log(error);
+            resolve(null);
+          }
+          resolve(result);
+        });
+      });
+    }
 }
 
 module.exports = BoxerRepository;

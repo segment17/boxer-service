@@ -18,8 +18,9 @@ const boxerservice_package = grpc.loadPackageDefinition(packageDefinition).boxer
 class GlobalObjects {
 
   constructor() {
+    this.unreturnableContentForResult = "globalObjectsUnreturnableContent";
     this.done = false;
-    this.result = null; // Result object that will be filled during tests.
+    this.result = this.unreturnableContentForResult; // Result object that will be filled during tests.
     this.controller = new Controller();
     this.mediator = new Mediator();
     this.boxerRepository = new BoxerRepository();
@@ -56,7 +57,7 @@ class GlobalObjects {
   }
 
   reset() {
-    this.result = null; // Result object that will be filled during tests.
+    this.result = this.unreturnableContentForResult; // Result object that will be filled during tests.
     this.controller = new Controller();
     this.mediator = new Mediator();
     this.boxerRepository = new BoxerRepository();
@@ -69,6 +70,10 @@ class GlobalObjects {
     } else {
       this.client = new boxerservice_package.BoxerService("0.0.0.0:50001", grpc.credentials.createInsecure());
     }
+  }
+
+  async cleanUp() {
+    await this.boxerRepository.cleanUp();
   }
 
 }
