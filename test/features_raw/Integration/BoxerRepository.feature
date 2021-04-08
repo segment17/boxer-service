@@ -1,5 +1,5 @@
 @Integration @Repository @BoxerRepository
-Feature: Boxer Repository Unit Feature
+Feature: Boxer Repository Integration Feature
 
   #SUCCESS SCENARIOS
 
