@@ -10,19 +10,19 @@ class BoxerRepository {
 
   async getBoxerWithId(id) {
     let queryResult = await this.runQueryForGetBoxerWithId(id);
-    return queryResult;
+    let response = this.extractResponseFromQueryResult(queryResult, "success");
+    return response;
   }
 
-  // runQueryFor[function name]
   async runQueryForGetBoxerWithId(id) {
     console.log("Real read query to Boxer DB with id: " + id);
     return {};
   }
 
   async addBoxerWithGivenData(fullName, birthDate, height, weight) {
-    // Mysql insert returns the lastest id
     let queryResult = await this.runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight);
-    return queryResult;
+    let response = this.extractResponseFromQueryResult(queryResult, "created");
+    return response;
   }
 
   async runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight) {
@@ -31,9 +31,9 @@ class BoxerRepository {
   }
 
   async editBoxerWithGivenData(id, fullName, birthDate, height, weight) {
-    // Mysql insert returns the lastest id
     let queryResult = await this.runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight);
-    return queryResult;
+    let response = this.extractResponseFromQueryResult(queryResult, "edited");
+    return response;
   }
 
   async runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight) {
@@ -42,9 +42,9 @@ class BoxerRepository {
   }
 
   async removeBoxerWithId(id) {
-    // Mysql insert returns the lastest id
     let queryResult = await this.runQueryForRemoveBoxerWithId(id);
-    return queryResult;
+    let response = this.extractResponseFromQueryResult(queryResult, "removed");
+    return response;
   }
 
   async runQueryForRemoveBoxerWithId(id) {
@@ -61,18 +61,33 @@ class BoxerRepository {
     return;
   }
 
-    //During testing only
-    async cleanUp() {
-      return new Promise((resolve, reject) => {
-        connection.query(`DELETE FROM test_boxers;`, (error, result) => {
-          if (error) {
-            console.log(error);
-            resolve(null);
-          }
-          resolve(result);
-        });
+  //During testing only
+  async cleanUp() {
+    return new Promise((resolve, reject) => {
+      connection.query(`DELETE FROM test_boxers;`, (error, result) => {
+        if (error) {
+          console.log(error);
+          resolve(null);
+        }
+        resolve(result);
       });
+    });
+  }
+
+  extractResponseFromQueryResult(queryResult, successMessage) {
+    if (queryResult.length == 0) {
+      return {
+        code: 404,
+        message: "not_found",
+        boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+      };
     }
+    return {
+      code: 201,
+      message: successMessage,
+      boxer: queryResult[0]
+    };
+  }
 }
 
 module.exports = BoxerRepository;

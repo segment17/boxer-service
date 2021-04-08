@@ -48,7 +48,7 @@ class BoxerRepositoryScenarioTester extends DefaultScenarioTester {
   async dbHasNoBoxerSuchAs(dataSource) {
     const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
     let response = await globalObjects.boxerRepository.getBoxerWithId(expected.id);
-    this.assertionsForDBHasNoBoxerSuchAs(response);
+    assert(response.code == 404);
   }
 
   async returnedDataIsAs(dataSource) {
