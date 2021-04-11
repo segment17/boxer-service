@@ -36,6 +36,15 @@ class DefaultScenarioTester {
     });
   }
 
+  async latestBoxerInDBIsSuchAs(dataSource) {
+    console.log("controller.mediator.BoxerRepository is getting mock data.");
+    const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
+    // globalObjects.controller.mediator.boxerRepository.setupAddBoxer(specifiedBoxer);
+    await globalObjects.client.SetupAddBoxer({boxer: specifiedBoxer}, function (err, res) {
+      globalObjects.done = true;
+    });
+  }
+
 
 
   endpointIsCalledWithRequestBody(endpoint, requestBodySource) {

@@ -53,6 +53,26 @@ class BoxerRepository {
     });
   }
 
+  buildUpdateQuery(id, fullName, birthDate, height, weight) {
+    console.log("weight");
+    console.log(weight);
+    let query = `UPDATE ${this.tableName} SET `;
+    if (fullName != undefined) {
+      query += `fullName = '${fullName}' `;
+    }
+    if (birthDate != undefined) {
+      query += `birthDate = ${birthDate} `;
+    }
+    if (height != undefined) {
+      query += `height = ${height} `;
+    }
+    if (weight != undefined) {
+      query += `weight = ${weight} `;
+    }
+    query += `WHERE id = ${id};`;
+    return query;
+  }
+
   async editBoxerWithGivenData(id, fullName, birthDate, height, weight) {
     let queryResult = await this.runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight);
     let response = this.extractResponseFromQueryResult(queryResult, 201, "edited");
@@ -60,8 +80,21 @@ class BoxerRepository {
   }
 
   async runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight) {
-    console.log("Real write query to Boxer DB with: " + id + fullName + birthDate + height + weight);
-    return null;
+    return new Promise((resolve, reject) => {
+      connection.query(this.buildUpdateQuery(id, fullName, birthDate, height, weight), (error, result) => {
+        if (error) {
+          console.log(error);
+          resolve(null);
+        }
+        connection.query(`SELECT * FROM ${this.tableName} WHERE id = ${id};`, (error, result2) => {
+          if (error) {
+            console.log(error);
+            resolve(null);
+          }
+          resolve(result2);
+        });
+      });
+    });
   }
 
   async removeBoxerWithId(id) {
@@ -72,20 +105,27 @@ class BoxerRepository {
 
   async runQueryForRemoveBoxerWithId(id) {
     return new Promise((resolve, reject) => {
-      connection.query(`DELETE FROM ${this.tableName} WHERE id = ${id};`, (error, result) => {
+      connection.query(`SELECT * FROM ${this.tableName} WHERE id = ${id};`, (error, result) => {
         if (error) {
           console.log(error);
           resolve(null);
         }
-        resolve(result);
+        connection.query(`DELETE FROM ${this.tableName} WHERE id = ${id};`, (error, result2) => {
+          if (error) {
+            console.log(error);
+            resolve(null);
+          }
+          resolve(result);
+        });
       });
+
     });
   }
 
 
   async setupAddBoxer(boxer) {
     return new Promise((resolve, reject) => {
-      connection.query(`INSERT INTO test_boxers (id, fullName, birthDate, height, weight) VALUES (${boxer.id}, '${boxer.fullName}asdasd', ${boxer.birthDate}, ${boxer.height}, ${boxer.weight});`, (error, result) => {
+      connection.query(`INSERT INTO test_boxers (id, fullName, birthDate, height, weight) VALUES (${boxer.id}, '${boxer.fullName}', ${boxer.birthDate}, ${boxer.height}, ${boxer.weight});`, (error, result) => {
         if (error) {
           console.log(error);
           resolve(null);
@@ -121,15 +161,15 @@ class BoxerRepository {
 
   //During testing only
   async cleanUp() {
-    // return new Promise((resolve, reject) => {
-    //   connection.query(`DELETE FROM test_boxers;`, (error, result) => {
-    //     if (error) {
-    //       console.log(error);
-    //       resolve(null);
-    //     }
-    //     resolve(result);
-    //   });
-    // });
+    return new Promise((resolve, reject) => {
+      connection.query(`DELETE FROM test_boxers;`, (error, result) => {
+        if (error) {
+          console.log(error);
+          resolve(null);
+        }
+        resolve(result);
+      });
+    });
   }
 
   extractResponseFromQueryResult(queryResult, successCode, successMessage) {

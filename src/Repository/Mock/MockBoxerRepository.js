@@ -19,6 +19,7 @@ class MockBoxerRepository extends BoxerRepository {
   }
 
   async runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight) {
+    
     let newBoxerId = this.boxers[this.boxers.length - 1].id + 1;
     let newBoxer = {
       id: newBoxerId,
@@ -74,8 +75,13 @@ class MockBoxerRepository extends BoxerRepository {
     return null;
   }
 
+  async getLatestId() {
+    return this.boxers[this.boxers.length - 1].id;
+  }
+
   async setupAddLatest(boxer) {
     this.setupAddBoxer(boxer);
+    
     return null;
   }
 }

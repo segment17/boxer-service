@@ -59,7 +59,7 @@ const Unit_Repository_Scenario3 = {
     code: "201",
     message: "created",
     boxer: {
-      id: Unit_Repository_Scenario1.boxer.id + 1,
+      id: Unit_Repository_Scenario1.boxer + 1,
       fullName: "Rocky Balboa",
       birthDate: -772804800,
       height: 178,
@@ -127,7 +127,7 @@ const Unit_Repository_Scenario6_Fail1 = {
   }
 }
 
-/* const Unit_Repository_Scenario6_Fail2 = {
+const Unit_Repository_Scenario6_Fail2 = {
   boxer: {
     id: 1,
     fullName: "Mike Tyson",
@@ -144,7 +144,7 @@ const Unit_Repository_Scenario6_Fail1 = {
     message: "bad_request",
     boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
   }
-} */
+} 
 
 /* const Unit_Repository_Scenario7_Fail1 = {
   existing_boxer: Unit_Repository_Scenario1.boxer,
@@ -660,7 +660,7 @@ module.exports = {
   Unit_Repository_Scenario4,
   Unit_Repository_Scenario5_Fail1,
   Unit_Repository_Scenario6_Fail1,
-  //Unit_Repository_Scenario6_Fail2,
+  Unit_Repository_Scenario6_Fail2,
   //Unit_Repository_Scenario7_Fail1,
   //Unit_Repository_Scenario7_Fail2,
   Unit_Repository_Scenario8_Fail1,
