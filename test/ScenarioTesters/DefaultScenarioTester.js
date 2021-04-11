@@ -139,7 +139,7 @@ class DefaultScenarioTester {
       globalObjects.result = res;
     });
     await TestFunctions.waitUntilResult();
-    assert(globalObjects.result.code == 201);
+    assert(globalObjects.result.code == 200);
     this.assertionsForDBHasBoxerSuchAs(expected, globalObjects.result.boxer);
   }
 

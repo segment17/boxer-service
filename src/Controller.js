@@ -42,6 +42,7 @@ class Controller {
 
   async guardEditBoxer(request) {
     // Do validation here
+    
     if(typeof request.token !== "string" || request.token === "" || request.token === null || request.token === undefined
       || isNaN(request.id) || request.id < 0 || request.id === null || request.id === undefined
       || (request.fullName !== null && request.fullName !== undefined && (typeof request.fullName !== "string" || request.fullName === ""))
@@ -55,7 +56,7 @@ class Controller {
         boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
       }
     }
-    let response = await this.mediator.editBoxer(request.token, request.id, fullName, birthDate, height, weight);
+    let response = await this.mediator.editBoxer(request.token, request.id, request.fullName, request.birthDate, request.height, request.weight);
     // Do validation here
     return response;
 

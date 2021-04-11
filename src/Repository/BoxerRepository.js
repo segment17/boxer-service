@@ -10,7 +10,7 @@ class BoxerRepository {
 
   async getBoxerWithId(id) {
     let queryResult = await this.runQueryForGetBoxerWithId(id);
-    let response = this.extractResponseFromQueryResult(queryResult, "success");
+    let response = this.extractResponseFromQueryResult(queryResult, 200, "success");
     return response;
   }
 
@@ -21,7 +21,7 @@ class BoxerRepository {
 
   async addBoxerWithGivenData(fullName, birthDate, height, weight) {
     let queryResult = await this.runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight);
-    let response = this.extractResponseFromQueryResult(queryResult, "created");
+    let response = this.extractResponseFromQueryResult(queryResult, 201, "created");
     return response;
   }
 
@@ -32,7 +32,7 @@ class BoxerRepository {
 
   async editBoxerWithGivenData(id, fullName, birthDate, height, weight) {
     let queryResult = await this.runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight);
-    let response = this.extractResponseFromQueryResult(queryResult, "edited");
+    let response = this.extractResponseFromQueryResult(queryResult, 201, "edited");
     return response;
   }
 
@@ -43,7 +43,7 @@ class BoxerRepository {
 
   async removeBoxerWithId(id) {
     let queryResult = await this.runQueryForRemoveBoxerWithId(id);
-    let response = this.extractResponseFromQueryResult(queryResult, "removed");
+    let response = this.extractResponseFromQueryResult(queryResult, 201, "removed");
     return response;
   }
 
@@ -74,7 +74,7 @@ class BoxerRepository {
     // });
   }
 
-  extractResponseFromQueryResult(queryResult, successMessage) {
+  extractResponseFromQueryResult(queryResult, successCode, successMessage) {
     if (queryResult.length == 0) {
       return {
         code: 404,
@@ -83,7 +83,7 @@ class BoxerRepository {
       };
     }
     return {
-      code: 201,
+      code: successCode,
       message: successMessage,
       boxer: queryResult[0]
     };

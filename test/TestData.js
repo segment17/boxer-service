@@ -427,6 +427,7 @@ const B2_Scenario1_Variation1 = {
   token: "emanresu_ymmud_dummy_password",
   request_body: {
     id: 1,
+    fullName: null,
     weight: 110,
     token: "emanresu_ymmud_dummy_password",
   },
