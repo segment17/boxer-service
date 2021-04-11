@@ -4,6 +4,7 @@ const ScenarioTesterFactory = require('../../test/ScenarioTesters/ScenarioTester
 const globalObjects = require('../../index');
 
 Before(async function (scenario) {
+  globalObjects.cleanUp();
   globalObjects.done = false;
   globalObjects.setScenarioTester(ScenarioTesterFactory.createScenarioTester(scenario));
   globalObjects.scenarioTester.before();
