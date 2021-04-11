@@ -25,6 +25,9 @@ function isScenarioUnit(scenario, layer) {
 function isScenarioIntegration(scenario, layer) {
   // layer can be "Mediator", "Gateway", "Repository" or one of the domain object tags
   const tags = extractTags(scenario);
+  if (layer == null) {
+    return tags.includes('@Integration');
+  }
   return tags.includes('@Integration') && tags.includes('@' + layer);
 }
 

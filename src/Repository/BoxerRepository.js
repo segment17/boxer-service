@@ -1,3 +1,6 @@
+const { connection } = require('./DB');
+const globalObjects = require('../../index');
+
 class BoxerRepository {
 
   constructor() {
@@ -15,8 +18,15 @@ class BoxerRepository {
   }
 
   async runQueryForGetBoxerWithId(id) {
-    console.log("Real read query to Boxer DB with id: " + id);
-    return {};
+    return new Promise((resolve, reject) => {
+      connection.query(`SELECT * FROM ${this.tableName} WHERE id = ${id};`, (error, result) => {
+        if (error) {
+          console.log(error);
+          resolve(null);
+        }
+        resolve(result);
+      });
+    });
   }
 
   async addBoxerWithGivenData(fullName, birthDate, height, weight) {
@@ -26,8 +36,21 @@ class BoxerRepository {
   }
 
   async runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight) {
-    console.log("Real write query to Boxer DB with: " + fullName + birthDate + height + weight);
-    return {};
+    return new Promise((resolve, reject) => {
+      connection.query(`INSERT INTO ${this.tableName} (fullName, birthDate, height, weight) VALUES ('${fullName}', ${birthDate}, ${height}, ${weight});`, (error, result) => {
+        if (error) {
+          console.log(error);
+          resolve(null);
+        }
+        connection.query(`SELECT * FROM ${this.tableName} ORDER BY id DESC LIMIT 1;`, (error, result) => {
+          if (error) {
+            console.log(error);
+            resolve(null);
+          }
+          resolve(result);
+        });
+      });
+    });
   }
 
   async editBoxerWithGivenData(id, fullName, birthDate, height, weight) {
@@ -38,7 +61,7 @@ class BoxerRepository {
 
   async runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight) {
     console.log("Real write query to Boxer DB with: " + id + fullName + birthDate + height + weight);
-    return {};
+    return null;
   }
 
   async removeBoxerWithId(id) {
@@ -48,17 +71,52 @@ class BoxerRepository {
   }
 
   async runQueryForRemoveBoxerWithId(id) {
-    console.log("Real remove query to Boxer DB with id: " + id);
-    return {};
+    return new Promise((resolve, reject) => {
+      connection.query(`DELETE FROM ${this.tableName} WHERE id = ${id};`, (error, result) => {
+        if (error) {
+          console.log(error);
+          resolve(null);
+        }
+        resolve(result);
+      });
+    });
   }
 
-  async setupAddGreeeting(boxer) {
-    return null;
+
+  async setupAddBoxer(boxer) {
+    return new Promise((resolve, reject) => {
+      connection.query(`INSERT INTO test_boxers (id, fullName, birthDate, height, weight) VALUES (${boxer.id}, '${boxer.fullName}asdasd', ${boxer.birthDate}, ${boxer.height}, ${boxer.weight});`, (error, result) => {
+        if (error) {
+          console.log(error);
+          resolve(null);
+        }
+        resolve(result);
+      });
+    });
+  }
+
+  async getLatestId() {
+    return new Promise((resolve, reject) => {
+      connection.query(`SELECT LAST_INSERT_ID();`, (error, result) => {
+        if (error) {
+          console.log(error);
+          resolve(null);
+        }
+        resolve(result[0]['LAST_INSERT_ID()']);
+      });
+    });
   }
 
   async setupAddLatest(boxer) {
-    console.log("Real write query for mock data to Boxer DB with id: " + id);
-    return;
+    return new Promise((resolve, reject) => {
+      connection.query(`INSERT INTO test_boxers (fullName, birthDate, height, weight) VALUES ('${boxer.fullName}', ${boxer.birthDate}, ${boxer.height}, ${boxer.weight});`, (error, result) => {
+        if (error) {
+          console.log(error);
+          resolve(null);
+        }
+        resolve(result);
+      });
+    });
   }
 
   //During testing only

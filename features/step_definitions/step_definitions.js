@@ -53,7 +53,7 @@ Then('DB does not have boxer such as {string}', async function (boxerDataSource)
 });
 
 Given('the latest boxer in DB is such as {string}', async function (boxerDataSource) {
-  await globalObjects.scenarioTester.thereIsABoxerSuchAs(boxerDataSource);
+  await globalObjects.scenarioTester.latestBoxerInDBIsSuchAs(boxerDataSource);
 });
 
 Given('there are matches such as {string}', function (matchesDataSource) {

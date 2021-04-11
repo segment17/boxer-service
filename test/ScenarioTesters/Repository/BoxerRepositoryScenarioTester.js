@@ -12,6 +12,14 @@ class BoxerRepositoryScenarioTester extends DefaultScenarioTester {
     globalObjects.done = true;
   }
 
+  async latestBoxerInDBIsSuchAs(dataSource) {
+    console.log("controller.mediator.BoxerRepository is getting mock data.");
+    const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
+    globalObjects.boxerRepository.setupAddLatest(specifiedBoxer);
+    this.lastInsertId = await globalObjects.boxerRepository.getLatestId();
+    globalObjects.done = true;
+  }
+
   unitFunctionIsInvokedWithData(unitFunctionName, invocationDataSource) {
     const data = TestFunctions.extractSpecifiedObjectData(invocationDataSource);
     if (unitFunctionName == "getBoxerWithId") {
@@ -41,6 +49,9 @@ class BoxerRepositoryScenarioTester extends DefaultScenarioTester {
 
   async dbHasBoxerSuchAs(dataSource) {
     const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
+    if (this.lastInsertId != undefined) {
+      expected.id = this.lastInsertId + 1;
+    }
     let response = await globalObjects.boxerRepository.getBoxerWithId(expected.id);
     this.assertionsForDBHasBoxerSuchAs(expected, response.boxer);
   }
@@ -66,7 +77,13 @@ class BoxerRepositoryScenarioTester extends DefaultScenarioTester {
 
     assert(globalObjects.result.code, expectedData.code);
     assert.strictEqual(globalObjects.result.message, expectedData.message);
-    assert.strictEqual(globalObjects.result.boxer.id, expectedData.boxer.id);
+    if (this.lastInsertId != undefined) {
+      assert.strictEqual(globalObjects.result.boxer.id, this.lastInsertId + 1);
+      
+    } else {
+
+      assert.strictEqual(globalObjects.result.boxer.id, expectedData.boxer.id);
+    }
     assert.strictEqual(globalObjects.result.boxer.fullName, expectedData.boxer.fullName);
     assert.strictEqual(globalObjects.result.boxer.birthDate, expectedData.boxer.birthDate);
     assert.strictEqual(globalObjects.result.boxer.height, expectedData.boxer.height);

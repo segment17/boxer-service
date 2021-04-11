@@ -3,6 +3,7 @@ const TestFunctions = require('../TestFunctions');
 const globalObjects = require('../../index');
 const assert = require('assert');
 const { ifError } = require('assert');
+const { ECANCELED } = require('constants');
 
 class DefaultScenarioTester {
 
@@ -21,6 +22,7 @@ class DefaultScenarioTester {
         globalObjects.done = true;
       });
     } else {
+      globalObjects.boxerRepository.enterIntegratedTestingEnvironment();
       globalObjects.done = true;
     }
   }
@@ -33,6 +35,8 @@ class DefaultScenarioTester {
       globalObjects.done = true;
     });
   }
+
+
 
   endpointIsCalledWithRequestBody(endpoint, requestBodySource) {
     const requestBody = TestFunctions.extractSpecifiedObjectData(requestBodySource);
@@ -134,6 +138,9 @@ class DefaultScenarioTester {
 
   async dbHasBoxerSuchAs(dataSource) {
     const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
+    if (this.lastInsertId != undefined) {
+      expected.id = this.lastInsertId + 1;
+    }
     globalObjects.result = globalObjects.unreturnableContentForResult;
     await globalObjects.client.GetBoxerWithStandingAndMatches({id: expected.id}, (err, res) => {
       globalObjects.result = res;
@@ -155,6 +162,8 @@ class DefaultScenarioTester {
 
   assertionsForDBHasBoxerSuchAs(expected, actual) {
     assert(actual != null);
+    console.log(expected);
+    console.log(actual);
     assert(expected.id == actual.id);
     assert(expected.birthDate == actual.birthDate);
     assert(expected.height == actual.height);
