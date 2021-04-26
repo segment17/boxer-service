@@ -11,7 +11,6 @@ class StandingsServiceGateway {
 
   // doCallFor[function name]
   async doCallForGetStandingWithId(param) {
-    console.log("Real get call to AnyService with param: " + param);
     return {}; //TODO
   }
 

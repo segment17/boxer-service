@@ -1,11 +1,11 @@
 @E2E
 Feature: Boxer Service E2E Features
 
-  # Background: Prepare Services
-  #   Given "BoxerService" is running
-  #   And "AuthService" is running
-  #   And "MatchService" is running
-  #   And "StandingsService" is running
+  Background: Prepare Services
+    Given "BoxerService" is running
+    And "AuthService" is running
+    And "MatchService" is running
+    And "StandingsService" is running
 
   @B1 @B1_Scenario1
   Scenario Outline: Get the details of a boxer from DB

@@ -21,7 +21,6 @@ class BoxerRepository {
     return new Promise((resolve, reject) => {
       connection.query(`SELECT * FROM ${this.tableName} WHERE id = ${id};`, (error, result) => {
         if (error) {
-          console.log(error);
           resolve(null);
         }
         resolve(result);
@@ -39,12 +38,10 @@ class BoxerRepository {
     return new Promise((resolve, reject) => {
       connection.query(`INSERT INTO ${this.tableName} (fullName, birthDate, height, weight) VALUES ('${fullName}', ${birthDate}, ${height}, ${weight});`, (error, result) => {
         if (error) {
-          console.log(error);
           resolve(null);
         }
         connection.query(`SELECT * FROM ${this.tableName} ORDER BY id DESC LIMIT 1;`, (error, result) => {
           if (error) {
-            console.log(error);
             resolve(null);
           }
           resolve(result);
@@ -54,8 +51,6 @@ class BoxerRepository {
   }
 
   buildUpdateQuery(id, fullName, birthDate, height, weight) {
-    console.log("weight");
-    console.log(weight);
     let query = `UPDATE ${this.tableName} SET `;
     if (fullName != undefined) {
       query += `fullName = '${fullName}' `;

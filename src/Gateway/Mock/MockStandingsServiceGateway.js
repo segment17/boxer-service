@@ -8,7 +8,6 @@ class MockStandingsServiceGateway extends StandingsServiceGateway {
   }
 
   async doCallForGetStandingWithId(id) {
-    console.log("Mock get call to StandingsServiceGateway with id: " + id);
     for (let i = 0; i < this.standingsAndMatchesList.length; i++) {
       const element = this.standingsAndMatchesList[i];
       if (element.standing && element.standing.boxer && element.standing.boxer.id == id)

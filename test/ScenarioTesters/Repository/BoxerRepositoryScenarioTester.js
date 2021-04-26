@@ -6,15 +6,12 @@ const assert = require('assert');
 class BoxerRepositoryScenarioTester extends DefaultScenarioTester {
 
   thereIsABoxerSuchAs(dataSource) {
-    console.log("controller.mediator.BoxerRepository is getting mock data.");
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
     globalObjects.boxerRepository.setupAddBoxer(specifiedBoxer);
-    console.log(globalObjects.boxerRepository.boxers);
     globalObjects.done = true;
   }
 
   async latestBoxerInDBIsSuchAs(dataSource) {
-    console.log("controller.mediator.BoxerRepository is getting mock data.");
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
     globalObjects.boxerRepository.setupAddLatest(specifiedBoxer);
     this.lastInsertId = await globalObjects.boxerRepository.getLatestId();

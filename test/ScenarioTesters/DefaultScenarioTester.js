@@ -28,7 +28,6 @@ class DefaultScenarioTester {
   }
 
   async thereIsABoxerSuchAs(dataSource) {
-    console.log("controller.mediator.BoxerRepository is getting mock data.");
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
     // globalObjects.controller.mediator.boxerRepository.setupAddBoxer(specifiedBoxer);
     await globalObjects.client.SetupAddBoxer({boxer: specifiedBoxer}, function (err, res) {
@@ -37,7 +36,6 @@ class DefaultScenarioTester {
   }
 
   async latestBoxerInDBIsSuchAs(dataSource) {
-    console.log("controller.mediator.BoxerRepository is getting mock data.");
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
     // globalObjects.controller.mediator.boxerRepository.setupAddBoxer(specifiedBoxer);
     await globalObjects.client.SetupAddBoxer({boxer: specifiedBoxer}, function (err, res) {
@@ -67,7 +65,6 @@ class DefaultScenarioTester {
         globalObjects.result = res;
       });
     } else {
-      console.log("Endpoint not found!");
       assert(false);
     }
   }
@@ -76,10 +73,6 @@ class DefaultScenarioTester {
     const expectedResponse = TestFunctions.extractSpecifiedObjectData(expectedResponseSource);
     await TestFunctions.waitUntilResult();
 
-    console.log("EXPECTED:");
-    console.log(expectedResponse);
-    console.log("ACTUAL:");
-    console.log(globalObjects.result);
 
     const response = globalObjects.result;
     assert(response != null);
@@ -171,8 +164,6 @@ class DefaultScenarioTester {
 
   assertionsForDBHasBoxerSuchAs(expected, actual) {
     assert(actual != null);
-    console.log(expected);
-    console.log(actual);
     assert(expected.id == actual.id);
     assert(expected.birthDate == actual.birthDate);
     assert(expected.height == actual.height);

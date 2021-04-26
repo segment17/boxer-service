@@ -42,7 +42,6 @@ class Controller {
 
   async guardEditBoxer(request) {
     // Do validation here
-    console.log(request);
     if(typeof request.token !== "string" || request.token === "" || request.token === null || request.token === undefined
       || isNaN(request.id) || request.id < 0 || request.id === null || request.id === undefined
       || (request.fullName !== null && request.fullName !== undefined && (typeof request.fullName !== "string" || request.fullName === ""))

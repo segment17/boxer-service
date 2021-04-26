@@ -10,7 +10,6 @@ class AuthServiceGateway {
 
   // doCallFor[function name]
   async doCallForGetValidation(param) {
-    console.log("Real get call to AnyService with param: " + param);
     return {}; //TODO
   }
 
