@@ -385,8 +385,8 @@ var Unit_StandingsServiceGateway_Scenario2_Fail1 = {
 // UNIT AUTH SERVICE GATEWAY SUCCESS SCENARIOS
 
 var Unit_AuthServiceGateway_Scenario1 = {
-  token: "emanresu_ymmud_dummy_password",
-  data_chunk: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
+  data_chunk: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   expected_data: {
     code: 200,
     message: "success"
@@ -396,7 +396,7 @@ var Unit_AuthServiceGateway_Scenario1 = {
 // UNIT AUTH SERVICE GATEWAY FAIL SCENARIOS
 
 var Unit_AuthServiceGateway_Scenario2_Fail1 = {
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   data_chunk: "lorem_ipsum",
   expected_data: {
     code: 403,
@@ -424,12 +424,12 @@ const B1_Scenario1_Variation1 = {
 // EditBoxer
 const B2_Scenario1_Variation1 = {
   boxer: Unit_Repository_Scenario1.boxer,
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     id: 1,
     fullName: null,
     weight: 110,
-    token: "emanresu_ymmud_dummy_password",
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   expected_response: {
     code: 201,
@@ -442,13 +442,13 @@ const B2_Scenario1_Variation1 = {
 // AddBoxer
 const B3_Scenario1_Variation1 = {
   boxer: Unit_Repository_Scenario1.boxer,
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     fullName: "Rocky Balboa",
     birthDate: -772804800,
     height: 178,
     weight: 87,
-    token: "emanresu_ymmud_dummy_password",
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   new_boxer: {
     id: Unit_Repository_Scenario1.boxer.id + 1,
@@ -473,10 +473,10 @@ const B3_Scenario1_Variation1 = {
 // RemoveBoxer
 const B4_Scenario1_Variation1 = {
   boxer: Unit_Repository_Scenario4.boxer,
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: { 
     id: 1, 
-    token: "emanresu_ymmud_dummy_password",
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   expected_response: {
     code: 201,
@@ -509,11 +509,11 @@ const B1_Scenario2_Fail1 = {
 // EditBoxer
 const B2_Scenario2_Fail1 = {
   boxer: Unit_Repository_Scenario1.boxer,
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     id: 2,
     weight: 110,
-    token: "emanresu_ymmud_dummy_password",
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   expected_response: {
     code: 404,
@@ -524,11 +524,11 @@ const B2_Scenario2_Fail1 = {
 
 const B2_Scenario2_Fail2 = {
   boxer: Unit_Repository_Scenario1.boxer,
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     id: 1,
     weight: -110,
-    token: "emanresu_ymmud_dummy_password",
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   expected_response: {
     code: 400,
@@ -539,7 +539,7 @@ const B2_Scenario2_Fail2 = {
 
 const B2_Scenario2_Fail3 = {
   boxer: Unit_Repository_Scenario1.boxer,
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     id: 1,
     weight: 110,
@@ -555,12 +555,12 @@ const B2_Scenario2_Fail3 = {
 // AddBoxer
 const B3_Scenario2_Fail1 = {
   boxer: Unit_Repository_Scenario1.boxer,
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     birthDate: -772804800,
     height: 178,
     weight: 87,
-    token: "emanresu_ymmud_dummy_password",
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   new_boxer: {
     id: Unit_Repository_Scenario1.boxer.id + 1,
@@ -578,13 +578,13 @@ const B3_Scenario2_Fail1 = {
 
 const B3_Scenario2_Fail2 = {
   boxer: Unit_Repository_Scenario1.boxer,
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     fullName: "Rocky Balboa",
     birthDate: -772804800,
     height: 178,
     weight: -87,
-    token: "emanresu_ymmud_dummy_password",
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   new_boxer: {
     id: Unit_Repository_Scenario1.boxer.id + 1,
@@ -602,7 +602,7 @@ const B3_Scenario2_Fail2 = {
 
 const B3_Scenario2_Fail3 = {
   boxer: Unit_Repository_Scenario1.boxer,
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     fullName: "Rocky Balboa",
     birthDate: -772804800,
@@ -627,10 +627,10 @@ const B3_Scenario2_Fail3 = {
 // RemoveBoxer
 const B4_Scenario2_Fail1 = {
   boxer: Unit_Repository_Scenario4.boxer,
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: { 
     id: 2,
-    token: "emanresu_ymmud_dummy_password",
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   expected_response: {
     code: 404,
@@ -641,7 +641,7 @@ const B4_Scenario2_Fail1 = {
 
 const B4_Scenario2_Fail2 = {
   boxer: Unit_Repository_Scenario4.boxer,
-  token: "emanresu_ymmud_dummy_password",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: { 
     id: 1,
     token: "lorem_ipsum",

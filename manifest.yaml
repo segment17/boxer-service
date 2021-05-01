@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: boxer-service-deployment
+  labels:
+    app: boxer-service
 spec:
   replicas: 1
   selector:
@@ -23,6 +25,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: boxer-service
+  labels:
+    app: boxer-service
 spec:
   type: ClusterIP
   selector:

@@ -2,8 +2,8 @@
 start=$(date +%s)
 rm -rf features/cucumberstudio
 hiptest-publisher --config-file test/hiptest-publisher.conf --test-run-id 538207 --only=features
-kubectl delete deployments --all
-kubectl delete svc --all
+kubectl delete deployments -l app=boxer-service
+kubectl delete services -l app=boxer-service
 eval $(minikube docker-env)
 docker build -t segment17hub/boxerservice .
 kubectl apply -f manifest.yaml
