@@ -51,6 +51,11 @@ async function bindSetupAddToken(call, callback) {
   callback(null, {code: 200})
 }
 
+async function bindEnterIntegratedTestingEnvironment(call, callback) {
+  await globalObjects.controller.enterIntegratedTestingEnvironment();
+  callback(null, null);
+}
+
 function main() {
   console.log("Server running...");
   server = new grpc.Server();
@@ -62,13 +67,14 @@ function main() {
     Mock: bindMock,
     SetupAddBoxer: bindSetupAddBoxer,
     SetupAddStandingAndMatches: bindSetupAddStandingAndMatches,
-    SetupAddToken: bindSetupAddToken
+    SetupAddToken: bindSetupAddToken,
+    EnterIntegratedTestingEnvironment: bindEnterIntegratedTestingEnvironment
   });
 
   if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
     server.bind("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.ServerCredentials.createInsecure());
   } else {
-    server.bind("localhost:50001", grpc.ServerCredentials.createInsecure());
+    server.bind("localhost:50002", grpc.ServerCredentials.createInsecure());
   }
   server.start();
 }

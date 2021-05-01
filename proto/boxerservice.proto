@@ -116,6 +116,7 @@ service BoxerService {
 
   // Mock endpoints:
   rpc Mock(Null) returns (Null) {};
+  rpc EnterIntegratedTestingEnvironment(Null) returns (Null) {};
   rpc SetupAddBoxer(SetupAddBoxerRequest) returns (SetupAddBoxerResponse) {};
   rpc SetupAddStandingAndMatches(SetupAddStandingAndMatchesRequest) returns (SetupAddBoxerResponse) {};
   rpc SetupAddToken(SetupAddTokenRequest) returns (SetupAddTokenResponse) {};

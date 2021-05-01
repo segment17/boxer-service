@@ -8,9 +8,12 @@ class AuthServiceGateway {
     return response;
   }
 
-  // doCallFor[function name]
-  async doCallForGetValidation(param) {
-    return {}; //TODO
+  async doCallForGetValidation(obj) {
+
+    return {
+      code: 200,
+      message: "forbidden"
+    }
   }
 
   async setupToken(obj) {

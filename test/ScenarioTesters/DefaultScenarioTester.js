@@ -22,8 +22,11 @@ class DefaultScenarioTester {
         globalObjects.done = true;
       });
     } else {
+      
       globalObjects.boxerRepository.enterIntegratedTestingEnvironment();
-      globalObjects.done = true;
+      globalObjects.client.EnterIntegratedTestingEnvironment({}, (err, res) => {
+        globalObjects.done = true;
+      });
     }
   }
 
@@ -70,11 +73,13 @@ class DefaultScenarioTester {
   }
 
   async responseIsAs(expectedResponseSource) {
+
     const expectedResponse = TestFunctions.extractSpecifiedObjectData(expectedResponseSource);
     await TestFunctions.waitUntilResult();
 
 
     const response = globalObjects.result;
+
     assert(response != null);
     assert(response.code === expectedResponse.code);
     assert.strictEqual(response.message, expectedResponse.message);

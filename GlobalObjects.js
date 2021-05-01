@@ -32,7 +32,7 @@ class GlobalObjects {
     if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
       this.client = new boxerservice_package.BoxerService("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
     } else {
-      this.client = new boxerservice_package.BoxerService("0.0.0.0:50001", grpc.credentials.createInsecure());
+      this.client = new boxerservice_package.BoxerService("0.0.0.0:50002", grpc.credentials.createInsecure());
     }
   }
 
@@ -68,7 +68,7 @@ class GlobalObjects {
     if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
       this.client = new boxerservice_package.BoxerService("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
     } else {
-      this.client = new boxerservice_package.BoxerService("0.0.0.0:50001", grpc.credentials.createInsecure());
+      this.client = new boxerservice_package.BoxerService("0.0.0.0:50002", grpc.credentials.createInsecure());
     }
   }
 
