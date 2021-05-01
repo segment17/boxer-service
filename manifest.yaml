@@ -15,7 +15,7 @@ spec:
       containers:
       - name: boxer-service
         imagePullPolicy: Never
-        image: segment17/boxerservice
+        image: segment17hub/boxerservice
         ports:
         - containerPort: 50051
 ---
