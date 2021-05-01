@@ -11,7 +11,7 @@ class AuthServiceGateway {
   async doCallForGetValidation(obj) {
 
     return {
-      code: 200,
+      code: 403,
       message: "forbidden"
     }
   }
