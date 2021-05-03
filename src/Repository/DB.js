@@ -26,7 +26,8 @@ console.log("HERE");
 const connectionSetup = {
   host: process.env.BOXER_MYSQL_SERVICE_SERVICE_HOST != undefined ? process.env.BOXER_MYSQL_SERVICE_SERVICE_HOST : "localhost",
   user: "root",
-  password: "root"
+  password: "root",
+  database: "boxerservice"
 };
 console.log(connectionSetup);
 var connection = mysql.createConnection(connectionSetup);
@@ -36,15 +37,6 @@ connection.connect(function (err) {
     console.log(err);
   } else {
     console.log("Connected!");
-    connection.query("SHOW DATABASES;", function (err, result, fields) {
-      console.log(result);
-      if (err)
-        console.log(err);
-      // connection.query("USE boxerservice;", function (err, result, fields) {
-      //   if (err)
-      //     console.log(err);
-      // });
-    });
   }
 });
 

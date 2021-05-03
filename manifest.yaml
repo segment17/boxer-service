@@ -44,11 +44,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: mysql
+      app: boxermysql
   template:
     metadata:
       labels:
-        app: mysql
+        app: boxermysql
     spec:
       containers:
       - name: mysql
@@ -72,7 +72,7 @@ metadata:
   name: boxer-mysql-service
 spec:
   selector:
-    app: mysql
+    app: boxermysql
   ports:
     - port: 3306
       targetPort: 3306
