@@ -33,6 +33,16 @@ class Mediator {
     }
   }
 
+  async getBoxer(id) {
+    let getBoxerResponse = await this.boxerRepository.getBoxerWithId(id);
+    // Do validation here
+    return {
+      code: getBoxerResponse.code,
+      message: getBoxerResponse.message,
+      boxer: getBoxerResponse.boxer
+    }
+  }
+
   async addBoxer(token, fullName, birthDate, height, weight) {
     const validation = await this.getValidation(token);
     let response = {};

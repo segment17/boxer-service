@@ -21,6 +21,21 @@ class Controller {
     return response;
   }
 
+    // Endpoint guards: guard[endpoint name]
+    async guardGetBoxer(request) {
+      //Do validation here
+      if(isNaN(request.id) || request.id < 0 || request.id === null || request.id === undefined) {
+        return {
+          code: "400",
+          message: "bad_request",
+          boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+        }
+      }
+      let response = await this.mediator.getBoxer(request.id);
+      // Do validation here
+      return response;
+    }
+
   async guardAddBoxer(request) {
     // Do validation here
     if(typeof request.token !== "string" || request.token === "" || request.token === null || request.token === undefined

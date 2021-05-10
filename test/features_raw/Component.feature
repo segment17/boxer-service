@@ -3,6 +3,19 @@ Feature: Boxer Service Component Features
 
   #SUCCESS SCENARIOS
 
+  @B0 @B0_Scenario1
+  Scenario Outline: Get the details of a boxer from DB
+    #Set up mock repository or real database
+    Given there is a boxer such as "<boxer>"
+    #Controller.endpoint()
+    When "<endpoint>" is called with "<request_body>"
+    #Check
+    Then response is as "<expected_response>"
+
+    Examples:
+      | boxer                         | endpoint | request_body                         | expected_response                         |
+      | B1_Scenario1_Variation1.boxer | GetBoxer | B1_Scenario1_Variation1.request_body | B0_Scenario1_Variation1.expected_response |
+
   @B1 @B1_Scenario1
   Scenario Outline: Get the details of a boxer from DB
     #Set up mock repository or real database

@@ -22,7 +22,7 @@ class DefaultScenarioTester {
         globalObjects.done = true;
       });
     } else {
-      
+
       globalObjects.boxerRepository.enterIntegratedTestingEnvironment();
       globalObjects.client.EnterIntegratedTestingEnvironment({}, (err, res) => {
         globalObjects.done = true;
@@ -33,7 +33,7 @@ class DefaultScenarioTester {
   async thereIsABoxerSuchAs(dataSource) {
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
     // globalObjects.controller.mediator.boxerRepository.setupAddBoxer(specifiedBoxer);
-    await globalObjects.client.SetupAddBoxer({boxer: specifiedBoxer}, function (err, res) {
+    await globalObjects.client.SetupAddBoxer({ boxer: specifiedBoxer }, function (err, res) {
       globalObjects.done = true;
     });
   }
@@ -41,7 +41,7 @@ class DefaultScenarioTester {
   async latestBoxerInDBIsSuchAs(dataSource) {
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
     // globalObjects.controller.mediator.boxerRepository.setupAddBoxer(specifiedBoxer);
-    await globalObjects.client.SetupAddBoxer({boxer: specifiedBoxer}, function (err, res) {
+    await globalObjects.client.SetupAddBoxer({ boxer: specifiedBoxer }, function (err, res) {
       globalObjects.done = true;
     });
   }
@@ -67,6 +67,10 @@ class DefaultScenarioTester {
       globalObjects.client.RemoveBoxer(requestBody, function (err, res) {
         globalObjects.result = res;
       });
+    } else if (endpoint == "GetBoxer") {
+      globalObjects.client.GetBoxer(requestBody, function (err, res) {
+        globalObjects.result = res;
+      });
     } else {
       assert(false);
     }
@@ -83,7 +87,7 @@ class DefaultScenarioTester {
     assert(response != null);
     assert(response.code === expectedResponse.code);
     assert.strictEqual(response.message, expectedResponse.message);
-    if(expectedResponse.boxer && expectedResponse.boxer.id === 0) {
+    if (expectedResponse.boxer && expectedResponse.boxer.id === 0) {
       assert(response.boxer.id === 0);
     } else {
       assert(response.boxer.id === expectedResponse.boxer.id);
@@ -96,19 +100,19 @@ class DefaultScenarioTester {
       if (expectedResponse.standingAndMatches != undefined) {
         let standingAndMatches = response.standingAndMatches;
         assert(standingAndMatches != undefined && standingAndMatches != null);
-  
+
         let standing = standingAndMatches.standing;
         assert(standing != undefined && standing != null);
-        if(standing.boxer) {
+        if (standing.boxer) {
           assert.strictEqual(standing.boxer.id, expectedResponse.boxer.id);
         }
         assert(standing.winCount == expectedResponse.standingAndMatches.standing.winCount);
         assert(standing.lossCount == expectedResponse.standingAndMatches.standing.lossCount);
         assert(standing.score == expectedResponse.standingAndMatches.standing.score);
-  
+
         let matches = standingAndMatches.matches;
         assert(matches != undefined && matches != null);
-        if(matches.length > 2) {
+        if (matches.length > 2) {
           for (let index = 0; index < matches.length; index++) {
             const element = matches[index];
             assert(element.homeBoxer.id == expectedResponse.boxer.id
@@ -116,14 +120,14 @@ class DefaultScenarioTester {
           }
         }
       }
-    }    
+    }
   }
 
   async thereIsAStandingAndMatchesSuchAs(dataSource) {
     const specifiedStandingAndMatches = TestFunctions.extractSpecifiedObjectData(dataSource);
     // globalObjects.controller.mediator.standingsServiceGateway.setupAddStandingAndMatches(specifiedStandingAndMatches);
 
-    await globalObjects.client.SetupAddStandingAndMatches({standingAndMatches: specifiedStandingAndMatches}, function (err, res) {
+    await globalObjects.client.SetupAddStandingAndMatches({ standingAndMatches: specifiedStandingAndMatches }, function (err, res) {
       globalObjects.done = true;
     });
   }
@@ -133,7 +137,7 @@ class DefaultScenarioTester {
     const specifiedToken = TestFunctions.extractSpecifiedObjectData(tokenDataSource);
     assert(specifiedToken != undefined);
     // globalObjects.controller.mediator.authServiceGateway.setupToken(specifiedToken);
-    await globalObjects.client.SetupAddToken({token: specifiedToken}, function (err, res) {
+    await globalObjects.client.SetupAddToken({ token: specifiedToken }, function (err, res) {
       globalObjects.done = true;
     });
   }
@@ -149,7 +153,7 @@ class DefaultScenarioTester {
       expected.id = this.lastInsertId + 1;
     }
     globalObjects.result = globalObjects.unreturnableContentForResult;
-    await globalObjects.client.GetBoxerWithStandingAndMatches({id: expected.id}, (err, res) => {
+    await globalObjects.client.GetBoxerWithStandingAndMatches({ id: expected.id }, (err, res) => {
       globalObjects.result = res;
     });
     await TestFunctions.waitUntilResult();
@@ -160,7 +164,7 @@ class DefaultScenarioTester {
   async dbHasNoBoxerSuchAs(dataSource) {
     const expected = TestFunctions.extractSpecifiedObjectData(dataSource);
     globalObjects.result = globalObjects.unreturnableContentForResult;
-    await globalObjects.client.GetBoxerWithStandingAndMatches({id: expected.id}, (err, res) => {
+    await globalObjects.client.GetBoxerWithStandingAndMatches({ id: expected.id }, (err, res) => {
       globalObjects.result = res;
     });
     await TestFunctions.waitUntilResult();

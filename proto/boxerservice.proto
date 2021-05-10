@@ -31,6 +31,16 @@ message StandingAndMatches {
   repeated Match matches = 2;
 }
 
+message GetBoxerRequest {
+  int32 id = 1;
+}
+
+message GetBoxerResponse {
+  int32 code = 1;
+  string message = 2;
+  Boxer boxer = 3;
+}
+
 message GetBoxerWithStandingAndMatchesRequest {
   int32 id = 1;
 }
@@ -109,6 +119,7 @@ message SetupAddTokenResponse {
 message Null {};
 
 service BoxerService {
+  rpc GetBoxer(GetBoxerRequest) returns (GetBoxerResponse) {};
   rpc GetBoxerWithStandingAndMatches(GetBoxerWithStandingAndMatchesRequest) returns (GetBoxerWithStandingAndMatchesResponse) {};
   rpc AddBoxer(AddBoxerRequest) returns (AddBoxerResponse) {};
   rpc EditBoxer(EditBoxerRequest) returns (EditBoxerResponse) {};

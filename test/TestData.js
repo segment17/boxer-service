@@ -421,6 +421,19 @@ const B1_Scenario1_Variation1 = {
   }
 }
 
+// COMPONENT SUCCESS SCENARIOS
+
+// GetBoxer
+const B0_Scenario1_Variation1 = {
+  request_body: { id: 1 },
+  boxer: Unit_Repository_Scenario1.boxer,
+  expected_response: {
+    code: 200,
+    message: 'success',
+    boxer: Unit_Repository_Scenario1.boxer
+  }
+}
+
 // EditBoxer
 const B2_Scenario1_Variation1 = {
   boxer: Unit_Repository_Scenario1.boxer,
@@ -680,5 +693,6 @@ module.exports = {
   Unit_StandingsServiceGateway_Scenario1,
   Unit_StandingsServiceGateway_Scenario2_Fail1,
   Unit_AuthServiceGateway_Scenario1,
-  Unit_AuthServiceGateway_Scenario2_Fail1
+  Unit_AuthServiceGateway_Scenario2_Fail1,
+  B0_Scenario1_Variation1
 }
