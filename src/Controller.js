@@ -6,6 +6,21 @@ class Controller {
     this.mediator = new Mediator();
   }
 
+  async guardSetupAddBoxer (request) {
+    await this.mediator.boxerRepository.setupAddBoxer(request.boxer);
+    return {
+      code: 200
+    }
+  }
+
+  async guardSetupClearBoxers () {
+    await this.mediator.boxerRepository.cleanUp();
+    return {
+      code: 200
+    }
+
+  }
+
   // Endpoint guards: guard[endpoint name]
   async guardGetBoxerWithStandingAndMatches(request) {
     //Do validation here

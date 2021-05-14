@@ -8,7 +8,7 @@ class BoxerRepository {
   }
 
   enterIntegratedTestingEnvironment() {
-    this.tableName = 'test_boxers';
+    this.tableName = 'boxers';
   }
 
   async getBoxerWithId(id) {
@@ -120,7 +120,7 @@ class BoxerRepository {
 
   async setupAddBoxer(boxer) {
     return new Promise((resolve, reject) => {
-      connection.query(`INSERT INTO test_boxers (id, fullName, birthDate, height, weight) VALUES (${boxer.id}, '${boxer.fullName}', ${boxer.birthDate}, ${boxer.height}, ${boxer.weight});`, (error, result) => {
+      connection.query(`INSERT INTO boxers (id, fullName, birthDate, height, weight) VALUES (${boxer.id}, '${boxer.fullName}', ${boxer.birthDate}, ${boxer.height}, ${boxer.weight});`, (error, result) => {
         if (error) {
           console.log(error);
           resolve(null);
@@ -144,7 +144,7 @@ class BoxerRepository {
 
   async setupAddLatest(boxer) {
     return new Promise((resolve, reject) => {
-      connection.query(`INSERT INTO test_boxers (fullName, birthDate, height, weight) VALUES ('${boxer.fullName}', ${boxer.birthDate}, ${boxer.height}, ${boxer.weight});`, (error, result) => {
+      connection.query(`INSERT INTO boxers (fullName, birthDate, height, weight) VALUES ('${boxer.fullName}', ${boxer.birthDate}, ${boxer.height}, ${boxer.weight});`, (error, result) => {
         if (error) {
           console.log(error);
           resolve(null);
@@ -157,7 +157,7 @@ class BoxerRepository {
   //During testing only
   async cleanUp() {
     return new Promise((resolve, reject) => {
-      connection.query(`DELETE FROM test_boxers;`, (error, result) => {
+      connection.query(`DELETE FROM boxers;`, (error, result) => {
         if (error) {
           console.log(error);
           resolve(null);

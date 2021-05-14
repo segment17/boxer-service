@@ -42,7 +42,14 @@ async function bindMock(call, callback) {
 }
 
 async function bindSetupAddBoxer(call, callback) {
-  globalObjects.controller.mediator.boxerRepository.setupAddBoxer(call.request.boxer);
+  console.log("called");
+  console.log(call.request);
+  globalObjects.controller.guardSetupAddBoxer(call.request);
+  callback(null, {code: 200})
+}
+
+async function bindSetupClearBoxers(call, callback) {
+  globalObjects.controller.guardSetupClearBoxers();
   callback(null, {code: 200})
 }
 
@@ -74,6 +81,7 @@ function main() {
     SetupAddBoxer: bindSetupAddBoxer,
     SetupAddStandingAndMatches: bindSetupAddStandingAndMatches,
     SetupAddToken: bindSetupAddToken,
+    SetupClearBoxers: bindSetupClearBoxers,
     EnterIntegratedTestingEnvironment: bindEnterIntegratedTestingEnvironment
   });
 

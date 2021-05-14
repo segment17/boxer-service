@@ -12,7 +12,7 @@ CREATE TABLE boxers (
   weight DOUBLE NOT NULL,
   PRIMARY KEY (id)
 );
-CREATE TABLE test_boxers (
+CREATE TABLE boxers (
   id INT NOT NULL AUTO_INCREMENT,
   fullName VARCHAR(64) NOT NULL,
   birthDate BIGINT NOT NULL,
