@@ -49,6 +49,7 @@ class DefaultScenarioTester {
 
 
   endpointIsCalledWithRequestBody(endpoint, requestBodySource) {
+    this.endpoint = endpoint;
     const requestBody = TestFunctions.extractSpecifiedObjectData(requestBodySource);
     assert(requestBody != undefined);
     if (endpoint == "GetBoxerWithStandingAndMatches") {
@@ -77,8 +78,12 @@ class DefaultScenarioTester {
   }
 
   async responseIsAs(expectedResponseSource) {
-
     const expectedResponse = TestFunctions.extractSpecifiedObjectData(expectedResponseSource);
+
+    if (this.lastInsertId != undefined) {
+      expectedResponse.boxer.id = this.lastInsertId + 1;
+    }
+
     await TestFunctions.waitUntilResult();
 
 
@@ -87,6 +92,10 @@ class DefaultScenarioTester {
     assert(response != null);
     assert(response.code === expectedResponse.code);
     assert.strictEqual(response.message, expectedResponse.message);
+
+
+    console.log(response);
+    console.log(expectedResponse);
     if (expectedResponse.boxer && expectedResponse.boxer.id === 0) {
       assert(response.boxer.id === 0);
     } else {
@@ -142,9 +151,11 @@ class DefaultScenarioTester {
     });
   }
 
-  theLatestBoxerInDBIsSuchAs(dataSource) {
-    const boxer = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.controller.mediator.boxerRepository.setupAddLatest(boxer);
+  async latestBoxerInDBIsSuchAs(dataSource) {
+    const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
+    globalObjects.boxerRepository.setupAddLatest(specifiedBoxer);
+    this.lastInsertId = await globalObjects.boxerRepository.getLatestId();
+    globalObjects.done = true;
   }
 
   async dbHasBoxerSuchAs(dataSource) {

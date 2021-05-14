@@ -138,7 +138,7 @@ const Unit_Repository_Scenario6_Fail2 = {
   edit_body: {
     id: 1,
     weight: -20
-  },
+    },
   expected_data: {
     code: "400",
     message: "bad_request",
