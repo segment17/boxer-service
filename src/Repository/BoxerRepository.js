@@ -156,15 +156,15 @@ class BoxerRepository {
 
   //During testing only
   async cleanUp() {
-    // return new Promise((resolve, reject) => {
-    //   connection.query(`DELETE FROM boxers;`, (error, result) => {
-    //     if (error) {
-    //       console.log(error);
-    //       resolve(null);
-    //     }
-    //     resolve(result);
-    //   });
-    // });
+    return new Promise((resolve, reject) => {
+      connection.query(`DELETE FROM boxers;`, (error, result) => {
+        if (error) {
+          console.log(error);
+          resolve(null);
+        }
+        resolve(result);
+      });
+    });
   }
 
   extractResponseFromQueryResult(queryResult, successCode, successMessage) {

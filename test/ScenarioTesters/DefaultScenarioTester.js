@@ -92,7 +92,7 @@ class DefaultScenarioTester {
     assert(response != null);
     assert(response.code === expectedResponse.code);
     assert.strictEqual(response.message, expectedResponse.message);
-
+    
 
     console.log(response);
     console.log(expectedResponse);
