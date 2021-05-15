@@ -22,14 +22,12 @@ CREATE TABLE boxers (
 );
 */
 
-console.log("HERE");
 const connectionSetup = {
   host: process.env.BOXER_MYSQL_SERVICE_SERVICE_HOST != undefined ? process.env.BOXER_MYSQL_SERVICE_SERVICE_HOST : "localhost",
   user: "root",
   password: "root",
   database: "boxerservice"
 };
-console.log(connectionSetup);
 var connection = mysql.createConnection(connectionSetup);
 
 connection.connect(function (err) {

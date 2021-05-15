@@ -42,8 +42,6 @@ async function bindMock(call, callback) {
 }
 
 async function bindSetupAddBoxer(call, callback) {
-  console.log("called");
-  console.log(call.request);
   globalObjects.controller.guardSetupAddBoxer(call.request);
   callback(null, {code: 200})
 }

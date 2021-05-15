@@ -18,8 +18,11 @@ class MockBoxerRepository extends BoxerRepository {
   }
 
   async runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight) {
-    
-    let newBoxerId = this.boxers[this.boxers.length - 1].id + 1;
+
+    let newBoxerId = 1;
+    if (this.boxers.length != 0) {
+      newBoxerId = this.boxers[this.boxers.length - 1].id + 1;
+    }
     let newBoxer = {
       id: newBoxerId,
       fullName: fullName,
@@ -70,6 +73,7 @@ class MockBoxerRepository extends BoxerRepository {
   }
 
   async setupAddBoxer(boxer) {
+    
     this.boxers.push(boxer);
     return null;
   }

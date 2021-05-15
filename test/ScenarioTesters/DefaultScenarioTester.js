@@ -79,27 +79,27 @@ class DefaultScenarioTester {
 
   async responseIsAs(expectedResponseSource) {
     const expectedResponse = TestFunctions.extractSpecifiedObjectData(expectedResponseSource);
+    
+    
 
-    if (this.lastInsertId != undefined) {
+    if (expectedResponse.boxer.id != 0 && this.endpoint == "AddBoxer" && this.lastInsertId != undefined) {
       expectedResponse.boxer.id = this.lastInsertId + 1;
     }
 
+    
     await TestFunctions.waitUntilResult();
-
-
+    
+    
     const response = globalObjects.result;
-
     assert(response != null);
     assert(response.code === expectedResponse.code);
     assert.strictEqual(response.message, expectedResponse.message);
     
 
-    console.log(response);
-    console.log(expectedResponse);
     if (expectedResponse.boxer && expectedResponse.boxer.id === 0) {
       assert(response.boxer.id === 0);
     } else {
-      assert(response.boxer.id === expectedResponse.boxer.id);
+      assert.strictEqual(response.boxer.id, expectedResponse.boxer.id);
       assert(response.boxer.fullName === expectedResponse.boxer.fullName);
       // Strict equal fails because JavaScript BigInt is at max 2^53-1 however int64 is bigger than that. So whilst converting to protobuf data, it is converted to string. And String != BigInt
       assert.equal(response.boxer.birthDate, expectedResponse.boxer.birthDate);
@@ -149,13 +149,6 @@ class DefaultScenarioTester {
     await globalObjects.client.SetupAddToken({ token: specifiedToken }, function (err, res) {
       globalObjects.done = true;
     });
-  }
-
-  async latestBoxerInDBIsSuchAs(dataSource) {
-    const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
-    globalObjects.boxerRepository.setupAddLatest(specifiedBoxer);
-    this.lastInsertId = await globalObjects.boxerRepository.getLatestId();
-    globalObjects.done = true;
   }
 
   async dbHasBoxerSuchAs(dataSource) {
