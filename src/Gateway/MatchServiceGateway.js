@@ -14,6 +14,10 @@ class MatchServiceGateway {
     return null;
   }
 
+  async cleanUp() {
+    // TODO
+  }
+
 }
 
 module.exports = MatchServiceGateway;
