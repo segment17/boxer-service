@@ -6,6 +6,8 @@ const StandingsServiceGateway = require('./src/Gateway/StandingsServiceGateway')
 const MockStandingsServiceGateway = require('./src/Gateway/Mock/MockStandingsServiceGateway');
 const AuthServiceGateway = require('./src/Gateway/AuthServiceGateway');
 const MockAuthServiceGateway = require('./src/Gateway/Mock/MockAuthServiceGateway');
+const MatchServiceGateway = require('./src/Gateway/MatchServiceGateway');
+const MockMatchServiceGateway = require('./src/Gateway/Mock/MockMatchServiceGateway');
 
 // GRPC SETUP
 const grpc = require('grpc');
@@ -26,6 +28,7 @@ class GlobalObjects {
     this.boxerRepository = new BoxerRepository();
     this.standingsServiceGateway = new StandingsServiceGateway();
     this.authServiceGateway = new AuthServiceGateway();
+    this.matchServiceGateway = new MatchServiceGateway();
 
 
     // Connect to Kubernetes if possible
@@ -42,6 +45,7 @@ class GlobalObjects {
     this.boxerRepository = new MockBoxerRepository();
     this.standingsServiceGateway = new MockStandingsServiceGateway();
     this.authServiceGateway = new MockAuthServiceGateway();
+    this.matchServiceGateway = new MockMatchServiceGateway();
   }
 
   resetResult() {
@@ -63,6 +67,7 @@ class GlobalObjects {
     this.boxerRepository = new BoxerRepository();
     this.standingsServiceGateway = new StandingsServiceGateway();
     this.authServiceGateway = new AuthServiceGateway();
+    this.matchServiceGateway = new MatchServiceGateway();
 
     // Connect to Kubernetes if possible
     if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
@@ -75,6 +80,7 @@ class GlobalObjects {
   async cleanUp() {
     await this.boxerRepository.cleanUp();
     await this.standingsServiceGateway.cleanUp();
+    await this.matchServiceGateway.cleanUp();
   }
 
 }
