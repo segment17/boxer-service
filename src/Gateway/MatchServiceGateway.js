@@ -23,7 +23,7 @@ class MatchServiceGateway {
     return response;
   }
 
-  async doCallForRemoveMatchesOfBoxer(obj) {
+  async doCallForRemoveMatchesOfBoxer(matches) {
     this.readyClient();
     let response = await this.PROMISE_doCallForRemoveMatchesOfBoxer(matches);
     return response;
