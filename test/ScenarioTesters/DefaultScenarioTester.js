@@ -41,7 +41,9 @@ class DefaultScenarioTester {
   async latestBoxerInDBIsSuchAs(dataSource) {
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
     // globalObjects.controller.mediator.boxerRepository.setupAddBoxer(specifiedBoxer);
-    await globalObjects.client.SetupAddBoxer({ boxer: specifiedBoxer }, function (err, res) {
+    var self = this;
+    await globalObjects.client.SetupAddLatestBoxer({ boxer: specifiedBoxer }, async function (err, res) {
+      self.lastInsertId = await globalObjects.boxerRepository.getLatestId();
       globalObjects.done = true;
     });
   }
@@ -79,23 +81,15 @@ class DefaultScenarioTester {
 
   async responseIsAs(expectedResponseSource) {
     const expectedResponse = TestFunctions.extractSpecifiedObjectData(expectedResponseSource);
-    
-    
-
     if (expectedResponse.boxer.id != 0 && this.endpoint == "AddBoxer" && this.lastInsertId != undefined) {
       expectedResponse.boxer.id = this.lastInsertId + 1;
     }
-
-    
     await TestFunctions.waitUntilResult();
-    
-    
     const response = globalObjects.result;
     assert(response != null);
     assert(response.code === expectedResponse.code);
     assert.strictEqual(response.message, expectedResponse.message);
     
-
     if (expectedResponse.boxer && expectedResponse.boxer.id === 0) {
       assert(response.boxer.id === 0);
     } else {

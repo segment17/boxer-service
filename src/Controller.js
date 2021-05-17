@@ -13,6 +13,13 @@ class Controller {
     }
   }
 
+  async guardSetupAddLatestBoxer (request) {
+    await this.mediator.boxerRepository.setupAddLatest(request.boxer);
+    return {
+      code: 200
+    }
+  }
+
   async guardSetupClearBoxers () {
     await this.mediator.boxerRepository.cleanUp();
     return {

@@ -46,6 +46,11 @@ async function bindSetupAddBoxer(call, callback) {
   callback(null, {code: 200})
 }
 
+async function bindSetupAddLatestBoxer(call, callback) {
+  globalObjects.controller.guardSetupAddLatestBoxer(call.request);
+  callback(null, {code: 200})
+}
+
 async function bindSetupClearBoxers(call, callback) {
   globalObjects.controller.guardSetupClearBoxers();
   callback(null, {code: 200})
@@ -77,6 +82,7 @@ function main() {
     RemoveBoxer: bindRemoveBoxer,
     Mock: bindMock,
     SetupAddBoxer: bindSetupAddBoxer,
+    SetupAddLatestBoxer: bindSetupAddLatestBoxer,
     SetupAddStandingAndMatches: bindSetupAddStandingAndMatches,
     SetupAddToken: bindSetupAddToken,
     SetupClearBoxers: bindSetupClearBoxers,

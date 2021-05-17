@@ -133,6 +133,7 @@ service BoxerService {
   rpc Mock(Null) returns (Null) {};
   rpc EnterIntegratedTestingEnvironment(Null) returns (Null) {};
   rpc SetupAddBoxer(SetupAddBoxerRequest) returns (SetupAddBoxerResponse) {};
+  rpc SetupAddLatestBoxer(SetupAddBoxerRequest) returns (SetupAddBoxerResponse) {};
   rpc SetupClearBoxers(Null) returns (SetupClearBoxersResponse) {};
   rpc SetupAddStandingAndMatches(SetupAddStandingAndMatchesRequest) returns (SetupAddBoxerResponse) {};
   rpc SetupAddToken(SetupAddTokenRequest) returns (SetupAddTokenResponse) {};

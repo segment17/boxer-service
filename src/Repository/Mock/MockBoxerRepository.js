@@ -79,6 +79,9 @@ class MockBoxerRepository extends BoxerRepository {
   }
 
   async getLatestId() {
+    if (this.boxers.length == 0) {
+      return null;
+    }
     return this.boxers[this.boxers.length - 1].id;
   }
 
