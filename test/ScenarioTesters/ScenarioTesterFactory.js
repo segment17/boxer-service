@@ -4,6 +4,7 @@ const AuthServiceGatewayScenarioTester = require('./Gateway/AuthServiceGatewaySc
 const BoxerRepositoryScenarioTester = require('./Repository/BoxerRepositoryScenarioTester');
 const MediatorScenarioTester = require('./Mediator/MediatorScenarioTester');
 const TestFunctions = require('../TestFunctions');
+const MatchServiceGatewayScenarioTester = require('./Gateway/MatchServiceGatewayScenarioTester');
 
 class ScenarioTesterFactory {
 
@@ -16,6 +17,8 @@ class ScenarioTesterFactory {
       return new BoxerRepositoryScenarioTester(scenario);
     } else if (TestFunctions.isScenarioUnit(scenario, "Mediator")) {
       return new MediatorScenarioTester(scenario);
+    } else if (TestFunctions.isScenarioUnit(scenario, "MatchServiceGateway") || TestFunctions.isScenarioIntegration(scenario, "MatchServiceGateway")) {
+      return new MatchServiceGatewayScenarioTester(scenario);
     }
     return new DefaultScenarioTester(scenario);
   }
