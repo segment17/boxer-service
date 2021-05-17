@@ -4,6 +4,8 @@ const MockStandingsServiceGateway = require('./Gateway/Mock/MockStandingsService
 const MockAuthServiceGateway = require('./Gateway/Mock/MockAuthServiceGateway');
 const BoxerRepository = require('./Repository/BoxerRepository');
 const MockBoxerRepository = require('./Repository/Mock/MockBoxerRepository');
+const MatchServiceGateway = require('./Gateway/MatchServiceGateway');
+const MockMatchServiceGateway = require('./Gateway/Mock/MockMatchServiceGateway');
 
 class Mediator {
 
@@ -11,6 +13,7 @@ class Mediator {
     this.standingsServiceGateway = new StandingsServiceGateway();
     this.authServiceGateway = new AuthServiceGateway();
     this.boxerRepository = new BoxerRepository();
+    this.matchServiceGateway = new MatchServiceGateway();
   }
 
   // Endpoints
@@ -87,6 +90,7 @@ class Mediator {
     this.standingsServiceGateway = new MockStandingsServiceGateway();
     this.authServiceGateway = new MockAuthServiceGateway();
     this.boxerRepository = new MockBoxerRepository();
+    this.matchServiceGateway = new MockMatchServiceGateway();
   }
 
 }
