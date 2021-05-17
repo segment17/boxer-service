@@ -2,7 +2,7 @@ class MatchServiceGateway {
 
   // Gateway exposed function
   async deleteMatchesOfBoxer(boxerId) {
-    let response = await this.doCallForDeleteMatchesOfBoxer(token);
+    let response = await this.doCallForDeleteMatchesOfBoxer(boxerId);
     return response;
   }
 
