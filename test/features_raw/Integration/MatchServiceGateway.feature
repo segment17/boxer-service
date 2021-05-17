@@ -15,4 +15,4 @@ Feature: Match Service Gateway Unit Feature
 
     Examples:
       | boxer                                    | matches                                    | gateway_function     | boxer_id                                    | expected_data                                    |
-      | Unit_MatchServiceGateway_Scenario1.boxer | Unit_MatchServiceGateway_Scenario1.matches | deleteMatchesOfBoxer | Unit_MatchServiceGateway_Scenario1.boxer_id | Unit_MatchServiceGateway_Scenario1.expected_data |
+      | Unit_MatchServiceGateway_Scenario1.boxer | Unit_MatchServiceGateway_Scenario1.matches | removeMatchesOfBoxer | Unit_MatchServiceGateway_Scenario1.boxer_id | Unit_MatchServiceGateway_Scenario1.expected_data |

@@ -8,8 +8,8 @@ class MatchServiceGatewayScenarioTester extends DefaultScenarioTester {
 
   unitFunctionIsInvokedWithData(functionName, dataSource) {
     const boxerId = TestFunctions.extractSpecifiedObjectData(dataSource);
-    if (functionName == "deleteMatchesOfBoxer") {
-      globalObjects.matchServiceGateway.deleteMatchesOfBoxer(boxerId).then(result => {
+    if (functionName == "removeMatchesOfBoxer") {
+      globalObjects.matchServiceGateway.removeMatchesOfBoxer(boxerId).then(result => {
         globalObjects.result = result;
       });
     }

@@ -7,7 +7,7 @@ class MockMatchServiceGateway extends MatchServiceGateway {
     this.matches = []
   }
 
-  async doCallForDeleteMatchesOfBoxer(obj) {
+  async doCallForRemoveMatchesOfBoxer(obj) {
     return {code: 200, message: 'deleted'};
   }
 
