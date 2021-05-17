@@ -124,8 +124,8 @@ class DefaultScenarioTester {
         if (matches.length > 2) {
           for (let index = 0; index < matches.length; index++) {
             const element = matches[index];
-            assert(element.homeBoxer.id == expectedResponse.boxer.id
-              || element.awayBoxer.id == expectedResponse.boxer.id);
+            assert(element.homeBoxerId == expectedResponse.boxer.id
+              || element.awayBoxerId == expectedResponse.boxer.id);
           }
         }
       }
