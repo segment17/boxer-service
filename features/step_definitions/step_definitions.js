@@ -80,3 +80,7 @@ Given('there is a standing with matches such as {string}', async function (dataS
     await TestFunctions.sleep(100);
   }
 });
+
+Then('match service does not have any matches of {string}', async function (boxerDataSource) {
+  await globalObjects.scenarioTester.matchServiceDoesNotHaveAnyMatchesOfBoxer(boxerDataSource);
+});

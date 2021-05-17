@@ -4,6 +4,7 @@ const globalObjects = require('../../index');
 const assert = require('assert');
 const { ifError } = require('assert');
 const { ECANCELED } = require('constants');
+const { getMatchesOfBoxer } = require('./DBAccessor/MatchServiceDBAccessor');
 
 class DefaultScenarioTester {
 
@@ -182,6 +183,12 @@ class DefaultScenarioTester {
     await globalObjects.client.SetupAddMatches({ matches: matches }, function (err, res) {
       globalObjects.done = true;
     });
+  }
+
+  async matchServiceDoesNotHaveAnyMatchesOfBoxer(boxerDataSource) {
+    const boxer = TestFunctions.extractSpecifiedObjectData(boxerDataSource);
+    let matchesOfBoxer = await getMatchesOfBoxer(boxer.id);
+    assert(matchesOfBoxer.length == 0);
   }
 }
 
