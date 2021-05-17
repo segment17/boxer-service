@@ -52,7 +52,16 @@ class MatchServiceGateway {
   }
 
   async cleanUp() {
-    // TODO
+    this.readyClient();
+    await this.PROMISE_doCallForCleanUp();
+  }
+
+  async PROMISE_doCallForCleanUp() {
+    return new Promise((resolve, reject) => {
+      this.client.SetupCleanUp({}, function (err, res) {
+        resolve(res);
+      });
+    });
   }
 
 }
