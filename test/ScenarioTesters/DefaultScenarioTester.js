@@ -176,6 +176,13 @@ class DefaultScenarioTester {
     assert(expected.height == actual.height);
     assert(expected.weight == actual.weight);
   }
+
+  async thereAreMatchesSuchAs(dataSource) {
+    const matches = TestFunctions.extractSpecifiedObjectData(dataSource);
+    await globalObjects.client.SetupAddMatches({ matches: matches }, function (err, res) {
+      globalObjects.done = true;
+    });
+  }
 }
 
 module.exports = DefaultScenarioTester;

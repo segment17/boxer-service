@@ -66,6 +66,11 @@ async function bindSetupAddToken(call, callback) {
   callback(null, {code: 200})
 }
 
+async function bindSetupAddMatches(call, callback) {
+  await globalObjects.controller.mediator.matchServiceGateway.setupAddMatches(call.request.matches);
+  callback(null, {code: 200})
+}
+
 async function bindEnterIntegratedTestingEnvironment(call, callback) {
   await globalObjects.controller.enterIntegratedTestingEnvironment();
   callback(null, null);
@@ -85,6 +90,7 @@ function main() {
     SetupAddLatestBoxer: bindSetupAddLatestBoxer,
     SetupAddStandingAndMatches: bindSetupAddStandingAndMatches,
     SetupAddToken: bindSetupAddToken,
+    SetupAddMatches: bindSetupAddMatches,
     SetupClearBoxers: bindSetupClearBoxers,
     EnterIntegratedTestingEnvironment: bindEnterIntegratedTestingEnvironment
   });

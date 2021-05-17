@@ -120,6 +120,14 @@ message SetupAddTokenResponse {
   int32 code = 1;
 }
 
+message SetupAddMatchesRequest {
+  repeated Match matches = 1;
+}
+
+message SetupAddMatchesResponse {
+  int32 code = 1;
+}
+
 message Null {};
 
 service BoxerService {
@@ -137,4 +145,5 @@ service BoxerService {
   rpc SetupClearBoxers(Null) returns (SetupClearBoxersResponse) {};
   rpc SetupAddStandingAndMatches(SetupAddStandingAndMatchesRequest) returns (SetupAddBoxerResponse) {};
   rpc SetupAddToken(SetupAddTokenRequest) returns (SetupAddTokenResponse) {};
+  rpc SetupAddMatches(SetupAddMatchesRequest) returns (SetupAddMatchesResponse);
 }
