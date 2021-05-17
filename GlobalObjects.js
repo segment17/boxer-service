@@ -74,6 +74,7 @@ class GlobalObjects {
 
   async cleanUp() {
     await this.boxerRepository.cleanUp();
+    await this.standingsServiceGateway.cleanUp();
   }
 
 }

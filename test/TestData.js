@@ -210,7 +210,7 @@ let exampleStandingAndMatches = {
       winnerBoxerId: 4,
     },
     {
-      id: 1,
+      id: 2,
       awayBoxerId: 1,
       homeBoxerId: 6,
       matchTime: 127419968,
@@ -218,7 +218,7 @@ let exampleStandingAndMatches = {
       winnerBoxerId: 1
     },
     {
-      id: 1,
+      id: 3,
       awayBoxerId: 1,
       homeBoxerId: 8,
       matchTime: 129419968,
