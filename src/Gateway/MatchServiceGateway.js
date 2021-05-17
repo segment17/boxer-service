@@ -18,20 +18,20 @@ class MatchServiceGateway {
     }
   }
   // Gateway exposed function
-  async removeMatchesOfBoxer(boxerId) {
-    let response = await this.doCallForRemoveMatchesOfBoxer(boxerId);
+  async removeMatchesOfBoxer(boxerId, token) {
+    let response = await this.doCallForRemoveMatchesOfBoxer(boxerId, token);
     return response;
   }
 
-  async doCallForRemoveMatchesOfBoxer(matches) {
+  async doCallForRemoveMatchesOfBoxer(boxerId, token) {
     this.readyClient();
-    let response = await this.PROMISE_doCallForRemoveMatchesOfBoxer(matches);
+    let response = await this.PROMISE_doCallForRemoveMatchesOfBoxer(boxerId, token);
     return response;
   }
 
-  async PROMISE_doCallForRemoveMatchesOfBoxer(matches) {
+  async PROMISE_doCallForRemoveMatchesOfBoxer(boxerId, token) {
     return new Promise((resolve, reject) => {
-      this.client.RemoveMatchesOfBoxer({ matches: matches }, function (err, res) {
+      this.client.RemoveMatchesOfBoxer({ boxerId: boxerId, token: token }, function (err, res) {
         resolve(res);
       });
     });

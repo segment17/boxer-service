@@ -270,11 +270,13 @@ var Unit_AuthServiceGateway_Scenario2_Fail1 = {
 
 Unit_StandingsServiceGateway_Scenario1.expected_data = Unit_StandingsServiceGateway_Scenario1.standing_and_matches;
 
+let exampleToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0"
 // Unit MatchSeriveGateway
 Unit_MatchServiceGateway_Scenario1 = {
   boxer: Unit_Repository_Scenario1.boxer,
   matches: exampleMatches,
-  boxer_id: Unit_Repository_Scenario1.boxer.id,
+  token: exampleToken,
+  data_chunk: { boxerId: Unit_Repository_Scenario1.boxer.id, token: exampleToken },
   expected_data: { code: 200, message: 'deleted' }
 }
 

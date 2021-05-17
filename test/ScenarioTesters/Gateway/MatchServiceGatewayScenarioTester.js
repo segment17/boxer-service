@@ -7,9 +7,9 @@ const assert = require('assert');
 class MatchServiceGatewayScenarioTester extends DefaultScenarioTester {
 
   unitFunctionIsInvokedWithData(functionName, dataSource) {
-    const boxerId = TestFunctions.extractSpecifiedObjectData(dataSource);
+    const data_chunk = TestFunctions.extractSpecifiedObjectData(dataSource);
     if (functionName == "removeMatchesOfBoxer") {
-      globalObjects.matchServiceGateway.removeMatchesOfBoxer(boxerId).then(result => {
+      globalObjects.matchServiceGateway.removeMatchesOfBoxer(data_chunk.boxerId, data_chunk.token).then(result => {
         globalObjects.result = result;
       });
     }
