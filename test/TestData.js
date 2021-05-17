@@ -193,191 +193,53 @@ const Unit_Repository_Scenario8_Fail1 = {
 }
 
 // UNIT STANDINGS SERVICE GATEWAY SUCCESS SCENARIOS
+let exampleStandingAndMatches = {
+  standing: {
+    boxerId: 1,
+    winCount: 1,
+    lossCount: 1,
+    score: 0.5,
+  },
+  matches: [
+    {
+      id: 1,
+      homeBoxerId: 1,
+      awayBoxerId: 4,
+      matchTime: 127419968,
+      isFinished: true,
+      winnerBoxerId: 4,
+    },
+    {
+      id: 1,
+      awayBoxerId: 1,
+      homeBoxerId: 6,
+      matchTime: 127419968,
+      isFinished: true,
+      winnerBoxerId: 1
+    },
+    {
+      id: 1,
+      awayBoxerId: 1,
+      homeBoxerId: 8,
+      matchTime: 129419968,
+      isFinished: false
+    }
+  ]
+}
 
 var Unit_StandingsServiceGateway_Scenario1 = {
   boxer_id: 1,
-  standing_and_matches: {
-    standing: {
-      boxer: {
-        id: 1,
-        fullName: "Mike Tyson",
-        birthDate: 127419968, // Timestamp
-        height: 178,
-        weight: 100
-      },
-      winCount: 1,
-      lossCount: 1,
-      score: 0.5,
-    },
-    matches: [
-      {
-        id: 1,
-        homeBoxer: {
-          id: 1,
-          fullName: "Mike Tyson",
-          birthDate: 127419968, // Timestamp
-          height: 178,
-          weight: 100
-        },
-        awayBoxer: {
-          id: 4,
-          fullName: "Connor McGregor",
-          birthDate: 127419968, // Timestamp
-          height: 175,
-          weight: 80
-        },
-        matchTime: 127419968,
-        isFinished: true,
-        winnerBoxer: {
-          id: 4,
-          fullName: "Connor McGregor",
-          birthDate: 127419968, // Timestamp
-          height: 175,
-          weight: 80
-        }
-      },
-      {
-        id: 1,
-        awayBoxer: {
-          id: 1,
-          fullName: "Mike Tyson",
-          birthDate: 127419968, // Timestamp
-          height: 178,
-          weight: 100
-        },
-        homeBoxer: {
-          id: 6,
-          fullName: "Logan Paul",
-          birthDate: 127419968, // Timestamp
-          height: 195,
-          weight: 120
-        },
-        matchTime: 127419968,
-        isFinished: true,
-        winnerBoxer: {
-          id: 1,
-          fullName: "Mike Tyson",
-          birthDate: 127419968, // Timestamp
-          height: 178,
-          weight: 100
-        }
-      },
-      {
-        id: 1,
-        awayBoxer: {
-          id: 1,
-          fullName: "Mike Tyson",
-          birthDate: 127419968, // Timestamp
-          height: 178,
-          weight: 100
-        },
-        homeBoxer: {
-          id: 8,
-          fullName: "Dwayne \"The Rock\" Johnson",
-          birthDate: 127419968, // Timestamp
-          height: 196,
-          weight: 118
-        },
-        matchTime: 129419968,
-        isFinished: false
-      }
-    ]
-  }
+  standing_and_matches: exampleStandingAndMatches,
+  expected_data: exampleStandingAndMatches
 }
 
 // UNIT STANDINGS SERVICE GATEWAY FAIL SCENARIOS
 
 var Unit_StandingsServiceGateway_Scenario2_Fail1 = {
   boxer_id: 2,
-  standing_and_matches: {
-    standing: {
-      boxer: {
-        id: 1,
-        fullName: "Mike Tyson",
-        birthDate: 127419968, // Timestamp
-        height: 178,
-        weight: 100
-      },
-      winCount: 1,
-      lossCount: 1,
-      score: 0.5,
-    },
-    matches: [
-      {
-        id: 1,
-        homeBoxer: {
-          id: 1,
-          fullName: "Mike Tyson",
-          birthDate: 127419968, // Timestamp
-          height: 178,
-          weight: 100
-        },
-        awayBoxer: {
-          id: 4,
-          fullName: "Connor McGregor",
-          birthDate: 127419968, // Timestamp
-          height: 175,
-          weight: 80
-        },
-        matchTime: 127419968,
-        isFinished: true,
-        winnerBoxer: {
-          id: 4,
-          fullName: "Connor McGregor",
-          birthDate: 127419968, // Timestamp
-          height: 175,
-          weight: 80
-        }
-      },
-      {
-        id: 1,
-        awayBoxer: {
-          id: 1,
-          fullName: "Mike Tyson",
-          birthDate: 127419968, // Timestamp
-          height: 178,
-          weight: 100
-        },
-        homeBoxer: {
-          id: 6,
-          fullName: "Logan Paul",
-          birthDate: 127419968, // Timestamp
-          height: 195,
-          weight: 120
-        },
-        matchTime: 127419968,
-        isFinished: true,
-        winnerBoxer: {
-          id: 1,
-          fullName: "Mike Tyson",
-          birthDate: 127419968, // Timestamp
-          height: 178,
-          weight: 100
-        }
-      },
-      {
-        id: 1,
-        awayBoxer: {
-          id: 1,
-          fullName: "Mike Tyson",
-          birthDate: 127419968, // Timestamp
-          height: 178,
-          weight: 100
-        },
-        homeBoxer: {
-          id: 8,
-          fullName: "Dwayne \"The Rock\" Johnson",
-          birthDate: 127419968, // Timestamp
-          height: 196,
-          weight: 118
-        },
-        matchTime: 129419968,
-        isFinished: false
-      }
-    ]
-  },
+  standing_and_matches: exampleStandingAndMatches,
   expected_data: {
-    standing: { boxer: null, winCount: 0, lossCount: 0, score: 0 },
+    standing: { boxerId: 0, winCount: 0, lossCount: 0, score: 0 },
     matches: []
   }
 }

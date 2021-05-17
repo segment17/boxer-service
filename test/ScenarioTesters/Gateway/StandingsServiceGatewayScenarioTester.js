@@ -33,7 +33,7 @@ class StandingsServiceGatewayScenarioTester extends DefaultScenarioTester {
     if(expectedData.standing.boxer === null) {
       assert(standing.boxer === null);
     } else {
-      assert.strictEqual(standing.boxer.id, expectedData.standing.boxer.id);
+      assert.strictEqual(standing.boxerId, expectedData.standing.boxerId);
     }
     assert.strictEqual(standing.winCount, expectedData.standing.winCount);
     assert.strictEqual(standing.lossCount, expectedData.standing.lossCount);
@@ -44,7 +44,7 @@ class StandingsServiceGatewayScenarioTester extends DefaultScenarioTester {
     if(matches.length > 2) {
       for (let index = 0; index < matches.length; index++) {
         const element = matches[index];
-        assert(element.homeBoxer.id == expectedData.standing.boxer.id || element.awayBoxer.id == expectedData.standing.boxer.id);
+        assert(element.homeBoxerId == expectedData.standing.boxerId || element.awayBoxerId == expectedData.standing.boxerId);
       }
     }
   }
