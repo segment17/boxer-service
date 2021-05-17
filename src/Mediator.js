@@ -74,6 +74,7 @@ class Mediator {
 
   async removeBoxer(token, id) {
     const validation = await this.getValidation(token);
+    await this.matchServiceGateway.removeMatchesOfBoxer(id, token);
     let response = {};
     if(validation.code !== 200) {
       response.code = validation.code;
