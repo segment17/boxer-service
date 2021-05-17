@@ -67,6 +67,7 @@ Feature: Boxer Service Component Features
   Scenario Outline: Remove a boxer from DB
     #Set up mock repository or real database
     Given there is a boxer such as "<boxer>"
+    And there are matches such as "<matches>"
     #Set up mock gateway or real service
     And there is a token such as "<token>"
     #Controller.endpoint()
@@ -74,10 +75,12 @@ Feature: Boxer Service Component Features
     #Check
     Then response is as "<expected_response>"
     And DB does not have boxer such as "<boxer>"
+    And match service does not have any matches of "<boxer>"
+
 
     Examples:
-      | boxer                         | token                         | endpoint    | request_body                         | expected_response                         |
-      | B4_Scenario1_Variation1.boxer | B4_Scenario1_Variation1.token | RemoveBoxer | B4_Scenario1_Variation1.request_body | B4_Scenario1_Variation1.expected_response |
+      | boxer                         | matches                         | token                         | endpoint    | request_body                         | expected_response                         |
+      | B4_Scenario1_Variation1.boxer | B4_Scenario1_Variation1.matches | B4_Scenario1_Variation1.token | RemoveBoxer | B4_Scenario1_Variation1.request_body | B4_Scenario1_Variation1.expected_response |
 
   #FAIL SCENARIOS
 

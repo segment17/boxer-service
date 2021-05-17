@@ -192,6 +192,32 @@ const Unit_Repository_Scenario8_Fail1 = {
   }
 }
 
+let exampleMatches = [
+  {
+    id: 1,
+    homeBoxerId: 1,
+    awayBoxerId: 4,
+    matchTime: 127419968,
+    isFinished: true,
+    winnerBoxerId: 4,
+  },
+  {
+    id: 2,
+    awayBoxerId: 1,
+    homeBoxerId: 6,
+    matchTime: 127419968,
+    isFinished: true,
+    winnerBoxerId: 1
+  },
+  {
+    id: 3,
+    awayBoxerId: 1,
+    homeBoxerId: 8,
+    matchTime: 129419968,
+    isFinished: false
+  }
+];
+
 // UNIT STANDINGS SERVICE GATEWAY SUCCESS SCENARIOS
 let exampleStandingAndMatches = {
   standing: {
@@ -200,31 +226,7 @@ let exampleStandingAndMatches = {
     lossCount: 1,
     score: 0.5,
   },
-  matches: [
-    {
-      id: 1,
-      homeBoxerId: 1,
-      awayBoxerId: 4,
-      matchTime: 127419968,
-      isFinished: true,
-      winnerBoxerId: 4,
-    },
-    {
-      id: 2,
-      awayBoxerId: 1,
-      homeBoxerId: 6,
-      matchTime: 127419968,
-      isFinished: true,
-      winnerBoxerId: 1
-    },
-    {
-      id: 3,
-      awayBoxerId: 1,
-      homeBoxerId: 8,
-      matchTime: 129419968,
-      isFinished: false
-    }
-  ]
+  matches: exampleMatches
 }
 
 var Unit_StandingsServiceGateway_Scenario1 = {
@@ -348,6 +350,7 @@ const B3_Scenario1_Variation1 = {
 // RemoveBoxer
 const B4_Scenario1_Variation1 = {
   boxer: Unit_Repository_Scenario4.boxer,
+  matches: exampleMatches,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: { 
     id: 1, 
