@@ -123,7 +123,7 @@ const Unit_Repository_Scenario6_Fail1 = {
   expected_data: {
     code: "404",
     message: "not_found",
-    boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
   }
 }
 
@@ -138,13 +138,13 @@ const Unit_Repository_Scenario6_Fail2 = {
   edit_body: {
     id: 1,
     weight: -20
-    },
+  },
   expected_data: {
     code: "400",
     message: "bad_request",
-    boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
+    boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
   }
-} 
+}
 
 /* const Unit_Repository_Scenario7_Fail1 = {
   existing_boxer: Unit_Repository_Scenario1.boxer,
@@ -270,6 +270,14 @@ var Unit_AuthServiceGateway_Scenario2_Fail1 = {
 
 Unit_StandingsServiceGateway_Scenario1.expected_data = Unit_StandingsServiceGateway_Scenario1.standing_and_matches;
 
+// Unit MatchSeriveGateway
+Unit_MatchServiceGateway_Scenario1 = {
+  boxer: Unit_Repository_Scenario1.boxer,
+  matches: exampleMatches,
+  boxer_id: Unit_Repository_Scenario1.boxer.id,
+  expected_data: { code: 200, message: 'deleted' }
+}
+
 // COMPONENT SUCCESS SCENARIOS
 
 // GetBoxer
@@ -352,8 +360,8 @@ const B4_Scenario1_Variation1 = {
   boxer: Unit_Repository_Scenario4.boxer,
   matches: exampleMatches,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
-  request_body: { 
-    id: 1, 
+  request_body: {
+    id: 1,
     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   expected_response: {
@@ -506,7 +514,7 @@ const B3_Scenario2_Fail3 = {
 const B4_Scenario2_Fail1 = {
   boxer: Unit_Repository_Scenario4.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
-  request_body: { 
+  request_body: {
     id: 2,
     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
@@ -520,7 +528,7 @@ const B4_Scenario2_Fail1 = {
 const B4_Scenario2_Fail2 = {
   boxer: Unit_Repository_Scenario4.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
-  request_body: { 
+  request_body: {
     id: 1,
     token: "lorem_ipsum",
   },
@@ -559,5 +567,6 @@ module.exports = {
   Unit_StandingsServiceGateway_Scenario2_Fail1,
   Unit_AuthServiceGateway_Scenario1,
   Unit_AuthServiceGateway_Scenario2_Fail1,
-  B0_Scenario1_Variation1
+  B0_Scenario1_Variation1,
+  Unit_MatchServiceGateway_Scenario1
 }
