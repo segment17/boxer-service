@@ -1,0 +1,213 @@
+$ sh count.sh
+
+index.js:
+
+$ /Users/omergulen/Documents/others/s17/boxer-service/node_modules/.bin/sloc index.js
+
+---------- Result ------------
+
+            Physical :  106
+              Source :  86
+             Comment :  2
+ Single-line comment :  2
+       Block comment :  0
+               Mixed :  0
+ Empty block comment :  0
+               Empty :  18
+               To Do :  0
+
+Number of files read :  1
+
+----------------------------
+
+
+GlobalObjects:
+
+$ /Users/omergulen/Documents/others/s17/boxer-service/node_modules/.bin/sloc GlobalObjects.js
+
+---------- Result ------------
+
+            Physical :  88
+              Source :  69
+             Comment :  7
+ Single-line comment :  7
+       Block comment :  0
+               Mixed :  2
+ Empty block comment :  0
+               Empty :  14
+               To Do :  0
+
+Number of files read :  1
+
+----------------------------
+
+
+Dockerfile:
+
+       7
+
+Dockerfile comments:
+
+       0
+
+k8s manifests:
+
+$ /Users/omergulen/Documents/others/s17/boxer-service/node_modules/.bin/sloc manifest.yaml
+
+---------- Result ------------
+
+            Physical :  128
+              Source :  115
+             Comment :  13
+ Single-line comment :  13
+       Block comment :  0
+               Mixed :  0
+ Empty block comment :  0
+               Empty :  0
+               To Do :  0
+
+Number of files read :  1
+
+----------------------------
+
+
+automations:
+
+       8 ./automate_local_1_nopush.sh
+      17 ./automate_minikube_1.sh
+      18 ./automate_minikube_1_nopush.sh
+       8 ./automate_local_1.sh
+      51 total
+
+Automations comments:
+
+      12
+
+src:
+
+$ /Users/omergulen/Documents/others/s17/boxer-service/node_modules/.bin/sloc src/
+
+---------- Result ------------
+
+            Physical :  836
+              Source :  668
+             Comment :  52
+ Single-line comment :  34
+       Block comment :  18
+               Mixed :  0
+ Empty block comment :  0
+               Empty :  116
+               To Do :  2
+
+Number of files read :  11
+
+----------------------------
+
+
+proto:
+
+      41 ./proto/authservice.proto
+      90 ./proto/standingsservice.proto
+     149 ./proto/boxerservice.proto
+     130 ./proto/matchservice.proto
+     410 total
+
+features:
+
+      75 ./test/features_raw/Unit/BoxerRepository.feature
+      31 ./test/features_raw/Unit/AuthServiceGateway.feature
+      33 ./test/features_raw/Unit/StandingsServiceGateway.feature
+      19 ./test/features_raw/Integration/MatchServiceGateway.feature
+      75 ./test/features_raw/Integration/BoxerRepository.feature
+      33 ./test/features_raw/Integration/StandingsServiceGateway.feature
+     152 ./test/features_raw/E2E.feature
+     149 ./test/features_raw/Component.feature
+     567 total
+
+Feature comments:
+
+     136
+
+step-definitions:
+
+$ /Users/omergulen/Documents/others/s17/boxer-service/node_modules/.bin/sloc features/step_definitions
+
+---------- Result ------------
+
+            Physical :  86
+              Source :  69
+             Comment :  1
+ Single-line comment :  1
+       Block comment :  0
+               Mixed :  0
+ Empty block comment :  0
+               Empty :  16
+               To Do :  0
+
+Number of files read :  1
+
+----------------------------
+
+
+scenario-testers:
+
+$ /Users/omergulen/Documents/others/s17/boxer-service/node_modules/.bin/sloc test/ScenarioTesters
+
+---------- Result ------------
+
+            Physical :  528
+              Source :  436
+             Comment :  8
+ Single-line comment :  8
+       Block comment :  0
+               Mixed :  0
+ Empty block comment :  0
+               Empty :  84
+               To Do :  0
+
+Number of files read :  8
+
+----------------------------
+
+
+test-data:
+
+$ /Users/omergulen/Documents/others/s17/boxer-service/node_modules/.bin/sloc test/TestData.js
+
+---------- Result ------------
+
+            Physical :  574
+              Source :  485
+             Comment :  59
+ Single-line comment :  31
+       Block comment :  28
+               Mixed :  10
+ Empty block comment :  0
+               Empty :  40
+               To Do :  0
+
+Number of files read :  1
+
+----------------------------
+
+
+test-functions:
+
+$ /Users/omergulen/Documents/others/s17/boxer-service/node_modules/.bin/sloc test/TestFunctions.js
+
+---------- Result ------------
+
+            Physical :  52
+              Source :  41
+             Comment :  2
+ Single-line comment :  2
+       Block comment :  0
+               Mixed :  0
+ Empty block comment :  0
+               Empty :  9
+               To Do :  0
+
+Number of files read :  1
+
+----------------------------
+
