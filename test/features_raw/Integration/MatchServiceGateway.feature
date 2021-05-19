@@ -3,7 +3,7 @@ Feature: Match Service Gateway Integration Feature
 
   #SUCCESS SCENARIOS
 
-  @Unit_MatchServiceGateway_Scenario1
+  @MatchServiceGateway_Scenario1
   Scenario Outline: Delete matches of boxer
     #Set up mock gateway or real user service -> Mock if @Unit, real if @Integration
     Given there is a boxer such as "<boxer>"
@@ -15,5 +15,5 @@ Feature: Match Service Gateway Integration Feature
     Then returned data is as "<expected_data>"
 
     Examples:
-      | boxer                                    | matches                                    | token                                    | gateway_function     | data_chunk                                      | expected_data                                    |
-      | Unit_MatchServiceGateway_Scenario1.boxer | Unit_MatchServiceGateway_Scenario1.matches | Unit_MatchServiceGateway_Scenario1.token | removeMatchesOfBoxer | Unit_MatchServiceGateway_Scenario1.data_chunk | Unit_MatchServiceGateway_Scenario1.expected_data |
+      | boxer                               | matches                               | token                               | gateway_function     | data_chunk                               | expected_data                               |
+      | MatchServiceGateway_Scenario1.boxer | MatchServiceGateway_Scenario1.matches | MatchServiceGateway_Scenario1.token | removeMatchesOfBoxer | MatchServiceGateway_Scenario1.data_chunk | MatchServiceGateway_Scenario1.expected_data |

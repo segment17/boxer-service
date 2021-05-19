@@ -1,6 +1,6 @@
 // UNIT REPOSITORY SUCCESS SCENARIOS
 
-const Unit_Repository_Scenario1 = {
+const Repository_Scenario1 = {
   boxer: {
     id: 1,
     fullName: "Mike Tyson",
@@ -22,7 +22,7 @@ const Unit_Repository_Scenario1 = {
   }
 }
 
-const Unit_Repository_Scenario2 = {
+const Repository_Scenario2 = {
   boxer: {
     id: 1,
     fullName: "Mike Tyson",
@@ -47,8 +47,8 @@ const Unit_Repository_Scenario2 = {
   }
 }
 
-const Unit_Repository_Scenario3 = {
-  existing_boxer: Unit_Repository_Scenario1.boxer,
+const Repository_Scenario3 = {
+  existing_boxer: Repository_Scenario1.boxer,
   data_chunk: {
     fullName: "Rocky Balboa",
     birthDate: -772804800,
@@ -59,7 +59,7 @@ const Unit_Repository_Scenario3 = {
     code: "201",
     message: "created",
     boxer: {
-      id: Unit_Repository_Scenario1.boxer + 1,
+      id: Repository_Scenario1.boxer + 1,
       fullName: "Rocky Balboa",
       birthDate: -772804800,
       height: 178,
@@ -68,7 +68,7 @@ const Unit_Repository_Scenario3 = {
   }
 }
 
-const Unit_Repository_Scenario4 = {
+const Repository_Scenario4 = {
   boxer: {
     id: 1,
     fullName: "Mike Tyson",
@@ -92,7 +92,7 @@ const Unit_Repository_Scenario4 = {
 
 // UNIT REPOSITORY FAIL SCENARIOS
 
-const Unit_Repository_Scenario5_Fail1 = {
+const Repository_Scenario5_Fail1 = {
   boxer: {
     id: 1,
     fullName: "Mike Tyson",
@@ -108,7 +108,7 @@ const Unit_Repository_Scenario5_Fail1 = {
   }
 }
 
-const Unit_Repository_Scenario6_Fail1 = {
+const Repository_Scenario6_Fail1 = {
   boxer: {
     id: 1,
     fullName: "Mike Tyson",
@@ -127,7 +127,7 @@ const Unit_Repository_Scenario6_Fail1 = {
   }
 }
 
-const Unit_Repository_Scenario6_Fail2 = {
+const Repository_Scenario6_Fail2 = {
   boxer: {
     id: 1,
     fullName: "Mike Tyson",
@@ -146,8 +146,8 @@ const Unit_Repository_Scenario6_Fail2 = {
   }
 }
 
-/* const Unit_Repository_Scenario7_Fail1 = {
-  existing_boxer: Unit_Repository_Scenario1.boxer,
+/* const Repository_Scenario7_Fail1 = {
+  existing_boxer: Repository_Scenario1.boxer,
   data_chunk: {
     fullName: "",
     birthDate: -772804800,
@@ -161,8 +161,8 @@ const Unit_Repository_Scenario6_Fail2 = {
   }
 } */
 
-/* const Unit_Repository_Scenario7_Fail2 = {
-  existing_boxer: Unit_Repository_Scenario1.boxer,
+/* const Repository_Scenario7_Fail2 = {
+  existing_boxer: Repository_Scenario1.boxer,
   data_chunk: {
     fullName: "Rocky Balboa",
     birthDate: -772804800,
@@ -176,7 +176,7 @@ const Unit_Repository_Scenario6_Fail2 = {
   }
 } */
 
-const Unit_Repository_Scenario8_Fail1 = {
+const Repository_Scenario8_Fail1 = {
   boxer: {
     id: 1,
     fullName: "Mike Tyson",
@@ -229,7 +229,7 @@ let exampleStandingAndMatches = {
   matches: exampleMatches
 }
 
-var Unit_StandingsServiceGateway_Scenario1 = {
+var StandingsServiceGateway_Scenario1 = {
   boxer_id: 1,
   standing_and_matches: exampleStandingAndMatches,
   expected_data: exampleStandingAndMatches
@@ -237,7 +237,7 @@ var Unit_StandingsServiceGateway_Scenario1 = {
 
 // UNIT STANDINGS SERVICE GATEWAY FAIL SCENARIOS
 
-var Unit_StandingsServiceGateway_Scenario2_Fail1 = {
+var StandingsServiceGateway_Scenario2_Fail1 = {
   boxer_id: 2,
   standing_and_matches: exampleStandingAndMatches,
   expected_data: {
@@ -248,7 +248,7 @@ var Unit_StandingsServiceGateway_Scenario2_Fail1 = {
 
 // UNIT AUTH SERVICE GATEWAY SUCCESS SCENARIOS
 
-var Unit_AuthServiceGateway_Scenario1 = {
+var AuthServiceGateway_Scenario1 = {
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   data_chunk: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   expected_data: {
@@ -259,7 +259,7 @@ var Unit_AuthServiceGateway_Scenario1 = {
 
 // UNIT AUTH SERVICE GATEWAY FAIL SCENARIOS
 
-var Unit_AuthServiceGateway_Scenario2_Fail1 = {
+var AuthServiceGateway_Scenario2_Fail1 = {
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   data_chunk: "lorem_ipsum",
   expected_data: {
@@ -268,15 +268,15 @@ var Unit_AuthServiceGateway_Scenario2_Fail1 = {
   }
 }
 
-Unit_StandingsServiceGateway_Scenario1.expected_data = Unit_StandingsServiceGateway_Scenario1.standing_and_matches;
+StandingsServiceGateway_Scenario1.expected_data = StandingsServiceGateway_Scenario1.standing_and_matches;
 
 let exampleToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0"
 // Unit MatchSeriveGateway
-Unit_MatchServiceGateway_Scenario1 = {
-  boxer: Unit_Repository_Scenario1.boxer,
+MatchServiceGateway_Scenario1 = {
+  boxer: Repository_Scenario1.boxer,
   matches: exampleMatches,
   token: exampleToken,
-  data_chunk: { boxerId: Unit_Repository_Scenario1.boxer.id, token: exampleToken },
+  data_chunk: { boxerId: Repository_Scenario1.boxer.id, token: exampleToken },
   expected_data: { code: 200, message: 'deleted' }
 }
 
@@ -285,13 +285,13 @@ Unit_MatchServiceGateway_Scenario1 = {
 // GetBoxer
 const B1_Scenario1_Variation1 = {
   request_body: { id: 1 },
-  boxer: Unit_Repository_Scenario1.boxer,
-  standing_and_matches: Unit_StandingsServiceGateway_Scenario1.standing_and_matches,
+  boxer: Repository_Scenario1.boxer,
+  standing_and_matches: StandingsServiceGateway_Scenario1.standing_and_matches,
   expected_response: {
     code: 200,
     message: 'success',
-    boxer: Unit_Repository_Scenario1.boxer,
-    standingAndMatches: Unit_StandingsServiceGateway_Scenario1.standing_and_matches
+    boxer: Repository_Scenario1.boxer,
+    standingAndMatches: StandingsServiceGateway_Scenario1.standing_and_matches
   }
 }
 
@@ -300,17 +300,17 @@ const B1_Scenario1_Variation1 = {
 // GetBoxer
 const B0_Scenario1_Variation1 = {
   request_body: { id: 1 },
-  boxer: Unit_Repository_Scenario1.boxer,
+  boxer: Repository_Scenario1.boxer,
   expected_response: {
     code: 200,
     message: 'success',
-    boxer: Unit_Repository_Scenario1.boxer
+    boxer: Repository_Scenario1.boxer
   }
 }
 
 // EditBoxer
 const B2_Scenario1_Variation1 = {
-  boxer: Unit_Repository_Scenario1.boxer,
+  boxer: Repository_Scenario1.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     id: 1,
@@ -321,14 +321,14 @@ const B2_Scenario1_Variation1 = {
   expected_response: {
     code: 201,
     message: 'edited',
-    boxer: Unit_Repository_Scenario2.expected_data.boxer
+    boxer: Repository_Scenario2.expected_data.boxer
   },
-  edited_boxer: Unit_Repository_Scenario2.expected_data.boxer
+  edited_boxer: Repository_Scenario2.expected_data.boxer
 }
 
 // AddBoxer
 const B3_Scenario1_Variation1 = {
-  boxer: Unit_Repository_Scenario1.boxer,
+  boxer: Repository_Scenario1.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     fullName: "Rocky Balboa",
@@ -338,7 +338,7 @@ const B3_Scenario1_Variation1 = {
     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   new_boxer: {
-    id: Unit_Repository_Scenario1.boxer.id + 1,
+    id: Repository_Scenario1.boxer.id + 1,
     fullName: "Rocky Balboa",
     birthDate: -772804800,
     height: 178,
@@ -348,7 +348,7 @@ const B3_Scenario1_Variation1 = {
     code: 201,
     message: 'created',
     boxer: {
-      id: Unit_Repository_Scenario1.boxer.id + 1,
+      id: Repository_Scenario1.boxer.id + 1,
       fullName: "Rocky Balboa",
       birthDate: -772804800,
       height: 178,
@@ -359,7 +359,7 @@ const B3_Scenario1_Variation1 = {
 
 // RemoveBoxer
 const B4_Scenario1_Variation1 = {
-  boxer: Unit_Repository_Scenario4.boxer,
+  boxer: Repository_Scenario4.boxer,
   matches: exampleMatches,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
@@ -369,7 +369,7 @@ const B4_Scenario1_Variation1 = {
   expected_response: {
     code: 201,
     message: 'removed',
-    boxer: Unit_Repository_Scenario4.boxer
+    boxer: Repository_Scenario4.boxer
   }
 }
 
@@ -378,7 +378,7 @@ const B4_Scenario1_Variation1 = {
 // GetBoxer
 const B1_Scenario2_Fail1 = {
   request_body: { id: 2 },
-  boxer: Unit_Repository_Scenario1.boxer,
+  boxer: Repository_Scenario1.boxer,
   standing_and_matches: {
     standing: { boxer: null, winCount: 0, lossCount: 0, score: 0 },
     matches: []
@@ -396,7 +396,7 @@ const B1_Scenario2_Fail1 = {
 
 // EditBoxer
 const B2_Scenario2_Fail1 = {
-  boxer: Unit_Repository_Scenario1.boxer,
+  boxer: Repository_Scenario1.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     id: 2,
@@ -411,7 +411,7 @@ const B2_Scenario2_Fail1 = {
 }
 
 const B2_Scenario2_Fail2 = {
-  boxer: Unit_Repository_Scenario1.boxer,
+  boxer: Repository_Scenario1.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     id: 1,
@@ -426,7 +426,7 @@ const B2_Scenario2_Fail2 = {
 }
 
 const B2_Scenario2_Fail3 = {
-  boxer: Unit_Repository_Scenario1.boxer,
+  boxer: Repository_Scenario1.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     id: 1,
@@ -442,7 +442,7 @@ const B2_Scenario2_Fail3 = {
 
 // AddBoxer
 const B3_Scenario2_Fail1 = {
-  boxer: Unit_Repository_Scenario1.boxer,
+  boxer: Repository_Scenario1.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     birthDate: -772804800,
@@ -451,7 +451,7 @@ const B3_Scenario2_Fail1 = {
     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   new_boxer: {
-    id: Unit_Repository_Scenario1.boxer.id + 1,
+    id: Repository_Scenario1.boxer.id + 1,
     fullName: "",
     birthDate: -772804800,
     height: 178,
@@ -465,7 +465,7 @@ const B3_Scenario2_Fail1 = {
 }
 
 const B3_Scenario2_Fail2 = {
-  boxer: Unit_Repository_Scenario1.boxer,
+  boxer: Repository_Scenario1.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     fullName: "Rocky Balboa",
@@ -475,7 +475,7 @@ const B3_Scenario2_Fail2 = {
     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   new_boxer: {
-    id: Unit_Repository_Scenario1.boxer.id + 1,
+    id: Repository_Scenario1.boxer.id + 1,
     fullName: "Rocky Balboa",
     birthDate: -772804800,
     height: 178,
@@ -489,7 +489,7 @@ const B3_Scenario2_Fail2 = {
 }
 
 const B3_Scenario2_Fail3 = {
-  boxer: Unit_Repository_Scenario1.boxer,
+  boxer: Repository_Scenario1.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     fullName: "Rocky Balboa",
@@ -499,7 +499,7 @@ const B3_Scenario2_Fail3 = {
     token: "lorem_ipsum",
   },
   new_boxer: {
-    id: Unit_Repository_Scenario1.boxer.id + 1,
+    id: Repository_Scenario1.boxer.id + 1,
     fullName: "Rocky Balboa",
     birthDate: -772804800,
     height: 178,
@@ -514,7 +514,7 @@ const B3_Scenario2_Fail3 = {
 
 // RemoveBoxer
 const B4_Scenario2_Fail1 = {
-  boxer: Unit_Repository_Scenario4.boxer,
+  boxer: Repository_Scenario4.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     id: 2,
@@ -528,7 +528,7 @@ const B4_Scenario2_Fail1 = {
 }
 
 const B4_Scenario2_Fail2 = {
-  boxer: Unit_Repository_Scenario4.boxer,
+  boxer: Repository_Scenario4.boxer,
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   request_body: {
     id: 1,
@@ -542,16 +542,16 @@ const B4_Scenario2_Fail2 = {
 }
 
 module.exports = {
-  Unit_Repository_Scenario1,
-  Unit_Repository_Scenario2,
-  Unit_Repository_Scenario3,
-  Unit_Repository_Scenario4,
-  Unit_Repository_Scenario5_Fail1,
-  Unit_Repository_Scenario6_Fail1,
-  Unit_Repository_Scenario6_Fail2,
-  //Unit_Repository_Scenario7_Fail1,
-  //Unit_Repository_Scenario7_Fail2,
-  Unit_Repository_Scenario8_Fail1,
+  Repository_Scenario1,
+  Repository_Scenario2,
+  Repository_Scenario3,
+  Repository_Scenario4,
+  Repository_Scenario5_Fail1,
+  Repository_Scenario6_Fail1,
+  Repository_Scenario6_Fail2,
+  //Repository_Scenario7_Fail1,
+  //Repository_Scenario7_Fail2,
+  Repository_Scenario8_Fail1,
   B1_Scenario1_Variation1,
   B2_Scenario1_Variation1,
   B3_Scenario1_Variation1,
@@ -565,10 +565,10 @@ module.exports = {
   B3_Scenario2_Fail3,
   B4_Scenario2_Fail1,
   B4_Scenario2_Fail2,
-  Unit_StandingsServiceGateway_Scenario1,
-  Unit_StandingsServiceGateway_Scenario2_Fail1,
-  Unit_AuthServiceGateway_Scenario1,
-  Unit_AuthServiceGateway_Scenario2_Fail1,
+  StandingsServiceGateway_Scenario1,
+  StandingsServiceGateway_Scenario2_Fail1,
+  AuthServiceGateway_Scenario1,
+  AuthServiceGateway_Scenario2_Fail1,
   B0_Scenario1_Variation1,
-  Unit_MatchServiceGateway_Scenario1
+  MatchServiceGateway_Scenario1
 }

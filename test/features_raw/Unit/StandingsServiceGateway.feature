@@ -3,7 +3,7 @@ Feature: Standings Service Gateway Unit Feature
 
   #SUCCESS SCENARIOS
 
-  @Unit_StandingsServiceGateway_Scenario1
+  @StandingsServiceGateway_Scenario1
   Scenario Outline: Get standings and matches from Standings Service Gateway
     #Set up mock gateway or real user service -> Mock if @Unit, real if @Integration
     Given there is a standing with matches such as "<standing_and_matches>"
@@ -14,12 +14,12 @@ Feature: Standings Service Gateway Unit Feature
     Then returned data is as "<expected_data>"
 
     Examples:
-      | boxer                           | standing_and_matches                                        | gateway_function             | boxer_id                                        | expected_data                                        |
-      | Unit_Repository_Scenario1.boxer | Unit_StandingsServiceGateway_Scenario1.standing_and_matches | getStandingAndMatchesOfBoxer | Unit_StandingsServiceGateway_Scenario1.boxer_id | Unit_StandingsServiceGateway_Scenario1.expected_data |
+      | boxer                      | standing_and_matches                                   | gateway_function             | boxer_id                                   | expected_data                                   |
+      | Repository_Scenario1.boxer | StandingsServiceGateway_Scenario1.standing_and_matches | getStandingAndMatchesOfBoxer | StandingsServiceGateway_Scenario1.boxer_id | StandingsServiceGateway_Scenario1.expected_data |
 
   #FAIL SCENARIOS
 
-  @Unit_StandingsServiceGateway_Scenario2
+  @StandingsServiceGateway_Scenario2
   Scenario Outline: Get standings and matches from Standings Service Gateway failure
     #Set up mock gateway or real user service -> Mock if @Unit, real if @Integration
     Given there is a standing with matches such as "<standing_and_matches>"
@@ -30,5 +30,5 @@ Feature: Standings Service Gateway Unit Feature
     Then returned data is as "<expected_data>"
 
     Examples:
-      | boxer                           | standing_and_matches                                              | gateway_function             | boxer_id                                              | expected_data                                              |
-      | Unit_Repository_Scenario1.boxer | Unit_StandingsServiceGateway_Scenario2_Fail1.standing_and_matches | getStandingAndMatchesOfBoxer | Unit_StandingsServiceGateway_Scenario2_Fail1.boxer_id | Unit_StandingsServiceGateway_Scenario2_Fail1.expected_data |
+      | boxer                      | standing_and_matches                                         | gateway_function             | boxer_id                                         | expected_data                                         |
+      | Repository_Scenario1.boxer | StandingsServiceGateway_Scenario2_Fail1.standing_and_matches | getStandingAndMatchesOfBoxer | StandingsServiceGateway_Scenario2_Fail1.boxer_id | StandingsServiceGateway_Scenario2_Fail1.expected_data |
