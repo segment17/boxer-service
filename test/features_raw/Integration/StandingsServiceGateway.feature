@@ -1,5 +1,5 @@
 @Integration @Gateway @StandingsServiceGateway
-Feature: Standings Service Gateway Unit Feature
+Feature: Standings Service Gateway Integration Feature
 
   #SUCCESS SCENARIOS
 
