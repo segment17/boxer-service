@@ -8,15 +8,12 @@ const connectionSetup = {
   password: "root",
   database: "matchservice"
 };
-var connection = mysql.createConnection(connectionSetup);
 
+var connection = mysql.createConnection(connectionSetup);
 connection.connect(function (err) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("Connected!");
-  }
+  console.log(err ? err : "Connected!");
 });
+
 let tableName = "matches";
 
 function createGetQuery({ matchId, boxerId }) {

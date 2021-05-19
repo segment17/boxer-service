@@ -10,8 +10,7 @@ function extractTags(scenario) {
   let res = [];
   const tagObjects = scenario.pickle.tags;
   for (let index = 0; index < tagObjects.length; index++) {
-    const element = tagObjects[index];
-    res.push(element.name);
+    res.push(tagObjects[index].name);
   }
   return res;
 }
@@ -25,10 +24,7 @@ function isScenarioUnit(scenario, layer) {
 function isScenarioIntegration(scenario, layer) {
   // layer can be "Mediator", "Gateway", "Repository" or one of the domain object tags
   const tags = extractTags(scenario);
-  if (layer == null) {
-    return tags.includes('@Integration');
-  }
-  return tags.includes('@Integration') && tags.includes('@' + layer);
+  return layer === null ? tags.includes('@Integration') : tags.includes('@Integration') && tags.includes('@' + layer);
 }
 
 function isScenarioComponent(scenario) {
@@ -44,9 +40,7 @@ function sleep(ms) {
 }
 
 async function waitUntilResult() {
-  while (globalObjects.result == globalObjects.unreturnableContentForResult) {
-    await sleep(100);
-  }
+  while (globalObjects.result == globalObjects.unreturnableContentForResult) { await sleep(100); }
 }
 
 module.exports = { extractSpecifiedObjectData, isScenarioUnit, isScenarioIntegration, isScenarioComponent, isScenarioE2E, waitUntilResult, sleep}

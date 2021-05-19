@@ -4,11 +4,8 @@ const protoLoader = require('@grpc/proto-loader');
 const PROTO_PATH = __dirname + '../../../proto/authservice.proto';
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, { keepCase: true, longs: String, enums: String, defaults: true, oneofs: true });
 const authservice_package = grpc.loadPackageDefinition(packageDefinition).authservice_package;
-// GRPC SETUP
 
 class AuthServiceGateway {
-
-  // Template code
 
   // Gateway exposed function
   async getValidation(token) {
@@ -25,9 +22,7 @@ class AuthServiceGateway {
         this.client = new authservice_package.AuthService("0.0.0.0:50001", grpc.credentials.createInsecure());
       }
     }
-
     let response = await this.PROMISE_doCallForGetValidation(obj);
-
     return response;
   }
 

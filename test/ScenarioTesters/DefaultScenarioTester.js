@@ -22,8 +22,9 @@ class DefaultScenarioTester {
       globalObjects.client.Mock({}, (err, res) => {
         globalObjects.done = true;
       });
-    } else {
-
+    } 
+    
+    else {
       globalObjects.boxerRepository.enterIntegratedTestingEnvironment();
       globalObjects.client.EnterIntegratedTestingEnvironment({}, (err, res) => {
         globalObjects.done = true;
@@ -33,7 +34,6 @@ class DefaultScenarioTester {
 
   async thereIsABoxerSuchAs(dataSource) {
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
-    // globalObjects.controller.mediator.boxerRepository.setupAddBoxer(specifiedBoxer);
     await globalObjects.client.SetupAddBoxer({ boxer: specifiedBoxer }, function (err, res) {
       globalObjects.done = true;
     });
@@ -41,10 +41,8 @@ class DefaultScenarioTester {
 
   async latestBoxerInDBIsSuchAs(dataSource) {
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
-    // globalObjects.controller.mediator.boxerRepository.setupAddBoxer(specifiedBoxer);
-    var self = this;
     await globalObjects.client.SetupAddLatestBoxer({ boxer: specifiedBoxer }, async function (err, res) {
-      self.lastInsertId = await globalObjects.boxerRepository.getLatestId();
+      this.lastInsertId = await globalObjects.boxerRepository.getLatestId();
       globalObjects.done = true;
     });
   }
@@ -55,27 +53,38 @@ class DefaultScenarioTester {
     this.endpoint = endpoint;
     const requestBody = TestFunctions.extractSpecifiedObjectData(requestBodySource);
     assert(requestBody != undefined);
+
     if (endpoint == "GetBoxerWithStandingAndMatches") {
       globalObjects.client.GetBoxerWithStandingAndMatches(requestBody, function (err, res) {
         globalObjects.result = res;
       });
-    } else if (endpoint == "AddBoxer") {
+    } 
+    
+    else if (endpoint == "AddBoxer") {
       globalObjects.client.AddBoxer(requestBody, function (err, res) {
         globalObjects.result = res;
       });
-    } else if (endpoint == "EditBoxer") {
+    } 
+    
+    else if (endpoint == "EditBoxer") {
       globalObjects.client.EditBoxer(requestBody, function (err, res) {
         globalObjects.result = res;
       });
-    } else if (endpoint == "RemoveBoxer") {
+    } 
+    
+    else if (endpoint == "RemoveBoxer") {
       globalObjects.client.RemoveBoxer(requestBody, function (err, res) {
         globalObjects.result = res;
       });
-    } else if (endpoint == "GetBoxer") {
+    } 
+    
+    else if (endpoint == "GetBoxer") {
       globalObjects.client.GetBoxer(requestBody, function (err, res) {
         globalObjects.result = res;
       });
-    } else {
+    } 
+    
+    else {
       assert(false);
     }
   }
@@ -93,7 +102,9 @@ class DefaultScenarioTester {
     
     if (expectedResponse.boxer && expectedResponse.boxer.id === 0) {
       assert(response.boxer.id === 0);
-    } else {
+    } 
+    
+    else {
       assert.strictEqual(response.boxer.id, expectedResponse.boxer.id);
       assert(response.boxer.fullName === expectedResponse.boxer.fullName);
       // Strict equal fails because JavaScript BigInt is at max 2^53-1 however int64 is bigger than that. So whilst converting to protobuf data, it is converted to string. And String != BigInt
@@ -110,6 +121,7 @@ class DefaultScenarioTester {
         if (standing.boxer) {
           assert.strictEqual(standing.boxer.id, expectedResponse.boxer.id);
         }
+        
         assert(standing.winCount == expectedResponse.standingAndMatches.standing.winCount);
         assert(standing.lossCount == expectedResponse.standingAndMatches.standing.lossCount);
         assert(standing.score == expectedResponse.standingAndMatches.standing.score);
@@ -118,9 +130,8 @@ class DefaultScenarioTester {
         assert(matches != undefined && matches != null);
         if (matches.length > 2) {
           for (let index = 0; index < matches.length; index++) {
-            const element = matches[index];
-            assert(element.homeBoxerId == expectedResponse.boxer.id
-              || element.awayBoxerId == expectedResponse.boxer.id);
+            assert(matches[index].homeBoxerId == expectedResponse.boxer.id
+              || matches[index].awayBoxerId == expectedResponse.boxer.id);
           }
         }
       }
@@ -128,10 +139,7 @@ class DefaultScenarioTester {
   }
 
   async thereIsAStandingAndMatchesSuchAs(dataSource) {
-    const specifiedStandingAndMatches = TestFunctions.extractSpecifiedObjectData(dataSource);
-    // globalObjects.controller.mediator.standingsServiceGateway.setupAddStandingAndMatches(specifiedStandingAndMatches);
-
-    await globalObjects.client.SetupAddStandingAndMatches({ standingAndMatches: specifiedStandingAndMatches }, function (err, res) {
+    await globalObjects.client.SetupAddStandingAndMatches({ standingAndMatches: TestFunctions.extractSpecifiedObjectData(dataSource) }, function (err, res) {
       globalObjects.done = true;
     });
   }
@@ -140,7 +148,6 @@ class DefaultScenarioTester {
   async thereIsATokenSuchAs(tokenDataSource) {
     const specifiedToken = TestFunctions.extractSpecifiedObjectData(tokenDataSource);
     assert(specifiedToken != undefined);
-    // globalObjects.controller.mediator.authServiceGateway.setupToken(specifiedToken);
     await globalObjects.client.SetupAddToken({ token: specifiedToken }, function (err, res) {
       globalObjects.done = true;
     });
@@ -151,6 +158,7 @@ class DefaultScenarioTester {
     if (this.lastInsertId != undefined) {
       expected.id = this.lastInsertId + 1;
     }
+
     globalObjects.result = globalObjects.unreturnableContentForResult;
     await globalObjects.client.GetBoxerWithStandingAndMatches({ id: expected.id }, (err, res) => {
       globalObjects.result = res;
@@ -179,8 +187,7 @@ class DefaultScenarioTester {
   }
 
   async thereAreMatchesSuchAs(dataSource) {
-    const matches = TestFunctions.extractSpecifiedObjectData(dataSource);
-    await globalObjects.client.SetupAddMatches({ matches: matches }, function (err, res) {
+    await globalObjects.client.SetupAddMatches({ matches: TestFunctions.extractSpecifiedObjectData(dataSource) }, function (err, res) {
       globalObjects.done = true;
     });
   }

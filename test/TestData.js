@@ -146,36 +146,6 @@ const Repository_Scenario6_Fail2 = {
   }
 }
 
-/* const Repository_Scenario7_Fail1 = {
-  existing_boxer: Repository_Scenario1.boxer,
-  data_chunk: {
-    fullName: "",
-    birthDate: -772804800,
-    height: 178,
-    weight: 87
-  },
-  expected_data: {
-    code: "400",
-    message: "bad_request",
-    boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
-  }
-} */
-
-/* const Repository_Scenario7_Fail2 = {
-  existing_boxer: Repository_Scenario1.boxer,
-  data_chunk: {
-    fullName: "Rocky Balboa",
-    birthDate: -772804800,
-    height: 178,
-    weight: -87
-  },
-  expected_data: {
-    code: "400",
-    message: "bad_request",
-    boxer:{ id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
-  }
-} */
-
 const Repository_Scenario8_Fail1 = {
   boxer: {
     id: 1,
@@ -549,8 +519,6 @@ module.exports = {
   Repository_Scenario5_Fail1,
   Repository_Scenario6_Fail1,
   Repository_Scenario6_Fail2,
-  //Repository_Scenario7_Fail1,
-  //Repository_Scenario7_Fail2,
   Repository_Scenario8_Fail1,
   B1_Scenario1_Variation1,
   B2_Scenario1_Variation1,

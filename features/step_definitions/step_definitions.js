@@ -8,13 +8,7 @@ Before(async function (scenario) {
   globalObjects.done = false;
   globalObjects.setScenarioTester(ScenarioTesterFactory.createScenarioTester(scenario));
   globalObjects.scenarioTester.before();
-  while (!globalObjects.done) {
-    await TestFunctions.sleep(100);
-  }
-});
-
-After(async function (scenario) {
-  // globalObjects.cleanUp();
+  while (!globalObjects.done) { await TestFunctions.sleep(100); }
 });
 
 Given('{string} is running', function (serviceName) {
@@ -24,17 +18,13 @@ Given('{string} is running', function (serviceName) {
 Given('there is a boxer such as {string}', async function (boxerDataSource) {
   globalObjects.done = false;
   await globalObjects.scenarioTester.thereIsABoxerSuchAs(boxerDataSource);
-  while (!globalObjects.done) {
-    await TestFunctions.sleep(100);
-  }
+  while (!globalObjects.done) { await TestFunctions.sleep(100); }
 });
 
 Given('there is a token such as {string}', async function (tokenDataSource) {
   globalObjects.done = false;
   await globalObjects.scenarioTester.thereIsATokenSuchAs(tokenDataSource);
-  while (!globalObjects.done) {
-    await TestFunctions.sleep(100);
-  }
+  while (!globalObjects.done) { await TestFunctions.sleep(100); }
 });
 
 When('{string} is called with {string}', function (endpoint, requestBodySource) {
@@ -76,9 +66,7 @@ Then('returned data is as {string}', async function (expectedDataSource) {
 Given('there is a standing with matches such as {string}', async function (dataSource) {
   globalObjects.done = false;
   await globalObjects.scenarioTester.thereIsAStandingAndMatchesSuchAs(dataSource);
-  while (!globalObjects.done) {
-    await TestFunctions.sleep(100);
-  }
+  while (!globalObjects.done) { await TestFunctions.sleep(100); }
 });
 
 Then('match service does not have any matches of {string}', async function (boxerDataSource) {

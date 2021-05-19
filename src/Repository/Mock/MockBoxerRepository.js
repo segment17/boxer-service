@@ -9,16 +9,14 @@ class MockBoxerRepository extends BoxerRepository {
 
   async runQueryForGetBoxerWithId(id) {
     for (let i = 0; i < this.boxers.length; i++) {
-      const element = this.boxers[i];
-      if (element.id == id) {
-        return [element];
+      if (this.boxers[i].id == id) {
+        return [this.boxers[i]];
       }
     }
     return [];
   }
 
   async runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight) {
-
     let newBoxerId = 1;
     if (this.boxers.length != 0) {
       newBoxerId = this.boxers[this.boxers.length - 1].id + 1;
@@ -73,21 +71,16 @@ class MockBoxerRepository extends BoxerRepository {
   }
 
   async setupAddBoxer(boxer) {
-    
     this.boxers.push(boxer);
     return null;
   }
 
   async getLatestId() {
-    if (this.boxers.length == 0) {
-      return null;
-    }
-    return this.boxers[this.boxers.length - 1].id;
+    return this.boxers.length == 0 ? null : this.boxers[this.boxers.length - 1].id;
   }
 
   async setupAddLatest(boxer) {
     this.setupAddBoxer(boxer);
-    
     return null;
   }
 }

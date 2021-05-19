@@ -13,8 +13,7 @@ class MockMatchServiceGateway extends MatchServiceGateway {
 
   async setupAddMatches(matches) {
     for (let i = 0; i < matches.length; i++) {
-      const element = matches[i];
-      this.matches.push(element);
+      this.matches.push(matches[i]);
     }
   }
 

@@ -30,7 +30,6 @@ class Controller {
 
   // Endpoint guards: guard[endpoint name]
   async guardGetBoxerWithStandingAndMatches(request) {
-    //Do validation here
     if(isNaN(request.id) || request.id < 0 || request.id === null || request.id === undefined) {
       return {
         code: "400",
@@ -39,13 +38,11 @@ class Controller {
       }
     }
     let response = await this.mediator.getBoxerWithStandingAndMatches(request.id);
-    // Do validation here
     return response;
   }
 
     // Endpoint guards: guard[endpoint name]
     async guardGetBoxer(request) {
-      //Do validation here
       if(isNaN(request.id) || request.id < 0 || request.id === null || request.id === undefined) {
         return {
           code: "400",
@@ -54,17 +51,13 @@ class Controller {
         }
       }
       let response = await this.mediator.getBoxer(request.id);
-      // Do validation here
       return response;
     }
 
   async guardAddBoxer(request) {
-    // Do validation here
-    if(typeof request.token !== "string" || request.token === "" || request.token === null || request.token === undefined
-      || typeof request.fullName !== "string" || request.fullName === "" || request.fullName === null || request.fullName === undefined
-      || isNaN(request.birthDate) || request.birthDate === null || request.birthDate === undefined
-      || isNaN(request.height) || request.height < 0 || request.height === null || request.height === undefined
-      || isNaN(request.weight) || request.weight < 0 || request.weight === null || request.weight === undefined
+    if(this.isStrInvalid(request.token) || this.isStrInvalid(request.fullName)
+      || this.isIntIneligible(request.birthDate, false) || this.isIntIneligible(request.height, true) 
+      || this.isIntIneligible(request.weight, true)
     ) {
       return {
         code: "400",
@@ -73,14 +66,12 @@ class Controller {
       }
     }
     let response = await this.mediator.addBoxer(request.token, request.fullName, request.birthDate, request.height, request.weight);
-    // Do validation here
     return response;
   }
 
   async guardEditBoxer(request) {
-    // Do validation here
-    if(typeof request.token !== "string" || request.token === "" || request.token === null || request.token === undefined
-      || isNaN(request.id) || request.id < 0 || request.id === null || request.id === undefined
+    if(this.isStrInvalid(request.token)
+      || this.isIntIneligible(request.id, true)
       || (request.fullName !== null && request.fullName !== undefined && (typeof request.fullName !== "string" || request.fullName === ""))
       || (request.birthDate !== null && request.birthDate !== undefined && isNaN(request.birthDate))
       || (request.height !== null && request.height !== undefined && (isNaN(request.height) || request.height < 0))
@@ -93,15 +84,11 @@ class Controller {
       }
     }
     let response = await this.mediator.editBoxer(request.token, request.id, request.fullName, request.birthDate, request.height, request.weight);
-    // Do validation here
     return response;
-
   }
 
   async guardRemoveBoxer(request) {
-    // Do validation here
-    if(typeof request.token !== "string" || request.token === "" || request.token === null || request.token === undefined
-      || isNaN(request.id) || request.id < 0 || request.id === null || request.id === undefined
+    if(this.isStrInvalid(request.token) || this.isIntIneligible(request.id, true)
     ) {
       return {
         code: "400",
@@ -110,12 +97,18 @@ class Controller {
       }
     }
     let response = await this.mediator.removeBoxer(request.token, request.id);
-    // Do validation here
-
     return response;
   }
 
+  // Helper functions
+  
+  isStrInvalid(data) {
+    return (typeof data !== "string" || data === "" || data === null || data === undefined);
+  }
 
+  isIntIneligible(intData, nonZeroCheck=false) {
+    return (isNaN(intData) || (nonZeroCheck === true ? (data < 0) : true) || data === null || data === undefined);
+  }
 
   // Mock
   mock() {

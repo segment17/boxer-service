@@ -4,7 +4,6 @@ const protoLoader = require('@grpc/proto-loader');
 const PROTO_PATH = __dirname + '../../../proto/standingsservice.proto';
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, { keepCase: true, longs: String, enums: String, defaults: true, oneofs: true });
 const standingsservice_package = grpc.loadPackageDefinition(packageDefinition).standingsservice_package;
-// GRPC SETUP
 
 class StandingsServiceGateway {
 
@@ -21,8 +20,7 @@ class StandingsServiceGateway {
   // Gateway exposed function
   async getStandingAndMatchesOfBoxer(param) {
     let response = await this.doCallForGetStandingWithId(param);
-    let standing = this.extractStandingAndMatchesFromResponse(response);
-    return standing;
+    return this.extractStandingAndMatchesFromResponse(response);
   }
 
   // doCallFor[function name]
@@ -55,7 +53,6 @@ class StandingsServiceGateway {
   }
 
   extractStandingAndMatchesFromResponse(response) {
-    //TODO Parse response here...
     return response.standingAndMatches;
   }
 

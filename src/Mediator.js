@@ -17,7 +17,6 @@ class Mediator {
   }
 
   // Endpoints
-
   async getValidation(token) {
     const response = await this.authServiceGateway.getValidation(token);
     return response;
@@ -25,9 +24,7 @@ class Mediator {
 
   async getBoxerWithStandingAndMatches(id) {
     let getBoxerResponse = await this.boxerRepository.getBoxerWithId(id);
-    // Do validation here
     let standingAndMatches = await this.standingsServiceGateway.getStandingAndMatchesOfBoxer(id);
-    // Do validation here
     return {
       code: getBoxerResponse.code,
       message: getBoxerResponse.message,
@@ -38,7 +35,6 @@ class Mediator {
 
   async getBoxer(id) {
     let getBoxerResponse = await this.boxerRepository.getBoxerWithId(id);
-    // Do validation here
     return {
       code: getBoxerResponse.code,
       message: getBoxerResponse.message,

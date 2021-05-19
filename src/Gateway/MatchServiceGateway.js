@@ -4,7 +4,6 @@ const protoLoader = require('@grpc/proto-loader');
 const PROTO_PATH = __dirname + '../../../proto/matchservice.proto';
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, { keepCase: true, longs: String, enums: String, defaults: true, oneofs: true });
 const matchservice_package = grpc.loadPackageDefinition(packageDefinition).matchservice_package;
-// GRPC SETUP
 
 class MatchServiceGateway {
 

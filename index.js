@@ -8,8 +8,6 @@ const protoLoader = require('@grpc/proto-loader');
 const PROTO_PATH = __dirname + '/proto/boxerservice.proto';
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, { keepCase: true, longs: String, enums: String, defaults: false, oneofs: true });
 const boxerservice_package = grpc.loadPackageDefinition(packageDefinition).boxerservice_package;
-// GRPC SETUP
-
 
 async function bindGetBoxerWithStandingAndMatches(call, callback) {
   let r = await globalObjects.controller.guardGetBoxerWithStandingAndMatches(call.request);
@@ -97,9 +95,12 @@ function main() {
 
   if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
     server.bind("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.ServerCredentials.createInsecure());
-  } else {
+  } 
+  
+  else {
     server.bind("localhost:50002", grpc.ServerCredentials.createInsecure());
   }
+
   server.start();
 }
 

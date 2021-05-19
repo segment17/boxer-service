@@ -16,7 +16,6 @@ class StandingsServiceGatewayScenarioTester extends DefaultScenarioTester {
     const specifiedData = TestFunctions.extractSpecifiedObjectData(dataSource);
     if (functionName == "getStandingAndMatchesOfBoxer") {
       globalObjects.standingsServiceGateway.getStandingAndMatchesOfBoxer(specifiedData).then(result => {
-
         globalObjects.result = result;
       });
     }
@@ -25,7 +24,6 @@ class StandingsServiceGatewayScenarioTester extends DefaultScenarioTester {
   async returnedDataIsAs(dataSource) {
     const expectedData = TestFunctions.extractSpecifiedObjectData(dataSource);
     await TestFunctions.waitUntilResult();
-
     assert(globalObjects.result.code === undefined);
     assert(globalObjects.result.message === undefined);
     let standing = globalObjects.result.standing;
