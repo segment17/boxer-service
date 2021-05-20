@@ -107,7 +107,7 @@ class Controller {
   }
 
   isIntIneligible(intData, nonZeroCheck=false) {
-    return (isNaN(intData) || (nonZeroCheck === true ? (data < 0) : true) || data === null || data === undefined);
+    return (isNaN(intData) || (nonZeroCheck === true ? (intData < 0) : true) || intData === null || intData === undefined);
   }
 
   // Mock

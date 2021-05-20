@@ -95,9 +95,7 @@ function main() {
 
   if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
     server.bind("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.ServerCredentials.createInsecure());
-  } 
-  
-  else {
+  } else {
     server.bind("localhost:50002", grpc.ServerCredentials.createInsecure());
   }
 

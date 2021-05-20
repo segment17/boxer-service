@@ -25,25 +25,21 @@ class BoxerRepositoryScenarioTester extends DefaultScenarioTester {
         globalObjects.result = d;
       });
     }
-
     else if (unitFunctionName == "addBoxerWithGivenData") {
       globalObjects.boxerRepository.addBoxerWithGivenData(data.fullName, data.birthDate, data.height, data.weight).then(d => {
         globalObjects.result = d;
       });
     }
-
     else if (unitFunctionName == "editBoxerWithGivenData") {
       globalObjects.boxerRepository.editBoxerWithGivenData(data.id, data.fullName, data.birthDate, data.height, data.weight).then(d => {
         globalObjects.result = d;
       });
     }
-
     else if (unitFunctionName == "removeBoxerWithId") {
       globalObjects.boxerRepository.removeBoxerWithId(data).then(d => {
         globalObjects.result = d;
       });
     }
-
     else {
       assert(false);
     }
@@ -81,9 +77,7 @@ class BoxerRepositoryScenarioTester extends DefaultScenarioTester {
 
     if (this.lastInsertId != undefined) {
       assert.strictEqual(globalObjects.result.boxer.id, this.lastInsertId + 1);
-    } 
-    
-    else {
+    }  else {
       assert.strictEqual(globalObjects.result.boxer.id, expectedData.boxer.id);
     }
     

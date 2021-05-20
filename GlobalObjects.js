@@ -32,9 +32,7 @@ class GlobalObjects {
     // Connect to Kubernetes if possible
     if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
       this.client = new boxerservice_package.BoxerService("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
-    } 
-    
-    else {
+    } else {
       this.client = new boxerservice_package.BoxerService("0.0.0.0:50002", grpc.credentials.createInsecure());
     }
   }
@@ -72,9 +70,7 @@ class GlobalObjects {
     // Connect to Kubernetes if possible
     if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
       this.client = new boxerservice_package.BoxerService("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
-    } 
-    
-    else {
+    } else {
       this.client = new boxerservice_package.BoxerService("0.0.0.0:50002", grpc.credentials.createInsecure());
     }
   }

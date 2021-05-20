@@ -22,9 +22,7 @@ class DefaultScenarioTester {
       globalObjects.client.Mock({}, (err, res) => {
         globalObjects.done = true;
       });
-    } 
-    
-    else {
+    } else {
       globalObjects.boxerRepository.enterIntegratedTestingEnvironment();
       globalObjects.client.EnterIntegratedTestingEnvironment({}, (err, res) => {
         globalObjects.done = true;
@@ -41,8 +39,9 @@ class DefaultScenarioTester {
 
   async latestBoxerInDBIsSuchAs(dataSource) {
     const specifiedBoxer = TestFunctions.extractSpecifiedObjectData(dataSource);
+    var self = this;
     await globalObjects.client.SetupAddLatestBoxer({ boxer: specifiedBoxer }, async function (err, res) {
-      this.lastInsertId = await globalObjects.boxerRepository.getLatestId();
+      self.lastInsertId = await globalObjects.boxerRepository.getLatestId();
       globalObjects.done = true;
     });
   }
@@ -58,33 +57,23 @@ class DefaultScenarioTester {
       globalObjects.client.GetBoxerWithStandingAndMatches(requestBody, function (err, res) {
         globalObjects.result = res;
       });
-    } 
-    
-    else if (endpoint == "AddBoxer") {
+    }  else if (endpoint == "AddBoxer") {
       globalObjects.client.AddBoxer(requestBody, function (err, res) {
         globalObjects.result = res;
       });
-    } 
-    
-    else if (endpoint == "EditBoxer") {
+    } else if (endpoint == "EditBoxer") {
       globalObjects.client.EditBoxer(requestBody, function (err, res) {
         globalObjects.result = res;
       });
-    } 
-    
-    else if (endpoint == "RemoveBoxer") {
+    }  else if (endpoint == "RemoveBoxer") {
       globalObjects.client.RemoveBoxer(requestBody, function (err, res) {
         globalObjects.result = res;
       });
-    } 
-    
-    else if (endpoint == "GetBoxer") {
+    } else if (endpoint == "GetBoxer") {
       globalObjects.client.GetBoxer(requestBody, function (err, res) {
         globalObjects.result = res;
       });
-    } 
-    
-    else {
+    }  else {
       assert(false);
     }
   }
@@ -102,9 +91,7 @@ class DefaultScenarioTester {
     
     if (expectedResponse.boxer && expectedResponse.boxer.id === 0) {
       assert(response.boxer.id === 0);
-    } 
-    
-    else {
+    } else {
       assert.strictEqual(response.boxer.id, expectedResponse.boxer.id);
       assert(response.boxer.fullName === expectedResponse.boxer.fullName);
       // Strict equal fails because JavaScript BigInt is at max 2^53-1 however int64 is bigger than that. So whilst converting to protobuf data, it is converted to string. And String != BigInt
