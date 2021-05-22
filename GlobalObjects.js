@@ -12,9 +12,9 @@ const MockMatchServiceGateway = require('./src/Gateway/Mock/MockMatchServiceGate
 // GRPC SETUP
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
-const PROTO_PATH = __dirname + '/proto/boxerservice.proto';
+const PROTO_PATH = __dirname + '/proto/ubc.proto';
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, { keepCase: true, longs: String, enums: String, defaults: true, oneofs: true });
-const boxerservice_package = grpc.loadPackageDefinition(packageDefinition).boxerservice_package;
+const ubc_package = grpc.loadPackageDefinition(packageDefinition).ubc_package;
 
 class GlobalObjects {
 
@@ -31,9 +31,9 @@ class GlobalObjects {
 
     // Connect to Kubernetes if possible
     if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
-      this.client = new boxerservice_package.BoxerService("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
+      this.client = new ubc_package.BoxerService("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
     } else {
-      this.client = new boxerservice_package.BoxerService("0.0.0.0:50002", grpc.credentials.createInsecure());
+      this.client = new ubc_package.BoxerService("0.0.0.0:50002", grpc.credentials.createInsecure());
     }
   }
 
@@ -69,9 +69,9 @@ class GlobalObjects {
 
     // Connect to Kubernetes if possible
     if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
-      this.client = new boxerservice_package.BoxerService("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
+      this.client = new ubc_package.BoxerService("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
     } else {
-      this.client = new boxerservice_package.BoxerService("0.0.0.0:50002", grpc.credentials.createInsecure());
+      this.client = new ubc_package.BoxerService("0.0.0.0:50002", grpc.credentials.createInsecure());
     }
   }
 

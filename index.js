@@ -5,9 +5,9 @@ module.exports = globalObjects;
 // GRPC SETUP
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
-const PROTO_PATH = __dirname + '/proto/boxerservice.proto';
+const PROTO_PATH = __dirname + '/proto/ubc.proto';
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, { keepCase: true, longs: String, enums: String, defaults: false, oneofs: true });
-const boxerservice_package = grpc.loadPackageDefinition(packageDefinition).boxerservice_package;
+const ubc_package = grpc.loadPackageDefinition(packageDefinition).ubc_package;
 
 async function bindGetBoxerWithStandingAndMatches(call, callback) {
   let r = await globalObjects.controller.guardGetBoxerWithStandingAndMatches(call.request);
@@ -77,7 +77,7 @@ async function bindEnterIntegratedTestingEnvironment(call, callback) {
 function main() {
   console.log("Server running...");
   server = new grpc.Server();
-  server.addService(boxerservice_package.BoxerService.service, {
+  server.addService(ubc_package.BoxerService.service, {
     GetBoxer: bindGetBoxer,
     GetBoxerWithStandingAndMatches: bindGetBoxerWithStandingAndMatches,
     EditBoxer: bindEditBoxer,
