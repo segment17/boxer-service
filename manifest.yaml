@@ -98,5 +98,5 @@ spec:
   grpc: True
   prefix: /ubc_package.BoxerService/
   rewrite: /ubc_package.BoxerService/
-  service: boxer-service
+  service: boxer-service:50051
 ---
