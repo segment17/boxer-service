@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: boxer-service
-        imagePullPolicy: Never
-        image: segment17hub/boxerservice
+        imagePullPolicy: IfNotPresent
+        image: segment17hub/boxerservice:0.1
         ports:
         - containerPort: 50051
 ---
@@ -52,7 +52,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:5.7
+        image: mysql:5.6
         ports:
         - containerPort: 3306
         env:
@@ -64,7 +64,7 @@ spec:
       volumes:
         - name: boxer-mysql-persistent-storage
           persistentVolumeClaim:
-            claimName: boxer-mysql-claim
+            claimName: boxer-mysql-volume-claim
 ---
 apiVersion: v1
 kind: Service
@@ -81,7 +81,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: boxer-mysql-claim
+  name: boxer-mysql-volume-claim
 spec:
   storageClassName: standard
   accessModes:
@@ -89,4 +89,14 @@ spec:
   resources:
     requests:
       storage: 1Gi
-# MYSQL
+---
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: boxer-service
+spec:
+  grpc: True
+  prefix: /ubc_package.BoxerService/
+  rewrite: /ubc_package.BoxerService/
+  service: boxer-service
+---
