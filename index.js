@@ -93,7 +93,7 @@ function main() {
     EnterIntegratedTestingEnvironment: bindEnterIntegratedTestingEnvironment
   });
 
-  server.bind(process.env.BOXER_SERVICE_ADDR || "localhost:50052", grpc.ServerCredentials.createInsecure());
+  server.bind("0.0.0.0:50052", grpc.ServerCredentials.createInsecure());
   server.start();
 }
 
