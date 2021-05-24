@@ -93,12 +93,7 @@ function main() {
     EnterIntegratedTestingEnvironment: bindEnterIntegratedTestingEnvironment
   });
 
-  if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
-    server.bind("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.ServerCredentials.createInsecure());
-  } else {
-    server.bind("localhost:50002", grpc.ServerCredentials.createInsecure());
-  }
-
+  server.bind(process.env.BOXER_SERVICE_ADDR || "localhost:50052", grpc.ServerCredentials.createInsecure());
   server.start();
 }
 

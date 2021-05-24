@@ -29,12 +29,7 @@ class GlobalObjects {
     this.authServiceGateway = new AuthServiceGateway();
     this.matchServiceGateway = new MatchServiceGateway();
 
-    // Connect to Kubernetes if possible
-    if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
-      this.client = new ubc_package.BoxerService("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
-    } else {
-      this.client = new ubc_package.BoxerService("0.0.0.0:50002", grpc.credentials.createInsecure());
-    }
+    this.client = new ubc_package.BoxerService(process.env.BOXER_SERVICE_ADDR || "0.0.0.0:50052", grpc.credentials.createInsecure());
   }
 
   // Mock everything...
@@ -67,12 +62,7 @@ class GlobalObjects {
     this.authServiceGateway = new AuthServiceGateway();
     this.matchServiceGateway = new MatchServiceGateway();
 
-    // Connect to Kubernetes if possible
-    if (process.env.BOXER_SERVICE_SERVICE_PORT != undefined) {
-      this.client = new ubc_package.BoxerService("0.0.0.0" + ":" + process.env.BOXER_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
-    } else {
-      this.client = new ubc_package.BoxerService("0.0.0.0:50002", grpc.credentials.createInsecure());
-    }
+    this.client = new ubc_package.BoxerService(process.env.BOXER_SERVICE_ADDR || "0.0.0.0:50052", grpc.credentials.createInsecure());
   }
 
   async cleanUp() {

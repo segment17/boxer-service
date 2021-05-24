@@ -19,10 +19,12 @@ spec:
         imagePullPolicy: IfNotPresent
         image: segment17hub/boxerservice:0.1
         ports:
-        - containerPort: 50051
+        - containerPort: 50052
         env:
           - name: BOXER_MYSQL_SERVICE_ADDR
             value: "boxer-mysql-service"
+          - name: BOXER_SERVICE_ADDR
+            value: "boxer-service:50052"
 ---
 apiVersion: v1
 kind: Service
@@ -36,8 +38,8 @@ spec:
     app: boxer-service
   ports:
     - name: grpc
-      port: 50051
-      targetPort: 50051
+      port: 50052
+      targetPort: 50052
 ---
 # MYSQL
 apiVersion: apps/v1
@@ -101,5 +103,5 @@ spec:
   grpc: True
   prefix: /ubc_package.BoxerService/
   rewrite: /ubc_package.BoxerService/
-  service: boxer-service:50051
+  service: boxer-service:50052
 ---
