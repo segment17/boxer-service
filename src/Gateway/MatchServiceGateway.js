@@ -8,12 +8,8 @@ const ubc_package = grpc.loadPackageDefinition(packageDefinition).ubc_package;
 class MatchServiceGateway {
 
   readyClient() {
-    if (this.client == undefined || this.client == null) {
-      if (process.env.MATCH_SERVICE_SERVICE_PORT != undefined) {
-        this.client = new ubc_package.MatchService(process.env.MATCH_SERVICE_SERVICE_HOST + ":" + process.env.MATCH_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
-      } else {
-        this.client = new ubc_package.MatchService("0.0.0.0:50003", grpc.credentials.createInsecure());
-      }
+    if (!this.client) {
+      this.client = new ubc_package.MatchService(process.env.MATCH_SERVICE_ADDR || "0.0.0.0:50053", grpc.credentials.createInsecure());
     }
   }
   // Gateway exposed function

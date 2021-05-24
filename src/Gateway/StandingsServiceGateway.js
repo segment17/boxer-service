@@ -8,12 +8,8 @@ const ubc_package = grpc.loadPackageDefinition(packageDefinition).ubc_package;
 class StandingsServiceGateway {
 
   readyClient() {
-    if (this.client == undefined || this.client == null) {
-      if (process.env.STANDINGS_SERVICE_SERVICE_PORT != undefined) {
-        this.client = new ubc_package.StandingsService(process.env.STANDINGS_SERVICE_SERVICE_HOST + ":" + process.env.STANDINGS_SERVICE_SERVICE_PORT, grpc.credentials.createInsecure());
-      } else {
-        this.client = new ubc_package.StandingsService("0.0.0.0:50004", grpc.credentials.createInsecure());
-      }
+    if (!this.client) {
+      this.client = new ubc_package.StandingsService(process.env.STANDINGS_SERVICE_ADDR || '0.0.0.0:50054', grpc.credentials.createInsecure());
     }
   }
 
