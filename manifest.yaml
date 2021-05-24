@@ -20,6 +20,9 @@ spec:
         image: segment17hub/boxerservice:0.1
         ports:
         - containerPort: 50051
+        env:
+          - name: BOXER_MYSQL_SERVICE_ADDR
+            value: "boxer-mysql-service"
 ---
 apiVersion: v1
 kind: Service

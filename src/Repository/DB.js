@@ -23,7 +23,7 @@ CREATE TABLE boxers (
 */
 
 const connectionSetup = {
-  host: process.env.BOXER_MYSQL_SERVICE_SERVICE_HOST != undefined ? process.env.BOXER_MYSQL_SERVICE_SERVICE_HOST : "localhost",
+  host: process.env.BOXER_MYSQL_SERVICE_ADDR || "localhost",
   user: "root",
   password: "root",
   database: "boxerservice"
