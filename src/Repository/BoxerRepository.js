@@ -100,12 +100,21 @@ class BoxerRepository {
       query += `fullName = '${fullName}' `;
     }
     if (birthDate != undefined) {
+      if (fullName) {
+        query = query = `${query},`;
+      }
       query += `birthDate = ${birthDate} `;
     }
     if (height != undefined) {
+      if (fullName || birthDate) {
+        query = query = `${query},`;
+      }
       query += `height = ${height} `;
     }
     if (weight != undefined) {
+      if (fullName || birthDate || height) {
+        query = query = `${query},`;
+      }
       query += `weight = ${weight} `;
     }
     query += `WHERE id = ${id};`;

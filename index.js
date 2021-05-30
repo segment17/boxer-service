@@ -45,27 +45,27 @@ async function bindMock(call, callback) {
 }
 
 async function bindSetupAddBoxer(call, callback) {
-  globalObjects.controller.guardSetupAddBoxer(call.request);
+  await globalObjects.controller.guardSetupAddBoxer(call.request);
   callback(null, {code: 200})
 }
 
 async function bindSetupAddLatestBoxer(call, callback) {
-  globalObjects.controller.guardSetupAddLatestBoxer(call.request);
+  await globalObjects.controller.guardSetupAddLatestBoxer(call.request);
   callback(null, {code: 200})
 }
 
 async function bindSetupClearBoxers(call, callback) {
-  globalObjects.controller.guardSetupClearBoxers();
+  await globalObjects.controller.guardSetupClearBoxers();
   callback(null, {code: 200})
 }
 
 async function bindSetupAddStandingAndMatches(call, callback) {
-  globalObjects.controller.mediator.standingsServiceGateway.setupAddStandingAndMatches(call.request.standingAndMatches);
+  await globalObjects.controller.mediator.standingsServiceGateway.setupAddStandingAndMatches(call.request.standingAndMatches);
   callback(null, {code: 200})
 }
 
 async function bindSetupAddToken(call, callback) {
-  globalObjects.controller.mediator.authServiceGateway.setupToken(call.request.token);
+  await globalObjects.controller.mediator.authServiceGateway.setupToken(call.request.token);
   callback(null, {code: 200})
 }
 
