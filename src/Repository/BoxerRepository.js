@@ -114,7 +114,7 @@ class BoxerRepository {
 
   async editBoxerWithGivenData(id, fullName, birthDate, height, weight) {
     let queryResult = await this.runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight);
-    return this.extractResponseFromQueryResult(queryResult, 201, "edited");
+    return this.extractResponseFromQueryResult(queryResult, 200, "edited");
   }
 
   async runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight) {
@@ -137,7 +137,7 @@ class BoxerRepository {
 
   async removeBoxerWithId(id) {
     let queryResult = await this.runQueryForRemoveBoxerWithId(id);
-    return this.extractResponseFromQueryResult(queryResult, 201, "removed");
+    return this.extractResponseFromQueryResult(queryResult, 200, "removed");
   }
 
   async runQueryForRemoveBoxerWithId(id) {

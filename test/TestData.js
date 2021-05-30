@@ -35,7 +35,7 @@ const Repository_Scenario2 = {
     weight: 110
   },
   expected_data: {
-    code: "201",
+    code: "200",
     message: "edited",
     boxer: {
       id: 1,
@@ -78,7 +78,7 @@ const Repository_Scenario4 = {
   },
   boxer_id: 1,
   expected_data: {
-    code: "201",
+    code: "200",
     message: "removed",
     boxer: {
       id: 1,
@@ -289,7 +289,7 @@ const B2_Scenario1_Variation1 = {
     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   expected_response: {
-    code: 201,
+    code: 200,
     message: 'edited',
     boxer: Repository_Scenario2.expected_data.boxer
   },
@@ -337,7 +337,7 @@ const B4_Scenario1_Variation1 = {
     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Ie8nanpMvN_aNxqEDDL6_2nvcDzbh0yBL2p_VrSY4r0",
   },
   expected_response: {
-    code: 201,
+    code: 200,
     message: 'removed',
     boxer: Repository_Scenario4.boxer
   }
