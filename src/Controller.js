@@ -55,6 +55,10 @@ class Controller {
     }
 
   async guardGetMultipleBoxers(request) {
+    console.log('request: ', request);
+    if (request.ids == undefined) {
+      request.ids = [];
+    }
     let response = await this.mediator.getMultipleBoxers(request.ids);
     return response;
   }

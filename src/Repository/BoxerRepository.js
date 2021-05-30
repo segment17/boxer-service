@@ -28,7 +28,7 @@ class BoxerRepository {
   }
 
   async getMultipleBoxersWithIds(ids) {
-    if (ids == undefined || ids == null || ids.length == 0) {
+    if (ids == undefined || ids == null) {
       return this.extractMultipleBoxersResponseFromQueryResult([], 200, "success");
     }
     let queryResult = await this.runQueryForGetMultipleBoxersWithIds(ids);
@@ -36,16 +36,20 @@ class BoxerRepository {
   }
 
   async runQueryForGetMultipleBoxersWithIds(ids) {
-    let arr = "(";
-    for (let i = 0; i < ids.length; i++) {
-      arr += ids[i];
-      if (i < ids.length - 1) {
-        arr += ","
+    let Q = `SELECT * FROM ${this.tableName};`;
+    if (ids.length > 0) {
+      let arr = "(";
+      for (let i = 0; i < ids.length; i++) {
+        arr += ids[i];
+        if (i < ids.length - 1) {
+          arr += ","
+        }
       }
+      arr += ")";
+      Q = `SELECT * FROM ${this.tableName} WHERE id IN ${arr};`
     }
-    arr += ")";
     return new Promise((resolve, reject) => {
-      connection.query(`SELECT * FROM ${this.tableName} WHERE id IN ${arr};`, (error, result) => {
+      connection.query(Q, (error, result) => {
         if (error) {
           resolve(null);
         }
