@@ -54,6 +54,11 @@ class Controller {
       return response;
     }
 
+  async guardGetMultipleBoxers(request) {
+    let response = await this.mediator.getMultipleBoxers(request.ids);
+    return response;
+  }
+
   async guardAddBoxer(request) {
     if(this.isStrInvalid(request.token) || this.isStrInvalid(request.fullName)
       || this.isIntIneligible(request.birthDate, false) || this.isIntIneligible(request.height, true) 

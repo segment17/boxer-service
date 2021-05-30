@@ -42,6 +42,15 @@ class Mediator {
     }
   }
 
+  async getMultipleBoxers(ids) {
+    let getMultipleBoxersResponse = await this.boxerRepository.getMultipleBoxersWithIds(ids);
+    return {
+      code: getMultipleBoxersResponse.code,
+      message: getMultipleBoxersResponse.message,
+      boxers: getMultipleBoxersResponse.boxers
+    }
+  }
+
   async addBoxer(token, fullName, birthDate, height, weight) {
     const validation = await this.getValidation(token);
     let response = {};

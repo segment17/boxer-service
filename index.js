@@ -19,6 +19,11 @@ async function bindGetBoxer(call, callback) {
   callback(null, r);
 }
 
+async function bindGetMultipleBoxers(call, callback) {
+  let r = await globalObjects.controller.guardGetMultipleBoxers(call.request);
+  callback(null, r);
+}
+
 async function bindEditBoxer(call, callback) {
   let r = await globalObjects.controller.guardEditBoxer(call.request);
   callback(null, r);
@@ -79,6 +84,7 @@ function main() {
   server = new grpc.Server();
   server.addService(ubc_package.BoxerService.service, {
     GetBoxer: bindGetBoxer,
+    GetMultipleBoxers: bindGetMultipleBoxers,
     GetBoxerWithStandingAndMatches: bindGetBoxerWithStandingAndMatches,
     EditBoxer: bindEditBoxer,
     AddBoxer: bindAddBoxer,

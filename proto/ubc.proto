@@ -63,6 +63,14 @@ message GetBoxerResponse {
   string message = 2;
   Boxer boxer = 3;
 }
+message GetMultipleBoxersRequest {
+  repeated int32 ids = 1;
+}
+message GetMultipleBoxersResponse {
+  int32 code = 1;
+  string message = 2;
+  repeated Boxer boxers = 3;
+}
 message GetBoxerWithStandingAndMatchesRequest {
   int32 id = 1;
 }
@@ -108,6 +116,7 @@ message RemoveBoxerResponse {
 }
 service BoxerService {
   rpc GetBoxer(GetBoxerRequest) returns (GetBoxerResponse) {};
+  rpc GetMultipleBoxers(GetMultipleBoxersRequest) returns (GetMultipleBoxersResponse) {};
   rpc GetBoxerWithStandingAndMatches(GetBoxerWithStandingAndMatchesRequest) returns (GetBoxerWithStandingAndMatchesResponse) {};
   rpc AddBoxer(AddBoxerRequest) returns (AddBoxerResponse) {};
   rpc EditBoxer(EditBoxerRequest) returns (EditBoxerResponse) {};

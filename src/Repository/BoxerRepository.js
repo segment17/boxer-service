@@ -27,6 +27,48 @@ class BoxerRepository {
     });
   }
 
+  async getMultipleBoxersWithIds(ids) {
+    if (ids == undefined || ids == null || ids.length == 0) {
+      return this.extractMultipleBoxersResponseFromQueryResult([], 200, "success");
+    }
+    let queryResult = await this.runQueryForGetMultipleBoxersWithIds(ids);
+    return this.extractMultipleBoxersResponseFromQueryResult(queryResult, 200, "success");
+  }
+
+  async runQueryForGetMultipleBoxersWithIds(ids) {
+    let arr = "(";
+    for (let i = 0; i < ids.length; i++) {
+      arr += ids[i];
+      if (i < ids.length - 1) {
+        arr += ","
+      }
+    }
+    arr += ")";
+    return new Promise((resolve, reject) => {
+      connection.query(`SELECT * FROM ${this.tableName} WHERE id IN ${arr};`, (error, result) => {
+        if (error) {
+          resolve(null);
+        }
+        resolve(result);
+      });
+    });
+  }
+
+  extractMultipleBoxersResponseFromQueryResult(queryResult, successCode, successMessage) {
+    if (queryResult.length == 0) {
+      return {
+        code: 404,
+        message: "not_found",
+        boxers: []
+      };
+    }
+    return {
+      code: successCode,
+      message: successMessage,
+      boxers: queryResult
+    };
+  }
+
   async addBoxerWithGivenData(fullName, birthDate, height, weight) {
     let queryResult = await this.runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight);
     return this.extractResponseFromQueryResult(queryResult, 201, "created");
