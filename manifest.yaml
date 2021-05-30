@@ -5,7 +5,7 @@ metadata:
   labels:
     app: boxer-service
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: boxer-service
@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: boxer-service
-        imagePullPolicy: IfNotPresent
-        image: segment17hub/boxerservice:0.1.1
+        imagePullPolicy: Always
+        image: segment17hub/boxerservice:0.1.2rc
         ports:
         - containerPort: 50052
         env:
@@ -55,6 +55,7 @@ kind: Deployment
 metadata:
   name: boxer-mysql-deployment
 spec:
+  # replicas: 3
   selector:
     matchLabels:
       app: boxermysql
