@@ -14,55 +14,55 @@ const ubc_package = grpc.loadPackageDefinition(packageDefinition).ubc_package;
 
 async function bindGetBoxerWithStandingAndMatches(call, callback) {
   await sleep(50);
-  console.log('\n⚪GetBoxerWithStandingAndMatches⚪\t:: ', JSON.stringify(call.request));
+  console.log('\n⚪   GetBoxerWithStandingAndMatches:: ', JSON.stringify(call.request));
   let r = await globalObjects.controller.guardGetBoxerWithStandingAndMatches(call.request);
   await sleep(50);
-  console.log('🟢GetBoxerWithStandingAndMatches🟢\t:: ', JSON.stringify(r));
+  console.log('🟢   GetBoxerWithStandingAndMatches:: ', JSON.stringify(r));
   callback(null, r);
 }
 
 async function bindGetBoxer(call, callback) {
   await sleep(50);
-  console.log('\n⚪GetBoxer⚪\t:: ', JSON.stringify(call.request));
+  console.log('\n⚪   GetBoxer:: ', JSON.stringify(call.request));
   let r = await globalObjects.controller.guardGetBoxer(call.request);
   await sleep(50);
-  console.log('🟢GetBoxer🟢\t:: ', JSON.stringify(r));
+  console.log('🟢   GetBoxer:: ', JSON.stringify(r));
   callback(null, r);
 }
 
 async function bindGetMultipleBoxers(call, callback) {
   await sleep(50);
-  console.log('\n⚪GetMultipleBoxers⚪\t:: ', JSON.stringify(call.request));
+  console.log('\n⚪   GetMultipleBoxers:: ', JSON.stringify(call.request));
   let r = await globalObjects.controller.guardGetMultipleBoxers(call.request);
   await sleep(50);
-  console.log('🟢GetMultipleBoxers🟢\t:: ', JSON.stringify(r));
+  console.log('🟢   GetMultipleBoxers:: ', JSON.stringify(r));
   callback(null, r);
 }
 
 async function bindEditBoxer(call, callback) {
   await sleep(50);
-  console.log('\n⚪EditBoxer⚪\t:: ', JSON.stringify(call.request));
+  console.log('\n⚪   EditBoxer:: ', JSON.stringify(call.request));
   let r = await globalObjects.controller.guardEditBoxer(call.request);
   await sleep(50);
-  console.log('🟢EditBoxer🟢\t:: ', JSON.stringify(r));
+  console.log('🟢   EditBoxer:: ', JSON.stringify(r));
   callback(null, r);
 }
 
 async function bindAddBoxer(call, callback) {
   await sleep(50);
-  console.log('\n⚪AddBoxer⚪\t:: ', JSON.stringify(call.request));
+  console.log('\n⚪   AddBoxer:: ', JSON.stringify(call.request));
   let r = await globalObjects.controller.guardAddBoxer(call.request);
   await sleep(50);
-  console.log('🟢AddBoxer🟢\t:: ', JSON.stringify(r));
+  console.log('🟢   AddBoxer:: ', JSON.stringify(r));
   callback(null, r);
 }
 
 async function bindRemoveBoxer(call, callback) {
   await sleep(50);
-  console.log('\n⚪RemoveBoxer⚪\t:: ', JSON.stringify(call.request));
+  console.log('\n⚪   RemoveBoxer:: ', JSON.stringify(call.request));
   let r = await globalObjects.controller.guardRemoveBoxer(call.request);
   await sleep(50);
-  console.log('🟢RemoveBoxer🟢\t:: ', JSON.stringify(r));
+  console.log('🟢   RemoveBoxer:: ', JSON.stringify(r));
   callback(null, r);
 }
 

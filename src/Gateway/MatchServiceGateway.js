@@ -23,10 +23,10 @@ class MatchServiceGateway {
   async doCallForRemoveMatchesOfBoxer(boxerId, token) {
     this.readyClient();
     await sleep(50);
-    console.log('🔵MatchService.RemoveMatchesOfBoxer🔵\t:: ', boxerId);
+    console.log('🔵  MatchService.RemoveMatchesOfBoxer:: ', boxerId);
     let response = await this.PROMISE_doCallForRemoveMatchesOfBoxer(boxerId, token);
     await sleep(50);
-    console.log('🟣MatchService.RemoveMatchesOfBoxer🟣\t:: ', JSON.stringify(response));
+    console.log('🟣   MatchService.RemoveMatchesOfBoxer:: ', JSON.stringify(response));
     return response;
   }
 

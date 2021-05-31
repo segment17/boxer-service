@@ -21,10 +21,10 @@ class AuthServiceGateway {
       this.client = new ubc_package.AuthService(process.env.AUTH_SERVICE_ADDR || "0.0.0.0:50051", grpc.credentials.createInsecure());
     }
     await sleep(50);
-    console.log('🔵AuthService.GetValidation🔵\t:: ', obj);
+    console.log('🔵  AuthService.GetValidation:: ', obj);
     let response = await this.PROMISE_doCallForGetValidation(obj);
     await sleep(50);
-    console.log('🟣AuthService.GetValidation🟣\t:: ', JSON.stringify(response));
+    console.log('🟣   AuthService.GetValidation:: ', JSON.stringify(response));
     return response;
   }
 
