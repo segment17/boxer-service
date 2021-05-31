@@ -5,6 +5,9 @@ const PROTO_PATH = __dirname + '../../../proto/ubc.proto';
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, { keepCase: true, longs: String, enums: String, defaults: true, oneofs: true });
 const ubc_package = grpc.loadPackageDefinition(packageDefinition).ubc_package;
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 class StandingsServiceGateway {
 
   readyClient() {
@@ -22,7 +25,11 @@ class StandingsServiceGateway {
   // doCallFor[function name]
   async doCallForGetStandingWithId(param) {
     this.readyClient();
+    await sleep(300);
+    console.log('🔵StandingsService.GetStandingAndMatchesOfBoxer🔵\t:: ', param);
     let response = await this.PROMISE_doCallForGetStandingWithId(param);
+    await sleep(300);
+    console.log('🟣StandingsService.GetStandingAndMatchesOfBoxer🟣\t:: ', JSON.stringify(response));
     return response;
   }
 

@@ -4,7 +4,9 @@ const protoLoader = require('@grpc/proto-loader');
 const PROTO_PATH = __dirname + '../../../proto/ubc.proto';
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, { keepCase: true, longs: String, enums: String, defaults: true, oneofs: true });
 const ubc_package = grpc.loadPackageDefinition(packageDefinition).ubc_package;
-
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 class AuthServiceGateway {
 
   // Gateway exposed function
@@ -18,7 +20,11 @@ class AuthServiceGateway {
     if (!this.client) {
       this.client = new ubc_package.AuthService(process.env.AUTH_SERVICE_ADDR || "0.0.0.0:50051", grpc.credentials.createInsecure());
     }
+    await sleep(300);
+    console.log('🔵AuthService.GetValidation🔵\t:: ', obj);
     let response = await this.PROMISE_doCallForGetValidation(obj);
+    await sleep(300);
+    console.log('🟣AuthService.GetValidation🟣\t:: ', JSON.stringify(response));
     return response;
   }
 

@@ -4,7 +4,9 @@ const protoLoader = require('@grpc/proto-loader');
 const PROTO_PATH = __dirname + '../../../proto/ubc.proto';
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, { keepCase: true, longs: String, enums: String, defaults: true, oneofs: true });
 const ubc_package = grpc.loadPackageDefinition(packageDefinition).ubc_package;
-
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 class MatchServiceGateway {
 
   readyClient() {
@@ -20,7 +22,11 @@ class MatchServiceGateway {
 
   async doCallForRemoveMatchesOfBoxer(boxerId, token) {
     this.readyClient();
+    await sleep(300);
+    console.log('🔵MatchService.RemoveMatchesOfBoxer🔵\t:: ', boxerId);
     let response = await this.PROMISE_doCallForRemoveMatchesOfBoxer(boxerId, token);
+    await sleep(300);
+    console.log('🟣MatchService.RemoveMatchesOfBoxer🟣\t:: ', JSON.stringify(response));
     return response;
   }
 
