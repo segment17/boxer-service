@@ -25,10 +25,10 @@ class StandingsServiceGateway {
   // doCallFor[function name]
   async doCallForGetStandingWithId(param) {
     this.readyClient();
-    await sleep(300);
+    await sleep(50);
     console.log('🔵StandingsService.GetStandingAndMatchesOfBoxer🔵\t:: ', param);
     let response = await this.PROMISE_doCallForGetStandingWithId(param);
-    await sleep(300);
+    await sleep(50);
     console.log('🟣StandingsService.GetStandingAndMatchesOfBoxer🟣\t:: ', JSON.stringify(response));
     return response;
   }
