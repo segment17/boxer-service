@@ -3,7 +3,7 @@ Feature: Auth Service Gateway Unit Feature
 
   #SUCCESS SCENARIOS
 
-  @AuthServiceGateway_Scenario1
+  @AuthServiceGateway_Scenario1 @B2 @B3 @B4
   Scenario Outline: Get validation from Auth Service Gateway
     #Set up mock gateway or real user service -> Mock if @Unit, real if @Integration
     Given there is a token such as "<token>"
@@ -18,7 +18,7 @@ Feature: Auth Service Gateway Unit Feature
 
   #FAIL SCENARIOS
 
-  @AuthServiceGateway_Scenario2
+  @AuthServiceGateway_Scenario2 @B2 @B3 @B4
   Scenario Outline: Get validation from Auth Service Gateway failure
     #Set up mock gateway or real user service -> Mock if @Unit, real if @Integration
     Given there is a token such as "<token>"
