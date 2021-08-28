@@ -3,7 +3,7 @@ Feature: Standings Service Gateway Integration Feature
 
   #SUCCESS SCENARIOS
 
-  @StandingsServiceGateway_Scenario1
+  @StandingsServiceGateway_Scenario1 @B1
   Scenario Outline: Get standings and matches from Standings Service Gateway
     #Set up mock gateway or real user service -> Mock if @Unit, real if @Integration
     Given there is a standing with matches such as "<standing_and_matches>"
@@ -19,7 +19,7 @@ Feature: Standings Service Gateway Integration Feature
 
   #FAIL SCENARIOS
 
-  @StandingsServiceGateway_Scenario2
+  @StandingsServiceGateway_Scenario2 @B1
   Scenario Outline: Get standings and matches from Standings Service Gateway failure
     #Set up mock gateway or real user service -> Mock if @Unit, real if @Integration
     Given there is a standing with matches such as "<standing_and_matches>"

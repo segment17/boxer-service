@@ -3,7 +3,7 @@ Feature: Boxer Service Component Features
 
   #SUCCESS SCENARIOS
 
-  @B0 @B0_Scenario1
+  @B0 @B0_Scenario1 @B1
   Scenario Outline: Get the details of a boxer from DB
     #Set up mock repository or real database
     Given there is a boxer such as "<boxer>"

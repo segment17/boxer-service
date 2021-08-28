@@ -3,7 +3,7 @@ Feature: Match Service Gateway Integration Feature
 
   #SUCCESS SCENARIOS
 
-  @MatchServiceGateway_Scenario1
+  @MatchServiceGateway_Scenario1 @B4
   Scenario Outline: Delete matches of boxer
     #Set up mock gateway or real user service -> Mock if @Unit, real if @Integration
     Given there is a boxer such as "<boxer>"
