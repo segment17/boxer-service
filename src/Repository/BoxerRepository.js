@@ -19,9 +19,7 @@ class BoxerRepository {
   async runQueryForGetBoxerWithId(id) {
     return new Promise((resolve, reject) => {
       connection.query(`SELECT * FROM ${this.tableName} WHERE id = ${id};`, (error, result) => {
-        if (error) {
-          resolve(null);
-        }
+        if (error) { resolve(null); }
         resolve(result);
       });
     });
@@ -50,22 +48,14 @@ class BoxerRepository {
     }
     return new Promise((resolve, reject) => {
       connection.query(Q, (error, result) => {
-        if (error) {
-          resolve(null);
-        }
+        if (error) { resolve(null); }
         resolve(result);
       });
     });
   }
 
   extractMultipleBoxersResponseFromQueryResult(queryResult, successCode, successMessage) {
-    if (queryResult.length == 0) {
-      return {
-        code: 404,
-        message: "not_found",
-        boxers: []
-      };
-    }
+    if (queryResult.length == 0) { return { code: 404, message: "not_found", boxers: [] }; }
     return {
       code: successCode,
       message: successMessage,
@@ -81,9 +71,7 @@ class BoxerRepository {
   async runQueryForAddBoxerWithGivenData(fullName, birthDate, height, weight) {
     return new Promise((resolve, reject) => {
       connection.query(`INSERT INTO ${this.tableName} (fullName, birthDate, height, weight) VALUES ('${fullName}', ${birthDate}, ${height}, ${weight});`, (error, result) => {
-        if (error) {
-          resolve(null);
-        }
+        if (error) { resolve(null); }
         connection.query(`SELECT * FROM ${this.tableName} ORDER BY id DESC LIMIT 1;`, (error, result) => {
           if (error) {
             resolve(null);
@@ -129,10 +117,7 @@ class BoxerRepository {
   async runQueryForEditBoxerWithGivenData(id, fullName, birthDate, height, weight) {
     return new Promise((resolve, reject) => {
       connection.query(this.buildUpdateQuery(id, fullName, birthDate, height, weight), (error, result) => {
-        if (error) {
-          console.log(error);
-          resolve(null);
-        }
+        if (error) { console.log(error); resolve(null); }
         connection.query(`SELECT * FROM ${this.tableName} WHERE id = ${id};`, (error, result2) => {
           if (error) {
             console.log(error);
@@ -152,10 +137,7 @@ class BoxerRepository {
   async runQueryForRemoveBoxerWithId(id) {
     return new Promise((resolve, reject) => {
       connection.query(`SELECT * FROM ${this.tableName} WHERE id = ${id};`, (error, result) => {
-        if (error) {
-          console.log(error);
-          resolve(null);
-        }
+        if (error) { console.log(error); resolve(null);}
         connection.query(`DELETE FROM ${this.tableName} WHERE id = ${id};`, (error, result2) => {
           if (error) {
             console.log(error);
@@ -172,10 +154,7 @@ class BoxerRepository {
   async setupAddBoxer(boxer) {
     return new Promise((resolve, reject) => {
       connection.query(`INSERT INTO boxers (id, fullName, birthDate, height, weight) VALUES (${boxer.id}, '${boxer.fullName}', ${boxer.birthDate}, ${boxer.height}, ${boxer.weight});`, (error, result) => {
-        if (error) {
-          console.log(error);
-          resolve(null);
-        }
+        if (error) {console.log(error);resolve(null);}
         resolve(result);
       });
     });
@@ -184,10 +163,7 @@ class BoxerRepository {
   async getLatestId() {
     return new Promise((resolve, reject) => {
       connection.query(`SELECT LAST_INSERT_ID();`, (error, result) => {
-        if (error) {
-          console.log(error);
-          resolve(null);
-        }
+        if (error) { console.log(error); resolve(null); }
         resolve(result[0]['LAST_INSERT_ID()']);
       });
     });
@@ -196,10 +172,7 @@ class BoxerRepository {
   async setupAddLatest(boxer) {
     return new Promise((resolve, reject) => {
       connection.query(`INSERT INTO boxers (fullName, birthDate, height, weight) VALUES ('${boxer.fullName}', ${boxer.birthDate}, ${boxer.height}, ${boxer.weight});`, (error, result) => {
-        if (error) {
-          console.log(error);
-          resolve(null);
-        }
+        if (error) { console.log(error); resolve(null); }
         resolve(result);
       });
     });
@@ -209,23 +182,14 @@ class BoxerRepository {
   async cleanUp() {
     return new Promise((resolve, reject) => {
       connection.query(`DELETE FROM boxers;`, (error, result) => {
-        if (error) {
-          console.log(error);
-          resolve(null);
-        }
+        if (error) { console.log(error); resolve(null);  }
         resolve(result);
       });
     });
   }
 
   extractResponseFromQueryResult(queryResult, successCode, successMessage) {
-    if (queryResult.length == 0) {
-      return {
-        code: 404,
-        message: "not_found",
-        boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 }
-      };
-    }
+    if (queryResult.length == 0) { return { code: 404, message: "not_found", boxer: { id: 0, fullName: '', birthDate: '0', height: 0, weight: 0 } }; }
     return {
       code: successCode,
       message: successMessage,
